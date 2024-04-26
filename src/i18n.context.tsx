@@ -23,7 +23,7 @@ export const I18nProvider = ({ children }: I18nProviderProps) => {
     const onChangeLocale = useCallback((newLocale: language) => setLocale(newLocale), []);
 
     const translate = useCallback((i18n: I18nData, key: string) => {
-        return i18n[key][locale] || key;
+        return i18n?.[key]?.[locale] || key;
     }, [locale])
 
     const values = useMemo(() => ({
