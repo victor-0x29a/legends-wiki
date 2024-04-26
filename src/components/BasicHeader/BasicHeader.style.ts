@@ -24,14 +24,6 @@ export const BasicHeaderContainer = styled.header`
         font-size: ${LegendsSize.fontSize.large};
     }
 
-    > p {
-        max-width: 250px;
-        white-space: nowrap;
-        overflow: hidden;
-        text-overflow: ellipsis;
-        font-size: ${LegendsSize.fontSize.small};
-    }
-
     > .content {
         display: flex;
         flex-direction: row;

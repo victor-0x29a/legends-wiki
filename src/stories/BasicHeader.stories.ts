@@ -66,3 +66,15 @@ export const WithIconOnBottom : Story = {
         imageDetails: null
     }
 }
+
+export const WithALongSubtitle : Story = {
+    args: {
+        title: 'Home',
+        subtitle: 'Welcome to the home page. This is a long subtitle that not only welcomes you but also gives you a brief overview of what you can expect from this page. Enjoy your stay!',
+        position: 'bottom',
+        imageDetails: {
+            src: 'https://random.imagecdn.app/200/200',
+            alt: 'Image cdn'
+        }
+    }
+}
