@@ -9,7 +9,7 @@ export const GlobalStyle = createGlobalStyle`
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    color: ${LegendsColor.textColors.primary};
+    color: ${LegendsColor.textColors.black};
     text-decoration: none;
     font-family: "Poppins", sans-serif;
     font-weight: 400;

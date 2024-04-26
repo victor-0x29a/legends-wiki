@@ -3,6 +3,7 @@ import type { Preview } from "@storybook/react";
 import { withThemeFromJSXProvider } from "@storybook/addon-themes";
 import { GlobalStyle } from "../src/styles/global.style";
 import { I18nProvider } from "../src/i18n.context"
+import { ChakraProvider } from "@chakra-ui/react";
 
 const preview: Preview = {
   parameters: {
@@ -18,11 +19,13 @@ const preview: Preview = {
       GlobalStyles: GlobalStyle,
     }),
     (Story) => (
-      <I18nProvider>
-        <div>
-          <Story />
-        </div>
-      </I18nProvider>
+      <ChakraProvider>
+        <I18nProvider>
+          <div style={{ backgroundColor: 'gray', padding: '2rem' }}>
+            <Story />
+          </div>
+        </I18nProvider>
+      </ChakraProvider>
     )
   ]
 };
