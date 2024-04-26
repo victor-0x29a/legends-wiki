@@ -5,6 +5,6 @@ export type language = PT_BR | ES | EN
 
 export type I18nData = {
     [key: string]: {
-        [key: language]: string
+        [key in language]: string
     }
 }
