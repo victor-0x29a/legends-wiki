@@ -10,7 +10,7 @@ type I18nProviderProps = {
     children: React.ReactNode;
 };
 
-const I18nContext = createContext<I18nContextValues>({
+export const I18nContext = createContext<I18nContextValues>({
     locale: "pt-br",
     onChangeLocale: () => { }
 });
