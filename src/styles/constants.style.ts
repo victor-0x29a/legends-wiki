@@ -45,3 +45,7 @@ export const LegendsSize = {
         large: '1rem'
     }
 }
+
+export const LegendsValues = {
+    transitionDuration: '340ms',
+}
