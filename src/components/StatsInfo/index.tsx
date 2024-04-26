@@ -15,7 +15,7 @@ const StatsInfo = ({ stats, isCentralized }: IStatsInfoProps) => {
         <StatsContainer className={isCentralized ? 'center' : ''}>
             {StatsData.map(({ key, value }, index) => (
                 <StatsItem key={`${key}:${value}-#${index}-${stats}`}>
-                    <b>{key}</b>: {value}
+                    {key}: {value}
                 </StatsItem>
             ))}
         </StatsContainer>
