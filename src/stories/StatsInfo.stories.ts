@@ -17,3 +17,25 @@ export const Default: Story = {
         }
     }
 }
+
+export const WithSeveralStats: Story = {
+    args: {
+        stats: {
+            strength: '10',
+            dexterity: '5',
+            magic: '2',
+            durability: '100',
+            damage: '20',
+            protection: '15'
+        }
+    }
+}
+
+export const WithUnknownStat: Story = {
+    args: {
+        stats: {
+            strength: '10',
+            unknown: '5'
+        }
+    }
+}
