@@ -11,7 +11,7 @@ For Linux/Windows/Mac:
 - Install the latest version from [Node.Js](https://nodejs.org/en)
 - Install the latest version from [NPM](https://www.npmjs.com/)
 
-And now, after install the npm, let's install the [yarn](https://yarnpkg.com/)(Other package manager) running the command:
+And now, after install the npm, let's install the [yarn](https://yarnpkg.com/) (Other package manager) running the command:
 
 - `npm i -g yarn`
 
