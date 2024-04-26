@@ -1,3 +1,3 @@
-export type stats = {
+export type IItemStats = {
     [key: string]: string
 }
