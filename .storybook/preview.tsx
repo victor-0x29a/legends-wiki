@@ -1,7 +1,8 @@
+import React from "react";
 import type { Preview } from "@storybook/react";
 import { withThemeFromJSXProvider } from "@storybook/addon-themes";
 import { GlobalStyle } from "../src/styles/global.style";
-import React from "react";
+import { I18nProvider } from "../src/i18n.context"
 
 const preview: Preview = {
   parameters: {
@@ -17,9 +18,11 @@ const preview: Preview = {
       GlobalStyles: GlobalStyle,
     }),
     (Story) => (
-      <div>
-        <Story />
-      </div>
+      <I18nProvider>
+        <div>
+          <Story />
+        </div>
+      </I18nProvider>
     )
   ]
 };
