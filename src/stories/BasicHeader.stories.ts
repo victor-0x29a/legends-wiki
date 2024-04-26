@@ -46,3 +46,23 @@ export const BottomWithChild: Story = {
         bottomChild: 'Bottom child'
     }
 }
+
+export const WithIconOnRight : Story = {
+    args: {
+        icon: 'Icon',
+        title: 'Home',
+        subtitle: 'Welcome to the home page',
+        position: 'right',
+        imageDetails: null
+    }
+}
+
+export const WithIconOnBottom : Story = {
+    args: {
+        icon: 'Icon',
+        title: 'Home',
+        subtitle: 'Welcome to the home page',
+        position: 'bottom',
+        imageDetails: null
+    }
+}
