@@ -31,6 +31,20 @@ export const WithSeveralStats: Story = {
     }
 }
 
+export const WithSeveralStatsAndCentralized: Story = {
+    args: {
+        stats: {
+            strength: '10',
+            dexterity: '5',
+            magic: '2',
+            durability: '100',
+            damage: '20',
+            protection: '15'
+        },
+        isCentralized: true
+    }
+}
+
 export const WithUnknownStat: Story = {
     args: {
         stats: {
