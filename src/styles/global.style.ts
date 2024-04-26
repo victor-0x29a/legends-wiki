@@ -1,4 +1,5 @@
 import { createGlobalStyle } from "styled-components";
+import { LegendsColor } from "./constants.style";
 
 
 export const GlobalStyle = createGlobalStyle`
@@ -6,6 +7,8 @@ export const GlobalStyle = createGlobalStyle`
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    color: ${LegendsColor.textColors.primary};
+    text-decoration: none;
 }
 
 body {
