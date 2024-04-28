@@ -2,7 +2,6 @@ import React from 'react'
 import ReactDOM from 'react-dom/client'
 import { GlobalStyle } from './styles/global.style'
 import { ChakraProvider } from '@chakra-ui/react'
-import { Item } from './pages/item'
 import { I18nProvider } from './i18n.context'
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
@@ -10,7 +9,7 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
     <I18nProvider>
       <ChakraProvider>
         <GlobalStyle/>
-        <Item/>
+        <h1>hello world.</h1>
       </ChakraProvider>
     </I18nProvider>
   </React.StrictMode>
