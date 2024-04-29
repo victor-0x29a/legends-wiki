@@ -4,6 +4,7 @@ import { withThemeFromJSXProvider } from "@storybook/addon-themes";
 import { GlobalStyle } from "../src/styles/global.style";
 import { I18nProvider } from "../src/i18n.context"
 import { ChakraProvider } from "@chakra-ui/react";
+import { LegendsColor } from "../src/styles/constants.style";
 
 const preview: Preview = {
   parameters: {
@@ -21,7 +22,7 @@ const preview: Preview = {
     (Story) => (
       <ChakraProvider>
         <I18nProvider>
-          <div style={{ backgroundColor: 'gray', padding: '2rem' }}>
+          <div style={{ backgroundColor: LegendsColor.backgroundColors.thidary, padding: '2rem' }}>
             <Story />
           </div>
         </I18nProvider>
