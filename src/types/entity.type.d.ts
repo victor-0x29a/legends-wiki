@@ -8,7 +8,7 @@ export type Entity = {
     title: string
     properties: object
     description: string
-    author?: string
+    author: string | null
     image: null | ImageObject
     sections: string | null
     type: string
@@ -18,7 +18,7 @@ export type CreateEntity = {
     title: string
     properties: object
     description: string
-    author?: string
+    author: string | null
     image: null | ImageObject
     sections: string | null
     type: string
