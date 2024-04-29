@@ -41,4 +41,4 @@ For more clarity in your actions and a good coexistence, use this pattern to nam
 
 Please, install on your vscode the [eslint](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint) extension, the [prettier](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode) and [prettier eslint](https://marketplace.visualstudio.com/items?itemName=rvest.vs-code-prettier-eslint).
 
-Now, configure your vscode for use the "Prettier eslint" as your default formatter.
+Now, configure your vscode for use the "Default javascript, typescript" as your default formatter.

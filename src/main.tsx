@@ -10,8 +10,8 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
     <I18nProvider>
       <ChakraProvider>
-        <GlobalStyle/>
-        <RouterProvider router={router}/>
+        <GlobalStyle />
+        <RouterProvider router={router} />
       </ChakraProvider>
     </I18nProvider>
   </React.StrictMode>
