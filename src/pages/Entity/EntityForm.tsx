@@ -98,7 +98,7 @@ export const EntityForm = ({
             <EntityFormProperties onChange={(value) => formik.setFieldValue('properties', value)} value={formik.values.properties} isLoading={isLoading} />
             <EntityFormImage onChange={(value) => formik.setFieldValue('image', value)} value={formik.values.image} isLoading={isLoading} />
             <EntityFormSections onChange={(value) => formik.setFieldValue('sections', value)} value={formik.values.sections} isLoading={isLoading} />
-            <Button marginTop={LegendsSize.margin.normal} w="100%" colorScheme="green" onClick={() => formik.submitForm()}>
+            <Button marginTop={LegendsSize.margin.normal} w="100%" colorScheme="green" onClick={() => formik.submitForm()} marginBottom={LegendsSize.margin.large}>
                 {isEdition ? "Editar" : "Criar"}
             </Button>
         </FormControl>
