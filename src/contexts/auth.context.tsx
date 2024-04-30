@@ -1,5 +1,4 @@
 import React, { createContext, useCallback, useMemo, useState } from "react";
-import jwt from 'jsonwebtoken'
 
 type IUseAuthProviderProps = {
     children: React.ReactNode
@@ -12,6 +11,8 @@ type IUseAuthValues = {
     userData: {
         id: string
         username: string
+        exp?: number
+        iat?: number
     }
 }
 
@@ -27,7 +28,10 @@ export const AuthProvider = ({ children }: IUseAuthProviderProps) => {
 
     const userData = useMemo(() => {
         if (!updatedToken) return null
-        const decodedToken = jwt.decode(updatedToken)
+        const decodedToken = function () {
+            const payload = JSON.parse(atob(updatedToken.split('.')[1]))
+            return payload
+        }()
         return decodedToken
     }, [updatedToken]) as { id: string, username: string }
 
