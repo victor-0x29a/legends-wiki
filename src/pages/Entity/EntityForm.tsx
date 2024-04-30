@@ -6,6 +6,7 @@ import * as Yup from 'yup'
 import { EntityFormProperties } from "./EntityFormProperties"
 import { IItemStats } from "../../types/item.type"
 import { EntityFormImage } from "./EntityFormImage"
+import { EntityFormSections } from "./EntityFormSections"
 
 type initialValues = {
     title: string,
@@ -92,6 +93,7 @@ export const EntityForm = ({
             <FormError errorData={formik.errors.type} />
             <EntityFormProperties onChange={(value) => formik.setFieldValue('properties', value)} value={formik.values.properties} />
             <EntityFormImage onChange={(value) => formik.setFieldValue('image', value)} value={formik.values.image} />
+            <EntityFormSections onChange={(value) => formik.setFieldValue('sections', value)} value={formik.values.sections} />
         </FormControl>
     )
 }
