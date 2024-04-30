@@ -5,13 +5,17 @@ import { FormError } from "../../components/FormError/FormError"
 import * as Yup from 'yup'
 import { EntityFormProperties } from "./EntityFormProperties"
 import { IItemStats } from "../../types/item.type"
+import { EntityFormImage } from "./EntityFormImage"
 
 type initialValues = {
     title: string,
     properties: IItemStats,
     description: string,
     author: string | null,
-    image: object | null,
+    image: {
+        src: string,
+        alt: string
+    } | null,
     sections: string,
     type: string,
 }
@@ -87,6 +91,7 @@ export const EntityForm = ({
             </RadioGroup>
             <FormError errorData={formik.errors.type} />
             <EntityFormProperties onChange={(value) => formik.setFieldValue('properties', value)} value={formik.values.properties} />
+            <EntityFormImage onChange={(value) => formik.setFieldValue('image', value)} value={formik.values.image} />
         </FormControl>
     )
 }
