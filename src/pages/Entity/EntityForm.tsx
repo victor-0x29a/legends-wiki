@@ -31,21 +31,21 @@ type IEntityFormProps = {
 
 const EntitySchema = Yup.object().shape({
     title: Yup.string()
-        .required()
-        .typeError('Title must be a string.'),
+        .required('O título é obrigatório.')
+        .typeError('O título deve ser um texto.'),
     properties: Yup.object()
-        .required()
+        .required('As propriedades são obrigatórias.')
         .default({})
-        .typeError('Properties must be an object.'),
+        .typeError('As propriedades devem ser válidas.'),
     description: Yup.string()
         .max(2800)
-        .required()
-        .typeError('Description must be a string.'),
+        .required('A descrição é obrigatória.')
+        .typeError('A descrição deve ser um texto.'),
     author: Yup.string()
         .max(30)
-        .typeError('Author must be a string.'),
+        .typeError('O autor deve ser um texto.'),
     image: Yup.object()
-        .test('is-image', 'Image must be a valid image.', (value) => {
+        .test('is-image', 'A imagem deve ser válida.', (value) => {
             if (!value) return true
 
             const keys = Object.keys(value)
@@ -55,13 +55,12 @@ const EntitySchema = Yup.object().shape({
             if (!keys.includes('src') || !keys.includes('alt')) return false
 
             return true
-        })
-        .typeError('Image must be an object.'),
+        }),
     sections: Yup.string(),
     type: Yup.string()
         .max(30)
         .required()
-        .typeError('Type must be a string.'),
+        .typeError('O tipo deve ser um texto.'),
 })
 
 export const EntityForm = ({
