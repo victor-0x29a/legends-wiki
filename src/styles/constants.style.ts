@@ -10,7 +10,7 @@ export const LegendsColor = {
     backgroundColors: {
         primary: '#e0ffff', // lightest blue
         secondary: '#F5FFFA', // mint cream
-        thidary: '#02557f' // beige
+        thidary: '#2b242b' // beige
     }
 }
 
