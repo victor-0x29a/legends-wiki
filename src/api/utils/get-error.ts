@@ -1,6 +1,6 @@
 import { AxiosError } from "axios";
 
-export const getError = (error: AxiosError) => {
+export const getError = (error: unknown) => {
     const isAxiosError = error instanceof AxiosError
 
     if (!isAxiosError) {
