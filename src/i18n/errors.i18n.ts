@@ -1,12 +1,12 @@
 import { I18nData } from "../types/i18n.type";
 
 export const ErrorList: I18nData = {
-    "Token not provided": {
+    "Token not provided.": {
         "en": "Token not provided",
         "es": "Token no proporcionado",
         "pt-br": "Token não fornecido"
     },
-    "Token invalid": {
+    "Token invalid.": {
         "en": "Token invalid",
         "es": "Token inválido",
         "pt-br": "Token inválido"
