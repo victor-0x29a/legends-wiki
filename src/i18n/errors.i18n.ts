@@ -2,14 +2,14 @@ import { I18nData } from "../types/i18n.type";
 
 export const ErrorList: I18nData = {
     "Token not provided.": {
-        "en": "Token not provided",
+        "en": "Make authentication to continue",
         "es": "Token no proporcionado",
-        "pt-br": "Token não fornecido"
+        "pt-br": "Realize a autenticação para continuar"
     },
     "Token invalid.": {
-        "en": "Token invalid",
-        "es": "Token inválido",
-        "pt-br": "Token inválido"
+        "en": "Expired authentication",
+        "es": "Token expirado",
+        "pt-br": "A autenticação expirou"
     },
     "User or password invalid.": {
         "en": "User or password invalid.",
