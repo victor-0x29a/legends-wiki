@@ -4,7 +4,8 @@ export const LegendsColor = {
         secondary: '#8FBC8F', // dark sea green
         thirdiary: '#BC8F8F', // rosy brown,
         white: '#ffffff',
-        black: '#2c2d26'
+        black: '#2c2d26',
+        gray: '#d0d9d2'
     },
     backgroundColors: {
         primary: '#e0ffff', // lightest blue
