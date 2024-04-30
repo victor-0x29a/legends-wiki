@@ -1,7 +1,14 @@
 import { AxiosError } from "axios";
 
 export const getError = (error: AxiosError) => {
-    const statusCode = error.status || 0
+    const isAxiosError = error instanceof AxiosError
+
+    if (!isAxiosError) {
+        return ["Internal error"]
+    }
+
+    const statusCode = error?.status || 0
+
     if (statusCode === 401) {
         return ["Required authentication"]
     }
