@@ -1,5 +1,5 @@
 import { createContext, useCallback, useMemo, useState } from "react";
-import { I18nData, language } from "./types/i18n.type";
+import { I18nData, language } from "../types/i18n.type";
 
 type I18nContextValues = {
     locale: language;

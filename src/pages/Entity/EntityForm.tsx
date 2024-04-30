@@ -8,6 +8,7 @@ import { IItemStats } from "../../types/item.type"
 import { EntityFormImage } from "./EntityFormImage"
 import { EntityFormSections } from "./EntityFormSections"
 import { LegendsSize } from "../../styles/constants.style"
+import { FormEvent, useCallback } from "react"
 
 type initialValues = {
     title: string,
@@ -42,9 +43,11 @@ const EntitySchema = Yup.object().shape({
         .required('A descrição é obrigatória.')
         .typeError('A descrição deve ser um texto.'),
     author: Yup.string()
+        .nullable()
         .max(30)
         .typeError('O autor deve ser um texto.'),
     image: Yup.object()
+        .nullable()
         .test('is-image', 'A imagem deve ser válida.', (value) => {
             if (!value) return true
 
@@ -73,16 +76,20 @@ export const EntityForm = ({
         initialValues,
         onSubmit,
         validationSchema: EntitySchema,
-        validateOnChange: false
     })
 
+    const onFormSubmit = useCallback((event: FormEvent) => {
+        event.preventDefault()
+        formik.submitForm()
+    }, [formik])
+
     return (
-        <FormControl>
+        <FormControl as="form" onSubmit={onFormSubmit}>
             <FormLabel>Autor</FormLabel>
             <Input placeholder="Não obrigatório." name="author" required={false} onChange={formik.handleChange} value={formik.values?.author || ""} disabled={isLoading} />
             <FormError errorData={formik.errors.author} />
             <FormLabel>Título</FormLabel>
-            <Input placeholder="Título" name="Coloque um título." onChange={formik.handleChange} value={formik.values.title} disabled={isLoading} />
+            <Input name="title" placeholder="Coloque um título." onChange={formik.handleChange} value={formik.values.title} disabled={isLoading} />
             <FormError errorData={formik.errors.title} />
             <FormLabel>Descrição</FormLabel>
             <Input placeholder="Coloque uma descrição." name="description" onChange={formik.handleChange} value={formik.values.description} disabled={isLoading} />
@@ -99,7 +106,7 @@ export const EntityForm = ({
             <EntityFormProperties onChange={(value) => formik.setFieldValue('properties', value)} value={formik.values.properties} isLoading={isLoading} />
             <EntityFormImage onChange={(value) => formik.setFieldValue('image', value)} value={formik.values.image} isLoading={isLoading} />
             <EntityFormSections onChange={(value) => formik.setFieldValue('sections', value)} value={formik.values.sections} isLoading={isLoading} />
-            <Button marginTop={LegendsSize.margin.normal} w="100%" colorScheme="green" onClick={() => formik.submitForm()} marginBottom={LegendsSize.margin.large}>
+            <Button marginTop={LegendsSize.margin.normal} w="100%" colorScheme="green" type="submit" marginBottom={LegendsSize.margin.large}>
                 {isEdition ? "Editar" : "Criar"}
             </Button>
         </FormControl>

@@ -2,7 +2,7 @@ import { useContext, useMemo } from "react";
 import { StatsContainer, StatsItem } from "./StatsInfo.style";
 import { IStatsInfoProps } from "./StatsInfo.type";
 import { Stats } from "../../i18n/stats.i18n";
-import { I18nContext } from "../../i18n.context";
+import { I18nContext } from "../../contexts/i18n.context";
 
 const StatsInfo = ({ stats, isCentralized }: IStatsInfoProps) => {
     const { translate } = useContext(I18nContext);
