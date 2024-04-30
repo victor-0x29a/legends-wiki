@@ -3,6 +3,7 @@ import { NotFound } from "./not-found";
 import { CreateEntityPage } from "./pages/Entity/CreateEntityPage";
 import { AuthenticationPage } from "./pages/Authentication/AuthenticationPage";
 import { PrivateRoute } from "./private-route";
+import { RedirectPage } from "./pages/Dashboard/RedirectPage";
 
 export const router = createBrowserRouter([
     {
@@ -23,6 +24,12 @@ export const router = createBrowserRouter([
     {
         path: "auth",
         children: [
+            {
+                path: "",
+                element: <PrivateRoute forProtect={true}>
+                    <RedirectPage />
+                </PrivateRoute>
+            },
             {
                 path: "login",
                 element: <PrivateRoute>
