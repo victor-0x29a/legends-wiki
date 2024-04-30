@@ -73,6 +73,7 @@ export const EntityForm = ({
         initialValues,
         onSubmit,
         validationSchema: EntitySchema,
+        validateOnChange: false
     })
 
     return (
@@ -87,10 +88,10 @@ export const EntityForm = ({
             <Input placeholder="Coloque uma descrição." name="description" onChange={formik.handleChange} value={formik.values.description} disabled={isLoading} />
             <FormError errorData={formik.errors.description} />
             <FormLabel>Tipo da entidade</FormLabel>
-            <RadioGroup defaultValue={entityTypesArray[0]} name="type" onChange={formik.handleChange} value={formik.values.type}>
+            <RadioGroup defaultValue={entityTypesArray[0]} name="type" value={formik.values.type}>
                 <HStack>
                     {entityTypesArray.map((type, index) => (
-                        <Radio value={type} key={`${index}-ratio-item-entity-creation`} isDisabled={isLoading}>{entityTypes?.[type] || ""}</Radio>
+                        <Radio value={type} key={`${index}-ratio-item-entity-creation`} isDisabled={isLoading} onClick={() => formik.setFieldValue("type", type)}>{entityTypes?.[type] || ""}</Radio>
                     ))}
                 </HStack>
             </RadioGroup>
