@@ -9,8 +9,8 @@ export const RedirectList = ({
 }: IRedirectListProps) => {
     return <Box display={"flex"} justifyContent={"center"} gap={LegendsSize.margin.normal} marginTop={LegendsSize.margin.normal} cursor={"pointer"}>
         {list.map(({ title, path }, index) => (
-            <Link to={path}>
-                <Card key={`redirect-page-${index}-#${path}`} padding={"0"} backgroundColor={"transparent"} boxShadow={`0 0 4px ${LegendsColor.textColors.white}`} minW={"200px"} maxW={"200px"} borderRadius={LegendsSize.borderRadius.small}>
+            <Link to={path} key={`redirect-page-${index}-#${path}`}>
+                <Card padding={"0"} backgroundColor={"transparent"} boxShadow={`0 0 4px ${LegendsColor.textColors.white}`} minW={"200px"} maxW={"200px"} borderRadius={LegendsSize.borderRadius.small}>
                     <CardHeader w={"100%"} h={"100%"} textAlign={"center"}>
                         <Heading as="h4" size={"sm"}>
                             <InfoIcon boxSize={4} display={"inline"} marginRight={LegendsSize.margin.small} />
