@@ -2,8 +2,8 @@ import { Box, Button, FormLabel, Heading, Input, Table, TableContainer, Tbody, T
 import { LegendsColor, LegendsSize } from "../../styles/constants.style"
 import { IItemStats } from "../../types/item.type"
 import { useCallback, useMemo, useState } from "react"
-import { toast } from "react-toastify"
 import { DeleteIcon } from "@chakra-ui/icons"
+import { useAlert } from "../../hooks/useAlert"
 
 type EntityFormPropertiesProps = {
     onChange: (value: object) => void,
@@ -28,28 +28,17 @@ export const EntityFormProperties = ({
         value: ""
     })
 
-    const alert = useCallback((message: string) => {
-        toast.error(message, {
-            position: "top-right",
-            autoClose: 5000,
-            hideProgressBar: false,
-            closeOnClick: true,
-            pauseOnHover: true,
-            draggable: true,
-            progress: undefined,
-            theme: "dark"
-        });
-    }, [])
+    const { alert } = useAlert()
 
     const onSubmit = useCallback(() => {
         if (!form.name) {
-            return alert("O nome da propriedade não pode ser vazio.")
+            return alert({ text: "O nome da propriedade não pode ser vazio." })
         }
         if (!form.value) {
-            return alert("O valor da propriedade não pode ser vazio.")
+            return alert({ text: "O valor da propriedade não pode ser vazio." })
         }
         if (value?.[form.name]) {
-            return alert("Já existe uma propriedade com esse nome.")
+            return alert({ text: "Já existe uma propriedade com esse nome." })
         }
         onChange({ ...value, [form.name]: form.value })
         setForm({
