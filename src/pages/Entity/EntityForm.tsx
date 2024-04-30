@@ -4,10 +4,11 @@ import { entityTypes, entityTypesArray } from "./entity.constant"
 import { FormError } from "../../components/FormError/FormError"
 import * as Yup from 'yup'
 import { EntityFormProperties } from "./EntityFormProperties"
+import { IItemStats } from "../../types/item.type"
 
 type initialValues = {
     title: string,
-    properties: object,
+    properties: IItemStats,
     description: string,
     author: string | null,
     image: object | null,
@@ -85,7 +86,7 @@ export const EntityForm = ({
                 </HStack>
             </RadioGroup>
             <FormError errorData={formik.errors.type} />
-            <EntityFormProperties onChange={formik.handleChange} value={formik.values.properties} />
+            <EntityFormProperties onChange={(value) => formik.setFieldValue('properties', value)} value={formik.values.properties} />
         </FormControl>
     )
 }
