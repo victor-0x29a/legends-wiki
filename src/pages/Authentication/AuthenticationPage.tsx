@@ -66,7 +66,7 @@ export const AuthenticationPage = () => {
                     <Input type={showPassword ? "text" : "password"} name="password" onChange={formik.handleChange} onBlur={formik.handleBlur} disabled={isLoading} />
                 </InputGroup>
                 <FormError errorData={formik.errors.password} />
-                <Button w={"100%"} marginTop={LegendsSize.margin.normal} type="submit" colorScheme="green" disabled={isLoading}>
+                <Button w={"100%"} marginTop={LegendsSize.margin.normal} type="submit" colorScheme="green" loadingText="Entrando na conta" isLoading={isLoading}>
                     Entrar
                 </Button>
             </FormControl>
