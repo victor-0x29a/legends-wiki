@@ -1,5 +1,5 @@
 import { useFormik } from "formik"
-import { FormControl, FormLabel, HStack, Input, Radio, RadioGroup } from "@chakra-ui/react"
+import { Button, FormControl, FormLabel, HStack, Input, Radio, RadioGroup } from "@chakra-ui/react"
 import { entityTypes, entityTypesArray } from "./entity.constant"
 import { FormError } from "../../components/FormError/FormError"
 import * as Yup from 'yup'
@@ -7,6 +7,7 @@ import { EntityFormProperties } from "./EntityFormProperties"
 import { IItemStats } from "../../types/item.type"
 import { EntityFormImage } from "./EntityFormImage"
 import { EntityFormSections } from "./EntityFormSections"
+import { LegendsSize } from "../../styles/constants.style"
 
 type initialValues = {
     title: string,
@@ -24,7 +25,8 @@ type initialValues = {
 type IEntityFormProps = {
     initialValues: initialValues,
     onSubmit: (values: initialValues) => void,
-    isLoading?: boolean
+    isLoading?: boolean,
+    isEdition?: boolean
 }
 
 const EntitySchema = Yup.object().shape({
@@ -65,7 +67,8 @@ const EntitySchema = Yup.object().shape({
 export const EntityForm = ({
     initialValues,
     onSubmit,
-    isLoading = false
+    isLoading = false,
+    isEdition = false
 }: IEntityFormProps) => {
     const formik = useFormik({
         initialValues,
@@ -96,6 +99,9 @@ export const EntityForm = ({
             <EntityFormProperties onChange={(value) => formik.setFieldValue('properties', value)} value={formik.values.properties} isLoading={isLoading} />
             <EntityFormImage onChange={(value) => formik.setFieldValue('image', value)} value={formik.values.image} isLoading={isLoading} />
             <EntityFormSections onChange={(value) => formik.setFieldValue('sections', value)} value={formik.values.sections} isLoading={isLoading} />
+            <Button marginTop={LegendsSize.margin.normal} w="100%" colorScheme="green" onClick={() => formik.submitForm()}>
+                {isEdition ? "Editar" : "Criar"}
+            </Button>
         </FormControl>
     )
 }
