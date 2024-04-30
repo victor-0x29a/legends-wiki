@@ -10,7 +10,7 @@ export const userSchema = {
         .required(),
     username: Yup.string()
         .max(20)
-        .required(),
+        .required("Nome de usuário é obrigatório"),
     password: Yup.string()
-        .required()
+        .required("Senha é obrigatória"),
 }
