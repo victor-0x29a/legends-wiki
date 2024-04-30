@@ -34,6 +34,7 @@ export const AuthenticationPage = () => {
             setIsLoading(true)
             return UserModel.signIn(values).then(({ token }) => {
                 authenticate(token)
+                alert({ text: "Login efetuado", type: "success" })
             }).catch((errorList) => {
                 const errors = translateErrors(errorList)
                 errors.forEach((error) => alert({ text: error }))
