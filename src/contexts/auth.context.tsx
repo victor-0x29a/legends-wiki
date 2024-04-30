@@ -10,9 +10,9 @@ type IUseAuthContext = {
 } | null
 
 
-const useAuthContext = createContext<IUseAuthContext>(null)
+export const AuthContext = createContext<IUseAuthContext>(null)
 
-export const UseAuthProvider = ({ children }: IUseAuthProviderProps) => {
+export const AuthProvider = ({ children }: IUseAuthProviderProps) => {
     const [token, setToken] = useState<null | string>(null)
 
     const authenticate = useCallback((newToken: string) => {
@@ -24,5 +24,5 @@ export const UseAuthProvider = ({ children }: IUseAuthProviderProps) => {
         authenticate
     }), [token, authenticate])
 
-    return <useAuthContext.Provider value={values}>{children}</useAuthContext.Provider>
+    return <AuthContext.Provider value={values}>{children}</AuthContext.Provider>
 }

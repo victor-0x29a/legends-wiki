@@ -5,13 +5,13 @@ import { ChakraProvider } from '@chakra-ui/react'
 import { I18nProvider } from './contexts/i18n.context'
 import { RouterProvider } from 'react-router-dom'
 import { router } from './routes'
-import { UseAuthProvider } from './contexts/useAuth'
+import { AuthProvider } from './contexts/auth.context'
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
-    <UseAuthProvider>
+    <AuthProvider>
       <I18nProvider>
         <ChakraProvider>
           <GlobalStyle />
@@ -19,6 +19,6 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
           <RouterProvider router={router} />
         </ChakraProvider>
       </I18nProvider>
-    </UseAuthProvider>
+    </AuthProvider>
   </React.StrictMode>
 )
