@@ -43,9 +43,11 @@ const EntitySchema = Yup.object().shape({
         .required('A descrição é obrigatória.')
         .typeError('A descrição deve ser um texto.'),
     author: Yup.string()
+        .nullable()
         .max(30)
         .typeError('O autor deve ser um texto.'),
     image: Yup.object()
+        .nullable()
         .test('is-image', 'A imagem deve ser válida.', (value) => {
             if (!value) return true
 
@@ -74,7 +76,6 @@ export const EntityForm = ({
         initialValues,
         onSubmit,
         validationSchema: EntitySchema,
-        validateOnChange: false
     })
 
     const onFormSubmit = useCallback((event: FormEvent) => {
