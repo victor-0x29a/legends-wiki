@@ -7,12 +7,14 @@ import { DeleteIcon } from "@chakra-ui/icons"
 
 type EntityFormPropertiesProps = {
     onChange: (value: object) => void,
-    value: IItemStats
+    value: IItemStats,
+    isLoading?: boolean
 }
 
 export const EntityFormProperties = ({
     onChange,
-    value
+    value,
+    isLoading = false
 }: EntityFormPropertiesProps) => {
     const previewData = useMemo(() => Object.entries(value).map(([key, value]) => ({
         key,
@@ -66,12 +68,12 @@ export const EntityFormProperties = ({
             <Box display={"flex"} justifyContent={"space-between"} w="100%">
                 <Box w={"35%"}>
                     <FormLabel>Nome da propriedade</FormLabel>
-                    <Input value={form.name} placeholder="Coloque o nome" type="text" onChange={(event) => setForm((curr) => ({ ...curr, name: event.target.value }))} />
+                    <Input value={form.name} placeholder="Coloque o nome" type="text" onChange={(event) => setForm((curr) => ({ ...curr, name: event.target.value }))} disabled={isLoading} />
                 </Box>
                 <Box w={"35%"}>
                     <FormLabel>Valor da propriedade</FormLabel>
                     <Input value={form.value} placeholder="Coloque o valor" type="text"
-                        onChange={(event) => setForm((curr) => ({ ...curr, value: event.target.value }))} />
+                        onChange={(event) => setForm((curr) => ({ ...curr, value: event.target.value }))} disabled={isLoading} />
                 </Box>
 
                 <Box w={"25%"} display={"flex"} alignItems={"end"}>

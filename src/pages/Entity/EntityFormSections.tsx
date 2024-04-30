@@ -5,19 +5,23 @@ import { LegendsSize } from '../../styles/constants.style';
 type IEntityFormSectionsProps = {
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     onChange: (value: any) => void,
-    value: string
+    value: string,
+    isLoading?: boolean
 }
 
 export const EntityFormSections = ({
     onChange,
-    value
+    value,
+    isLoading = false
 }: IEntityFormSectionsProps) => {
     return (
         <Box>
             <Heading size={"md"} marginTop={LegendsSize.margin.normal} marginBottom={LegendsSize.margin.small}>
                 Seções
             </Heading>
-            <MDEditor onChange={onChange} value={value} />
+            {!isLoading && (
+                <MDEditor onChange={onChange} value={value} />
+            )}
         </Box>
     )
 }

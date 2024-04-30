@@ -7,13 +7,15 @@ type EntityForImageProps = {
     value: {
         src: string,
         alt: string
-    } | null
+    } | null,
+    isLoading?: boolean
 }
 
 
 export const EntityFormImage = ({
     onChange,
-    value
+    value,
+    isLoading = false
 }: EntityForImageProps) => {
     const [isUsingImage, setIsUsingImage] = useState(false)
     const [isUsingInternalImage, setIsUsingInternalImage] = useState(false)
@@ -33,12 +35,12 @@ export const EntityFormImage = ({
             <Box display={"flex"}>
                 <Box>
                     <FormLabel display={"inline"}>Usar imagem:</FormLabel>
-                    <Switch onChange={() => setIsUsingImage((curr) => !curr)} isChecked={isUsingImage} />
+                    <Switch onChange={() => setIsUsingImage((curr) => !curr)} isChecked={isUsingImage} disabled={isLoading} />
                 </Box>
                 {isUsingImage && (
                     <Box marginLeft={LegendsSize.margin.normal}>
                         <FormLabel display={"inline"}>Usar imagem interna:</FormLabel>
-                        <Switch onChange={() => setIsUsingInternalImage((curr) => !curr)} isChecked={isUsingInternalImage} />
+                        <Switch onChange={() => setIsUsingInternalImage((curr) => !curr)} isChecked={isUsingInternalImage} disabled={isLoading} />
                     </Box>
                 )}
             </Box>
@@ -46,11 +48,11 @@ export const EntityFormImage = ({
                 <Box display="flex" justifyContent={"space-between"} marginTop={LegendsSize.margin.small}>
                     <Box w="45%">
                         <FormLabel>{isUsingInternalImage ? "Nome da imagem interna" : "Link da imagem"}</FormLabel>
-                        <Input type="text" value={value?.src || ""} onChange={(event) => onChangeData('src', event.target.value)} />
+                        <Input type="text" value={value?.src || ""} onChange={(event) => onChangeData('src', event.target.value)} disabled={isLoading} />
                     </Box>
                     <Box w="45%">
                         <FormLabel>{"Alt da imagem"}</FormLabel>
-                        <Input type="text" value={value?.alt || ""} onChange={(event) => onChangeData('alt', event.target.value)} />
+                        <Input type="text" value={value?.alt || ""} onChange={(event) => onChangeData('alt', event.target.value)} disabled={isLoading} />
                     </Box>
                 </Box>
             )}

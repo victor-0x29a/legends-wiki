@@ -24,6 +24,7 @@ type initialValues = {
 type IEntityFormProps = {
     initialValues: initialValues,
     onSubmit: (values: initialValues) => void,
+    isLoading?: boolean
 }
 
 const EntitySchema = Yup.object().shape({
@@ -63,7 +64,8 @@ const EntitySchema = Yup.object().shape({
 
 export const EntityForm = ({
     initialValues,
-    onSubmit
+    onSubmit,
+    isLoading = false
 }: IEntityFormProps) => {
     const formik = useFormik({
         initialValues,
@@ -74,26 +76,26 @@ export const EntityForm = ({
     return (
         <FormControl>
             <FormLabel>Autor</FormLabel>
-            <Input placeholder="Não obrigatório." name="author" required={false} onChange={formik.handleChange} value={formik.values?.author || ""} />
+            <Input placeholder="Não obrigatório." name="author" required={false} onChange={formik.handleChange} value={formik.values?.author || ""} disabled={isLoading} />
             <FormError errorData={formik.errors.author} />
             <FormLabel>Título</FormLabel>
-            <Input placeholder="Título" name="Coloque um título." onChange={formik.handleChange} value={formik.values.title} />
+            <Input placeholder="Título" name="Coloque um título." onChange={formik.handleChange} value={formik.values.title} disabled={isLoading} />
             <FormError errorData={formik.errors.title} />
             <FormLabel>Descrição</FormLabel>
-            <Input placeholder="Coloque uma descrição." name="description" onChange={formik.handleChange} value={formik.values.description} />
+            <Input placeholder="Coloque uma descrição." name="description" onChange={formik.handleChange} value={formik.values.description} disabled={isLoading} />
             <FormError errorData={formik.errors.description} />
             <FormLabel>Tipo da entidade</FormLabel>
             <RadioGroup defaultValue={entityTypesArray[0]} name="type" onChange={formik.handleChange} value={formik.values.type}>
                 <HStack>
                     {entityTypesArray.map((type, index) => (
-                        <Radio value={type} key={`${index}-ratio-item-entity-creation`}>{entityTypes?.[type] || ""}</Radio>
+                        <Radio value={type} key={`${index}-ratio-item-entity-creation`} isDisabled={isLoading}>{entityTypes?.[type] || ""}</Radio>
                     ))}
                 </HStack>
             </RadioGroup>
             <FormError errorData={formik.errors.type} />
-            <EntityFormProperties onChange={(value) => formik.setFieldValue('properties', value)} value={formik.values.properties} />
-            <EntityFormImage onChange={(value) => formik.setFieldValue('image', value)} value={formik.values.image} />
-            <EntityFormSections onChange={(value) => formik.setFieldValue('sections', value)} value={formik.values.sections} />
+            <EntityFormProperties onChange={(value) => formik.setFieldValue('properties', value)} value={formik.values.properties} isLoading={isLoading} />
+            <EntityFormImage onChange={(value) => formik.setFieldValue('image', value)} value={formik.values.image} isLoading={isLoading} />
+            <EntityFormSections onChange={(value) => formik.setFieldValue('sections', value)} value={formik.values.sections} isLoading={isLoading} />
         </FormControl>
     )
 }
