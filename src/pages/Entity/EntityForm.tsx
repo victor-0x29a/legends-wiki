@@ -82,7 +82,7 @@ export const EntityForm = ({
             <Input placeholder="Não obrigatório." name="author" required={false} onChange={formik.handleChange} value={formik.values?.author || ""} disabled={isLoading} />
             <FormError errorData={formik.errors.author} />
             <FormLabel>Título</FormLabel>
-            <Input placeholder="Título" name="Coloque um título." onChange={formik.handleChange} value={formik.values.title} disabled={isLoading} />
+            <Input name="title" placeholder="Coloque um título." onChange={formik.handleChange} value={formik.values.title} disabled={isLoading} />
             <FormError errorData={formik.errors.title} />
             <FormLabel>Descrição</FormLabel>
             <Input placeholder="Coloque uma descrição." name="description" onChange={formik.handleChange} value={formik.values.description} disabled={isLoading} />
