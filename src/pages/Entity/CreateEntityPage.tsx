@@ -1,11 +1,12 @@
 
-import { Container } from "@chakra-ui/react"
+import { Container, Heading } from "@chakra-ui/react"
 import { entityTypesArray } from "./entity.constant"
 import { EntityForm } from "./EntityForm"
 import { EntityModel } from "../../api"
 import { useCallback, useState } from "react"
 import { useNavigate } from "react-router-dom"
 import { toast } from "react-toastify"
+import { LegendsSize } from "../../styles/constants.style"
 
 const BaseEntityForm = {
     title: "",
@@ -57,6 +58,9 @@ export const CreateEntityPage = () => {
     }, [Navigate])
     return (
         <Container maxW="800px">
+            <Heading marginTop={LegendsSize.margin.large} marginBottom={LegendsSize.margin.large}>
+                Criação de entidade
+            </Heading>
             <EntityForm initialValues={BaseEntityForm} onSubmit={onSubmit} isLoading={isLoading} />
         </Container>
     )
