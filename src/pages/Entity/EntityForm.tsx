@@ -8,6 +8,7 @@ import { IItemStats } from "../../types/item.type"
 import { EntityFormImage } from "./EntityFormImage"
 import { EntityFormSections } from "./EntityFormSections"
 import { LegendsSize } from "../../styles/constants.style"
+import { FormEvent, useCallback } from "react"
 
 type initialValues = {
     title: string,
@@ -76,8 +77,13 @@ export const EntityForm = ({
         validateOnChange: false
     })
 
+    const onFormSubmit = useCallback((event: FormEvent) => {
+        event.preventDefault()
+        formik.submitForm()
+    }, [formik])
+
     return (
-        <FormControl>
+        <FormControl as="form" onSubmit={onFormSubmit}>
             <FormLabel>Autor</FormLabel>
             <Input placeholder="Não obrigatório." name="author" required={false} onChange={formik.handleChange} value={formik.values?.author || ""} disabled={isLoading} />
             <FormError errorData={formik.errors.author} />
@@ -99,7 +105,7 @@ export const EntityForm = ({
             <EntityFormProperties onChange={(value) => formik.setFieldValue('properties', value)} value={formik.values.properties} isLoading={isLoading} />
             <EntityFormImage onChange={(value) => formik.setFieldValue('image', value)} value={formik.values.image} isLoading={isLoading} />
             <EntityFormSections onChange={(value) => formik.setFieldValue('sections', value)} value={formik.values.sections} isLoading={isLoading} />
-            <Button marginTop={LegendsSize.margin.normal} w="100%" colorScheme="green" onClick={() => formik.submitForm()} marginBottom={LegendsSize.margin.large}>
+            <Button marginTop={LegendsSize.margin.normal} w="100%" colorScheme="green" type="submit" marginBottom={LegendsSize.margin.large}>
                 {isEdition ? "Editar" : "Criar"}
             </Button>
         </FormControl>
