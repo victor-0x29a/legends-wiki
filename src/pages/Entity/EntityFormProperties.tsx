@@ -19,6 +19,8 @@ export const EntityFormProperties = ({
         value
     })), [value])
 
+    const showTable = useMemo(() => previewData.length > 0 && previewData.filter(({ value }) => Boolean(value)).length > 0, [previewData])
+
     const [form, setForm] = useState({
         name: "",
         value: ""
@@ -76,31 +78,33 @@ export const EntityFormProperties = ({
                     <Button colorScheme="green" w={"90%"} onClick={onSubmit}>Adicionar</Button>
                 </Box>
             </Box>
-            <TableContainer marginTop={LegendsSize.margin.normal}>
-                <Table size="md">
-                    <Thead>
-                        <Tr>
-                            <Th color={LegendsColor.textColors.white}>Propriedade</Th>
-                            <Th color={LegendsColor.textColors.white}>Valor</Th>
-                            <Th color={LegendsColor.textColors.white}>Ação</Th>
-                        </Tr>
-                    </Thead>
-                    <Tbody>
-                        {previewData.map(({
-                            key,
-                            value
-                        }, index) => value && (
-                            <Tr key={`${key}:${value}-#${index}-entity-form-properties`}>
-                                <Th color={LegendsColor.textColors.gray}>{key}</Th>
-                                <Th color={LegendsColor.textColors.gray}>{value}</Th>
-                                <Th color={LegendsColor.textColors.gray}>
-                                    <DeleteIcon cursor={"pointer"} onClick={() => deleteIcon(key)} />
-                                </Th>
+            {showTable && (
+                <TableContainer marginTop={LegendsSize.margin.normal}>
+                    <Table size="md">
+                        <Thead>
+                            <Tr>
+                                <Th color={LegendsColor.textColors.white}>Propriedade</Th>
+                                <Th color={LegendsColor.textColors.white}>Valor</Th>
+                                <Th color={LegendsColor.textColors.white}>Ação</Th>
                             </Tr>
-                        ))}
-                    </Tbody>
-                </Table>
-            </TableContainer>
+                        </Thead>
+                        <Tbody>
+                            {previewData.map(({
+                                key,
+                                value
+                            }, index) => value && (
+                                <Tr key={`${key}:${value}-#${index}-entity-form-properties`}>
+                                    <Th color={LegendsColor.textColors.gray}>{key}</Th>
+                                    <Th color={LegendsColor.textColors.gray}>{value}</Th>
+                                    <Th color={LegendsColor.textColors.gray}>
+                                        <DeleteIcon cursor={"pointer"} onClick={() => deleteIcon(key)} />
+                                    </Th>
+                                </Tr>
+                            ))}
+                        </Tbody>
+                    </Table>
+                </TableContainer>
+            )}
         </Box>
     </>
 }
