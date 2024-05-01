@@ -28,3 +28,14 @@ export type EntityFilters = {
     page: number
     perPage: number
 } & Partial<Entity>
+
+export type ListEntityResponse = {
+    page: number
+    perPage: number
+    totalPages: number
+    entries: {
+        id: number
+        title: string
+        image: null | ImageObject
+    }
+}
