@@ -1,4 +1,4 @@
-import { Image, ImageProps, Text } from "@chakra-ui/react"
+import { Image, ImageProps } from "@chakra-ui/react"
 import { IEntityImageProps } from "./EntityImage.type"
 import { useMemo } from "react"
 import { LegendsSize } from "../../styles/constants.style"
