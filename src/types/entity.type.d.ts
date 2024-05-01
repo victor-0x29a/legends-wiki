@@ -23,3 +23,8 @@ export type CreateEntity = {
     sections: string | null
     type: string
 }
+
+export type EntityFilters = {
+    page: number
+    perPage: number
+} & Partial<Entity>
