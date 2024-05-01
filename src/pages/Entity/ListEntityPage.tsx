@@ -63,8 +63,8 @@ export const ListEntityPage = () => {
                                 {title}
                             </Th>
                             <Th>
-                                <EditIcon onClick={onEditClick(id)} />
-                                <DeleteIcon onClick={onRemoveClick()} />
+                                <EditIcon onClick={onEditClick(id)} marginRight={LegendsSize.margin.small} cursor={"pointer"} />
+                                <DeleteIcon onClick={onRemoveClick()} cursor={"pointer"} />
                             </Th>
                         </Tr>
                     ))}
