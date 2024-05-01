@@ -5,6 +5,7 @@ import { LegendsColor, LegendsSize } from "../../styles/constants.style";
 import { useCallback, useMemo } from "react";
 import { DeleteIcon, EditIcon, WarningIcon } from "@chakra-ui/icons";
 import { useNavigate } from "react-router-dom";
+import EntityImage from "../../components/EntityImage/EntityImage";
 
 export const ListEntityPage = () => {
     const {
@@ -57,14 +58,14 @@ export const ListEntityPage = () => {
                                 {id}
                             </Th>
                             <Th color={LegendsColor.textColors.gray}>
-                                {image ? image.toString() : "Sem imagem"}
+                                <EntityImage image={image} />
                             </Th>
                             <Th color={LegendsColor.textColors.gray}>
                                 {title}
                             </Th>
                             <Th>
-                                <EditIcon onClick={onEditClick(id)} marginRight={LegendsSize.margin.small} cursor={"pointer"} />
-                                <DeleteIcon onClick={onRemoveClick()} cursor={"pointer"} />
+                                <EditIcon onClick={onEditClick(id)} marginRight={LegendsSize.margin.small} cursor={"pointer"} boxSize={5} />
+                                <DeleteIcon onClick={onRemoveClick()} cursor={"pointer"} boxSize={5} />
                             </Th>
                         </Tr>
                     ))}
