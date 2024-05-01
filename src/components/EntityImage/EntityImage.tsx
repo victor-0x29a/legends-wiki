@@ -1,7 +1,19 @@
-import { Image, Text } from "@chakra-ui/react"
+import { Image, ImageProps, Text } from "@chakra-ui/react"
 import { IEntityImageProps } from "./EntityImage.type"
 import { useMemo } from "react"
 import { LegendsSize } from "../../styles/constants.style"
+
+const MountedImage = ({
+    src,
+    alt,
+    others
+}: {
+    src: string
+    alt: string
+    others?: ImageProps
+}) => {
+    return <Image src={src} alt={alt} borderRadius={LegendsSize.borderRadius.small} boxSize={20} objectFit={"cover"} {...others} />
+}
 
 const EntityImage = ({ image, others = {} }: IEntityImageProps) => {
     const hasImage = useMemo(() => image !== null, [image])
@@ -24,18 +36,14 @@ const EntityImage = ({ image, others = {} }: IEntityImageProps) => {
     }, [hasImage, image])
 
     if (!hasImage) {
-        return <Text fontSize={LegendsSize.fontSize.small}>
-            Nenhuma imagem
-        </Text>
+        return <MountedImage src="https://via.placeholder.com/150" alt="Any fallback image" />
     }
 
     if (hasImage && !isValidImage) {
-        return <Text fontSize={LegendsSize.fontSize.small}>
-            Imagem inválida
-        </Text>
+        return <MountedImage src="https://via.placeholder.com/150" alt="Any fallback image" />
     }
 
-    return <Image borderRadius={LegendsSize.borderRadius.small} boxSize={20} objectFit={"cover"} src={image!.src} alt={image!.alt} {...others} />
+    return <MountedImage src={image!.src} alt={image!.alt} others={others} />
 }
 
 export default EntityImage
