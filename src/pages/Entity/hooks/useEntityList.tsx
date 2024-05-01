@@ -63,8 +63,8 @@ export const useEntityList = (): IUseEntityList => {
         isLoading: isLoading || isFetching,
         entityList: (data?.entries || []) as { id: number; title: string; image: ImageObject | null; }[],
         pagination: {
-            page: data?.page || 1,
-            perPage: data?.perPage || 10,
+            page: filters.page || 1,
+            perPage: filters.perPage || 10,
             totalPages: data?.totalPages || 1
         }
     }
