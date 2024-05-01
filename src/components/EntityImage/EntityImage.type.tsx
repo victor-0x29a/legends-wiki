@@ -3,5 +3,5 @@ import { ImageObject } from "../../types/entity.type"
 
 export type IEntityImageProps = {
     image: ImageObject | null
-    others: ImageProps
+    others?: ImageProps
 }
