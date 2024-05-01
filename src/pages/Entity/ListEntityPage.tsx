@@ -15,7 +15,8 @@ export const ListEntityPage = () => {
             perPage,
             totalPages
         },
-        entityList
+        entityList,
+        isLoading
     } = useEntityList()
 
     const hasEntities = useMemo(() => entityList.length > 0, [entityList])
@@ -84,6 +85,7 @@ export const ListEntityPage = () => {
                     page={page}
                     perPage={perPage}
                     totalPages={totalPages}
+                    isLoading={isLoading}
                 />
             )}
         </Container>

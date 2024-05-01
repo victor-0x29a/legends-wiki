@@ -10,7 +10,8 @@ export const PaginationBar = ({
     totalPages,
     onChangePage,
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    onChangePerPage
+    onChangePerPage,
+    isLoading
 }: IPaginationProps) => {
     const {
         hasPrevious,
@@ -29,12 +30,12 @@ export const PaginationBar = ({
     return <Box width={"100%"} display={"flex"} justifyContent={"space-between"}>
         <Button isDisabled={!hasPrevious} padding={0} bgColor={"transparent"} _hover={{
             backgroundColor: "transparent"
-        }} onClick={decreasePage}>
+        }} onClick={decreasePage} isLoading={isLoading}>
             <ChevronLeftIcon boxSize={10} />
         </Button>
         <Button isDisabled={!hasNext} padding={0} bgColor={"transparent"} _hover={{
             backgroundColor: "transparent"
-        }} onClick={addPage}>
+        }} onClick={addPage} isLoading={isLoading}>
             <ChevronRightIcon boxSize={10} />
         </Button>
     </Box>

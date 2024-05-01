@@ -4,4 +4,5 @@ export type IPaginationProps = {
     totalPages: number,
     onChangePage: (page: number) => void
     onChangePerPage: (perPage: number) => void
+    isLoading: boolean
 }
