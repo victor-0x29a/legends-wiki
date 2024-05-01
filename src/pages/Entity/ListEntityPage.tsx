@@ -1,4 +1,4 @@
-import { Box, Container, Table, Tbody, Text, Th, Thead, Tr } from "@chakra-ui/react";
+import { Box, Container, Spinner, Table, Tbody, Text, Th, Thead, Tr } from "@chakra-ui/react";
 import { PaginationBar } from "../../components/PaginationBar/PaginationBar";
 import { useEntityList } from "./hooks/useEntityList";
 import { LegendsColor, LegendsSize } from "../../styles/constants.style";
@@ -52,7 +52,17 @@ export const ListEntityPage = () => {
                     </Tr>
                 </Thead>
                 <Tbody>
-                    {entityList.map(({ id, title, image }) => (
+                    {isLoading && (
+                        <Tr>
+                            <Th colSpan={12} textAlign={"center"}>
+                                <Spinner width={16} height={16} />
+                                <Text marginTop={LegendsSize.margin.normal} fontSize={LegendsSize.fontSize.normal}>
+                                    Carregando entidades
+                                </Text>
+                            </Th>
+                        </Tr>
+                    )}
+                    {!isLoading && entityList.map(({ id, title, image }) => (
                         <Tr key={`item-${id}-entity-list-page`}>
                             <Th color={LegendsColor.textColors.gray}>
                                 {id}
