@@ -1,5 +1,5 @@
 type ImageObject = {
-    url: string
+    src: string
     alt: string
 }
 
