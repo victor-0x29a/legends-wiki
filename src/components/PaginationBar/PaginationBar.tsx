@@ -1,13 +1,15 @@
 import { Box, Button } from "@chakra-ui/react"
-import { useMemo } from "react"
+import { useCallback, useMemo } from "react"
 import { IPaginationProps } from "./PaginationBar.type"
 import { ChevronLeftIcon, ChevronRightIcon } from "@chakra-ui/icons"
 
 export const PaginationBar = ({
     page,
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     perPage,
     totalPages,
     onChangePage,
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     onChangePerPage
 }: IPaginationProps) => {
     const {
@@ -20,15 +22,19 @@ export const PaginationBar = ({
         }
     }, [page, totalPages])
 
+    const addPage = useCallback(() => onChangePage(page + 1), [onChangePage, page])
+
+    const decreasePage = useCallback(() => onChangePage(page - 1), [onChangePage, page])
+
     return <Box width={"100%"} display={"flex"} justifyContent={"space-between"}>
-        <Button disabled={!hasPrevious} padding={0} bgColor={"transparent"} _hover={{
+        <Button isDisabled={!hasPrevious} padding={0} bgColor={"transparent"} _hover={{
             backgroundColor: "transparent"
-        }} onClick={() => onChangePage(page + 1)}>
+        }} onClick={decreasePage}>
             <ChevronLeftIcon boxSize={10} />
         </Button>
-        <Button disabled={!hasNext} padding={0} bgColor={"transparent"} _hover={{
+        <Button isDisabled={!hasNext} padding={0} bgColor={"transparent"} _hover={{
             backgroundColor: "transparent"
-        }} onClick={() => onChangePerPage(perPage + 1)}>
+        }} onClick={addPage}>
             <ChevronRightIcon boxSize={10} />
         </Button>
     </Box>
