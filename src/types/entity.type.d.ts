@@ -29,13 +29,15 @@ export type EntityFilters = {
     perPage: number
 } & Partial<Entity>
 
+export type MinimalEntity = {
+    id: number
+    title: string
+    image: null | ImageObject
+}
+
 export type ListEntityResponse = {
     page: number
     perPage: number
     totalPages: number
-    entries: {
-        id: number
-        title: string
-        image: null | ImageObject
-    }
+    entries: MinimalEntity[]
 }
