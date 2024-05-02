@@ -3,6 +3,8 @@ import { EntityModel } from "../../../api"
 import { useCallback, useState } from "react"
 import { ImageObject } from "../../../types/entity.type"
 
+const STALE_TIME = 1000 * 60 * 10
+
 type IUseEntityList = {
     filters: {
         page: number
@@ -52,7 +54,8 @@ export const useEntityList = (): IUseEntityList => {
             screen: "entity-list",
             ...filters
         })],
-        queryFn: () => EntityModel.list(filters)
+        queryFn: () => EntityModel.list(filters),
+        staleTime: STALE_TIME
     })
 
     return {
