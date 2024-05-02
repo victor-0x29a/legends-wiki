@@ -71,7 +71,7 @@ export const EntityTable = ({ isLoading, entityList, onEntityEditClick, onEntity
                 ))}
             </Tbody>
         </Table>
-        {!hasEntities && (
+        {!hasEntities && !isLoading && (
             <Box w={"100%"} textAlign={"center"} marginTop={LegendsSize.margin.normal}>
                 <Text fontSize={LegendsSize.fontSize.normal}>
                     <WarningIcon display={"inline"} marginRight={LegendsSize.margin.small} />
