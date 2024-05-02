@@ -1,16 +1,12 @@
 export const LegendsColor = {
     textColors: {
-        primary: '#add8e6', // light blue
-        secondary: '#8FBC8F', // dark sea green
-        thirdiary: '#BC8F8F', // rosy brown,
         white: '#ffffff',
         black: '#2c2d26',
         gray: '#d0d9d2'
     },
     backgroundColors: {
-        primary: '#e0ffff', // lightest blue
-        secondary: '#F5FFFA', // mint cream
-        thidary: '#2b242b' // beige
+        primary: '#17171c',
+        secondary: '#000066'
     }
 }
 

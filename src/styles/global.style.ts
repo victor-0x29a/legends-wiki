@@ -20,6 +20,6 @@ body {
     width: 100vw;
     height: 100vh;
     overflow: auto;
-    background-color: ${LegendsColor.backgroundColors.thidary};
+    background-color: ${LegendsColor.backgroundColors.primary};
 }
 `
