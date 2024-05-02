@@ -11,7 +11,7 @@ export const NotFound = () => {
 
     return (
         <Container maxW={1920} display={"flex"} justifyContent={"center"} h={"100vh"} flexDirection={"column"}>
-            <Container maxW={"600px"} padding={LegendsSize.padding.normal} borderColor={LegendsColor.textColors.black} borderRadius={LegendsSize.borderRadius.small} border={"1px"}>
+            <Container maxW={"600px"} padding={LegendsSize.padding.normal} borderRadius={LegendsSize.borderRadius.small} border={'1px'}>
                 <Box display={"flex"} justifyContent={"center"}>
                     <WarningIcon boxSize={14} marginBottom={LegendsSize.margin.normal} />
                 </Box>
