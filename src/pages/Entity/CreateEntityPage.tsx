@@ -1,13 +1,13 @@
 
-import { Container, Heading } from "@chakra-ui/react"
+import { Container } from "@chakra-ui/react"
 import { entityTypesArray } from "./entity.constant"
 import { EntityForm } from "./EntityForm"
 import { EntityModel } from "../../api"
 import { useCallback, useState } from "react"
 import { useNavigate } from "react-router-dom"
-import { LegendsSize } from "../../styles/constants.style"
 import { useAlert } from "../../hooks/useAlert"
 import { useError } from "../../hooks/useError"
+import { DashboardHeader } from "../Dashboard/Header"
 
 const BaseEntityForm = {
     title: "",
@@ -40,17 +40,18 @@ export const CreateEntityPage = () => {
             })
             .catch((errorList) => {
                 const errors = translateErrors(errorList)
-                errors.forEach((error) => alert({ text: error }))
+                errors!.forEach((error) => alert({ text: error }))
             })
             .finally(() => {
                 setIsLoading(false)
             })
     }, [Navigate, alert, translateErrors])
+
+    const onBack = useCallback(() => Navigate("/entity"), [Navigate])
+
     return (
         <Container maxW="800px">
-            <Heading marginTop={LegendsSize.margin.large} marginBottom={LegendsSize.margin.large}>
-                Criação de entidade
-            </Heading>
+            <DashboardHeader title="Criação de entidade" onBackClick={onBack} />
             <EntityForm initialValues={BaseEntityForm} onSubmit={onSubmit} isLoading={isLoading} />
         </Container>
     )

@@ -22,7 +22,7 @@ const preview: Preview = {
     (Story) => (
       <ChakraProvider>
         <I18nProvider>
-          <div style={{ backgroundColor: LegendsColor.backgroundColors.thidary, padding: '2rem' }}>
+          <div style={{ backgroundColor: LegendsColor.backgroundColors.primary, padding: '2rem' }}>
             <Story />
           </div>
         </I18nProvider>

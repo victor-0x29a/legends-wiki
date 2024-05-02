@@ -1,5 +1,5 @@
 type ImageObject = {
-    url: string
+    src: string
     alt: string
 }
 
@@ -22,4 +22,22 @@ export type CreateEntity = {
     image: null | ImageObject
     sections: string | null
     type: string
+}
+
+export type EntityFilters = {
+    page: number
+    perPage: number
+} & Partial<Entity>
+
+export type MinimalEntity = {
+    id: number
+    title: string
+    image: null | ImageObject
+}
+
+export type ListEntityResponse = {
+    page: number
+    perPage: number
+    totalPages: number
+    entries: MinimalEntity[]
 }

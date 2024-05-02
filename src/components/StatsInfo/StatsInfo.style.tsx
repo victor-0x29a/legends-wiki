@@ -7,7 +7,7 @@ export const StatsContainer = styled.ol`
     width: 100%;
     height: auto;
     padding: ${LegendsSize.padding.normal};
-    background-color: ${LegendsColor.backgroundColors.thidary};
+    background-color: ${LegendsColor.backgroundColors.primary};
     border-radius: ${LegendsSize.borderRadius.normal};
 
     &.center {

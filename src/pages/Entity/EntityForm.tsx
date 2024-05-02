@@ -76,6 +76,7 @@ export const EntityForm = ({
         initialValues,
         onSubmit,
         validationSchema: EntitySchema,
+        validateOnChange: false
     })
 
     const onFormSubmit = useCallback((event: FormEvent) => {

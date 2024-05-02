@@ -4,6 +4,7 @@ import { CreateEntityPage } from "./pages/Entity/CreateEntityPage";
 import { AuthenticationPage } from "./pages/Authentication/AuthenticationPage";
 import { PrivateRoute } from "./private-route";
 import { RedirectPage } from "./pages/Dashboard/RedirectPage";
+import { ListEntityPage } from "./pages/Entity/ListEntityPage";
 
 export const router = createBrowserRouter([
     {
@@ -13,6 +14,12 @@ export const router = createBrowserRouter([
     {
         path: "entity",
         children: [
+            {
+                path: "",
+                element: <PrivateRoute forProtect={true}>
+                    <ListEntityPage />
+                </PrivateRoute>
+            },
             {
                 path: "create",
                 element: <PrivateRoute forProtect={true}>
