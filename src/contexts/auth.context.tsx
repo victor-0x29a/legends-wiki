@@ -33,7 +33,7 @@ export const AuthProvider = ({ children }: IUseAuthProviderProps) => {
             return payload
         }()
         return decodedToken
-    }, [updatedToken]) as { id: string, username: string }
+    }, [updatedToken]) as { id: string, username: string, exp?: number, iat?: number }
 
     const authenticate = useCallback((newToken: string) => {
         localStorage.setItem('token', newToken)
