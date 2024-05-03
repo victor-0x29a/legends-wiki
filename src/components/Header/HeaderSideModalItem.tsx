@@ -12,7 +12,7 @@ const HeaderSideModalChild = ({ onClick, icon, label }: {
     return <Text as="span"
         onClick={onClick}
         display={"flex"}
-        color={LegendsColor.textColors.black}
+        color={LegendsColor.textColors.emphasis.secondary}
         alignItems={"center"}
         gap={"6px"}
         paddingLeft={LegendsSize.padding.large}
@@ -20,9 +20,15 @@ const HeaderSideModalChild = ({ onClick, icon, label }: {
         userSelect={"none"}
         cursor={"pointer"}
         transition={`background-color ${LegendsValues.transitionDuration}, color ${LegendsValues.transitionDuration}`}
+        marginTop={LegendsSize.margin.normal}
+        marginBottom={LegendsSize.margin.normal}
+        width={"80%"}
+        textAlign={"center"}
+        marginLeft={LegendsSize.margin.normal}
+        borderRadius={LegendsSize.borderRadius.large}
         _hover={{
-            bgColor: LegendsColor.backgroundColors.primary,
-            color: LegendsColor.textColors.white,
+            bgColor: LegendsColor.textColors.emphasis.primary,
+            color: LegendsColor.textColors.white
         }}
         onMouseEnter={setIsHover.on}
         onMouseLeave={setIsHover.off}
@@ -41,7 +47,7 @@ export const HeaderSideModalItem = ({
     return (
         <Box>
             <Text
-                color={LegendsColor.textColors.black}
+                color={LegendsColor.textColors.emphasis.primary}
                 display={"flex"}
                 alignItems={"center"}
                 fontSize={LegendsSize.fontSize.large}
