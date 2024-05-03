@@ -14,7 +14,13 @@ export const HeaderSideModal = ({
     ref
 }: IHeaderSideModalProps) => {
     return (
-        <Slide ref={ref as unknown as React.RefObject<HTMLDivElement>} in={isOpen} direction="right">
+        <Slide
+            ref={ref as unknown as React.RefObject<HTMLDivElement>}
+            in={isOpen}
+            direction="right"
+            transition={{
+                exit: { delay: 0.4 }
+            }}>
             <Box
                 bgColor={LegendsColor.backgroundColors.secondary}
                 display={"flex"}
@@ -41,7 +47,7 @@ export const HeaderSideModal = ({
             </Box>
             <Fade in={isOpen} transition={{
                 enter: { delay: 0.3 },
-                exit: { delay: 0.5 }
+                exit: { delay: 0.2 }
             }}>
                 <Box zIndex={100} width={'100vw'} height={'100vh'} backgroundColor={"rgba(0, 0,0, 0.4)"} />
             </Fade>
