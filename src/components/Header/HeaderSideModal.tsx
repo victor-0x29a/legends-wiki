@@ -42,6 +42,9 @@ export const HeaderSideModal = ({
             direction="right"
             transition={{
                 exit: { delay: 0.4 }
+            }}
+            style={{
+                zIndex: 100
             }}>
             <Box
                 bgColor={LegendsColor.backgroundColors.secondary}
@@ -63,10 +66,15 @@ export const HeaderSideModal = ({
                     onCloseClick={toggleModal}
                 />
             </Box>
-            {!isMobile && <Fade in={isOpen} transition={{
-                enter: { delay: 0.3 },
-                exit: { delay: 0.2 }
-            }}>
+            {!isMobile && <Fade
+                in={isOpen}
+                transition={{
+                    enter: { delay: 0.3 },
+                    exit: { delay: 0.2 }
+                }}
+                style={{
+                    zIndex: 99
+                }}>
                 <Box zIndex={100} width={'100vw'} height={'100vh'} backgroundColor={"rgba(0, 0,0, 0.4)"} />
             </Fade>}
         </Slide>
