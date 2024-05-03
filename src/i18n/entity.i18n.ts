@@ -1,10 +1,10 @@
 import { I18nData } from "../types/i18n.type";
 
 export const EntityList: I18nData = {
-    "Colecionáveis.": {
-        "en": "Collectibles.",
-        "es": "Coleccionables.",
-        "pt-br": "Colecionáveis."
+    "Colecionáveis": {
+        "en": "Collectibles",
+        "es": "Coleccionables",
+        "pt-br": "Colecionáveis"
     },
     "Armadura": {
         "en": "Armor",
