@@ -6,4 +6,5 @@ export type IHeaderSideModalItemProps = {
         label: string;
         onClick: () => void;
     }[]
+    onCloseClick: () => void
 }

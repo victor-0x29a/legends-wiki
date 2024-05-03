@@ -28,7 +28,11 @@ export const Header = () => {
                     <HamburgerIcon w={'2rem'} h={'2rem'} cursor={"pointer"} onClick={toggleModal} />
                 </IconWrapper>
             </Fade>
-            <HeaderSideModal isOpen={isOpenModal} ref={modalReference as React.RefObject<HTMLElement>} />
+            <HeaderSideModal
+                isOpen={isOpenModal}
+                ref={modalReference as React.RefObject<HTMLElement>}
+                toggleModal={() => setIsOpenModal(false)}
+            />
         </Box>
     );
 }

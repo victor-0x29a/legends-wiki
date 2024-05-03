@@ -10,7 +10,8 @@ import { EntityList } from "../../i18n/entity.i18n";
 
 export const HeaderSideModal = ({
     isOpen,
-    ref
+    ref,
+    toggleModal
 }: IHeaderSideModalProps) => {
     const { RoutesConstant } = useContants()
 
@@ -59,6 +60,7 @@ export const HeaderSideModal = ({
                     section={translate(EntityList, "Geral")}
                     sectionChilds={parsedRoutesConstant}
                     isMobile={Boolean(isMobile)}
+                    onCloseClick={toggleModal}
                 />
             </Box>
             <Fade in={isOpen} transition={{
