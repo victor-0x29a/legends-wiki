@@ -36,7 +36,6 @@ const HeaderSideModalChild = ({ onClick, icon, label }: {
 
 export const HeaderSideModalItem = ({
     section,
-    sectionIcon,
     sectionChilds
 }: IHeaderSideModalItemProps) => {
     return (
@@ -48,9 +47,6 @@ export const HeaderSideModalItem = ({
                 fontSize={LegendsSize.fontSize.large}
                 paddingLeft={LegendsSize.padding.small}
             >
-                <IconWrapper lightMode={true}>
-                    {sectionIcon}
-                </IconWrapper>
                 {section}
             </Text>
             {sectionChilds.map(({ icon, label, onClick }) => <HeaderSideModalChild key={`${label}-header-side-modal`} icon={icon} label={label} onClick={onClick} />
