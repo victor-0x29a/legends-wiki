@@ -1,4 +1,4 @@
-import { Box, Container, Table, Tbody, Th, Thead, Tr } from "@chakra-ui/react"
+import { Box, Table, Tbody, Th, Thead, Tr } from "@chakra-ui/react"
 import { LegendsColor, LegendsSize } from "../../styles/constants.style"
 import { useContext, useMemo } from "react"
 import { AuthContext } from "../../contexts/auth.context"
@@ -51,8 +51,8 @@ export const RedirectPage = () => {
         }
     ]
 
-    return <Container maxW={"800px"}>
+    return <>
         <RedirectList list={redirectList} />
         <AuditSection />
-    </Container>
+    </>
 }
