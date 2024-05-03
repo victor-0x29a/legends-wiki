@@ -1,4 +1,4 @@
-import { Box, Text } from "@chakra-ui/react";
+import { Box, Heading } from "@chakra-ui/react";
 import { IHeaderSideModalItemProps } from "./HeaderSideModalItem.type"
 import { LegendsColor, LegendsSize } from "../../styles/constants.style";
 import { HeaderSideModalChild } from "./HeaderSideModalItemChild";
@@ -19,15 +19,16 @@ export const HeaderSideModalItem = ({
                     <CloseIcon h={5} w={5} onClick={onCloseClick} />
                 </IconWrapper>
             </Box>
-            <Text
+            <Heading
                 color={LegendsColor.textColors.emphasis.primary}
                 display={"flex"}
                 alignItems={"center"}
                 fontSize={LegendsSize.fontSize.large}
                 paddingLeft={LegendsSize.padding.small}
+                marginTop={LegendsSize.margin.normal}
             >
                 {section}
-            </Text>
+            </Heading>
             {sectionChilds.map(({ icon, label, onClick }) => <HeaderSideModalChild
                 key={`${label}-header-side-modal`}
                 icon={icon}

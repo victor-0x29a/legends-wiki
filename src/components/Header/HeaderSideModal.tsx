@@ -29,7 +29,7 @@ export const HeaderSideModal = ({
 
     const { translate } = useContext(I18nContext)
 
-    const isMobile = useMediaQuery("(min-width: 768px)")
+    const isMobile = useMediaQuery("(max-width: 768px)")[0]
 
     const modalWidth = useMemo(() => {
         if (isMobile) return "100%"
@@ -59,7 +59,7 @@ export const HeaderSideModal = ({
                 <HeaderSideModalItem
                     section={translate(EntityList, "Geral")}
                     sectionChilds={parsedRoutesConstant}
-                    isMobile={Boolean(isMobile)}
+                    isMobile={isMobile}
                     onCloseClick={toggleModal}
                 />
             </Box>
