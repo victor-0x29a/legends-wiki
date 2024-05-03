@@ -10,7 +10,9 @@ import Layout from "./layout";
 export const router = createBrowserRouter([
     {
         path: "*",
-        element: <NotFound />
+        element: <Layout>
+            <NotFound />
+        </Layout>
     },
     {
         path: "entity",
