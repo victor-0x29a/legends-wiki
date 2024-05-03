@@ -2,7 +2,11 @@ export const LegendsColor = {
     textColors: {
         white: '#ffffff',
         black: '#2c2d26',
-        gray: '#d0d9d2'
+        gray: '#d0d9d2',
+        emphasis: {
+            primary: "#818b94",
+            secondary: "#507393"
+        }
     },
     backgroundColors: {
         primary: '#17171c',
