@@ -6,7 +6,7 @@ export const LegendsColor = {
     },
     backgroundColors: {
         primary: '#17171c',
-        secondary: '#000066'
+        secondary: '#dcf3ff'
     }
 }
 
