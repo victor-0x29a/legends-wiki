@@ -63,12 +63,12 @@ export const HeaderSideModal = ({
                     onCloseClick={toggleModal}
                 />
             </Box>
-            <Fade in={isOpen} transition={{
+            {!isMobile && <Fade in={isOpen} transition={{
                 enter: { delay: 0.3 },
                 exit: { delay: 0.2 }
             }}>
                 <Box zIndex={100} width={'100vw'} height={'100vh'} backgroundColor={"rgba(0, 0,0, 0.4)"} />
-            </Fade>
+            </Fade>}
         </Slide>
     );
 }
