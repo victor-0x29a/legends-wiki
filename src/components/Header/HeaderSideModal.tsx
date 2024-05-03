@@ -1,4 +1,4 @@
-import { Box, Fade, Slide } from "@chakra-ui/react";
+import { Box, Fade, Slide, useMediaQuery } from "@chakra-ui/react";
 import { IHeaderSideModalProps } from "./HeaderSideModal.type";
 import { LegendsColor } from "../../styles/constants.style";
 import { HeaderSideModalItem } from "./HeaderSideModalItem";
@@ -7,8 +7,6 @@ import { useContext, useMemo } from "react";
 import { useNavigate } from "react-router-dom";
 import { I18nContext } from "../../contexts/i18n.context";
 import { EntityList } from "../../i18n/entity.i18n";
-
-const modalWidth = "300px"
 
 export const HeaderSideModal = ({
     isOpen,
@@ -29,6 +27,13 @@ export const HeaderSideModal = ({
     }, [RoutesConstant, Navigate])
 
     const { translate } = useContext(I18nContext)
+
+    const isMobile = useMediaQuery("(min-width: 768px)")
+
+    const modalWidth = useMemo(() => {
+        if (isMobile) return "100%"
+        return "300px"
+    }, [isMobile])
     return (
         <Slide
             ref={ref as unknown as React.RefObject<HTMLDivElement>}
@@ -52,7 +57,9 @@ export const HeaderSideModal = ({
                 color={LegendsColor.textColors.black}>
                 <HeaderSideModalItem
                     section={translate(EntityList, "Geral")}
-                    sectionChilds={parsedRoutesConstant} />
+                    sectionChilds={parsedRoutesConstant}
+                    isMobile={Boolean(isMobile)}
+                />
             </Box>
             <Fade in={isOpen} transition={{
                 enter: { delay: 0.3 },

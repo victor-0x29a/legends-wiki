@@ -1,4 +1,5 @@
 export type IHeaderSideModalItemProps = {
+    isMobile: boolean
     section: string
     sectionChilds: {
         icon: React.ReactNode;

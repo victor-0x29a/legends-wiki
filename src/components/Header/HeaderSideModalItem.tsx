@@ -3,10 +3,11 @@ import { IHeaderSideModalItemProps } from "./HeaderSideModalItem.type"
 import { LegendsColor, LegendsSize, LegendsValues } from "../../styles/constants.style";
 import { IconWrapper } from "../IconWrapper/IconWrapper";
 
-const HeaderSideModalChild = ({ onClick, icon, label }: {
+const HeaderSideModalChild = ({ onClick, icon, label, isMobile }: {
     onClick: () => void;
     icon: React.ReactNode;
     label: string;
+    isMobile: boolean;
 }) => {
     const [isHover, setIsHover] = useBoolean()
     return <Text as="span"
@@ -22,7 +23,7 @@ const HeaderSideModalChild = ({ onClick, icon, label }: {
         transition={`background-color ${LegendsValues.transitionDuration}, color ${LegendsValues.transitionDuration}`}
         marginTop={LegendsSize.margin.normal}
         marginBottom={LegendsSize.margin.normal}
-        width={"80%"}
+        width={isMobile ? "40%" : "80%"}
         textAlign={"center"}
         marginLeft={LegendsSize.margin.normal}
         borderRadius={LegendsSize.borderRadius.large}
@@ -42,7 +43,8 @@ const HeaderSideModalChild = ({ onClick, icon, label }: {
 
 export const HeaderSideModalItem = ({
     section,
-    sectionChilds
+    sectionChilds,
+    isMobile
 }: IHeaderSideModalItemProps) => {
     return (
         <Box>
@@ -55,7 +57,13 @@ export const HeaderSideModalItem = ({
             >
                 {section}
             </Text>
-            {sectionChilds.map(({ icon, label, onClick }) => <HeaderSideModalChild key={`${label}-header-side-modal`} icon={icon} label={label} onClick={onClick} />
+            {sectionChilds.map(({ icon, label, onClick }) => <HeaderSideModalChild
+                key={`${label}-header-side-modal`}
+                icon={icon}
+                label={label}
+                onClick={onClick}
+                isMobile={isMobile}
+            />
             )}
         </Box>
     );
