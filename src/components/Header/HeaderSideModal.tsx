@@ -1,11 +1,12 @@
 import { Box, Fade, Slide } from "@chakra-ui/react";
 import { IHeaderSideModalProps } from "./HeaderSideModal.type";
 import { LegendsColor } from "../../styles/constants.style";
-import {
-    HiArchive,
-    HiEye,
-} from "react-icons/hi"
 import { HeaderSideModalItem } from "./HeaderSideModalItem";
+import { useContants } from "../../hooks/useConstants";
+import { useContext, useMemo } from "react";
+import { useNavigate } from "react-router-dom";
+import { I18nContext } from "../../contexts/i18n.context";
+import { EntityList } from "../../i18n/entity.i18n";
 
 const modalWidth = "300px"
 
@@ -13,6 +14,21 @@ export const HeaderSideModal = ({
     isOpen,
     ref
 }: IHeaderSideModalProps) => {
+    const { RoutesConstant } = useContants()
+
+    const Navigate = useNavigate()
+
+    const parsedRoutesConstant = useMemo(() => {
+        return RoutesConstant.map((route) => {
+            return {
+                icon: route.icon,
+                label: route.label,
+                onClick: () => Navigate(route.path)
+            }
+        })
+    }, [RoutesConstant, Navigate])
+
+    const { translate } = useContext(I18nContext)
     return (
         <Slide
             ref={ref as unknown as React.RefObject<HTMLDivElement>}
@@ -35,15 +51,8 @@ export const HeaderSideModal = ({
                 zIndex={101}
                 color={LegendsColor.textColors.black}>
                 <HeaderSideModalItem
-                    section="Geral"
-                    sectionIcon={<HiArchive size={40} />}
-                    sectionChilds={[
-                        {
-                            icon: <HiEye size={20} />,
-                            label: "Usuários",
-                            onClick: () => { }
-                        }
-                    ]} />
+                    section={translate(EntityList, "Geral")}
+                    sectionChilds={parsedRoutesConstant} />
             </Box>
             <Fade in={isOpen} transition={{
                 enter: { delay: 0.3 },
