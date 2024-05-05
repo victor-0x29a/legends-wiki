@@ -23,7 +23,7 @@ export const LegendsSize = {
     fontWeight: {
         regular: 400,
         bold: 600,
-        bolder: 900
+        bolder: 800
     },
     breakpoints: {
         mobile: '480px',
