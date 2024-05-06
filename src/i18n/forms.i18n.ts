@@ -146,4 +146,14 @@ export const FormLabels: I18nData = {
         "es": "Crear entidad",
         "pt-br": "Criar entidade"
     },
+    "Edit": {
+        "en": "Edit",
+        "es": "Editar",
+        "pt-br": "Editar"
+    },
+    "Create": {
+        "en": "Create",
+        "es": "Crear",
+        "pt-br": "Criar"
+    },
 }
