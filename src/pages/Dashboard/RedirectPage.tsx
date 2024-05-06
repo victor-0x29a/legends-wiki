@@ -5,6 +5,7 @@ import { AuthContext } from "../../contexts/auth.context"
 import { RedirectList } from "../../components/RedirectList/RedirectList"
 import { I18nContext } from "../../contexts/i18n.context"
 import { FormLabels } from "../../i18n/forms.i18n"
+import { CommonLabels } from "../../i18n/commonLabels.i18n"
 
 export const AuditSection = () => {
     const mockedData = ["A row", "A second row"]
@@ -40,17 +41,19 @@ export const RedirectPage = () => {
 
     const username = useMemo(() => userData?.username || "", [userData])
 
+    const { translate } = useContext(I18nContext)
+
     const redirectList = [
         {
-            title: "Entidades",
+            title: translate(CommonLabels, "Entities"),
             path: "/entity"
         },
         {
-            title: "Usuários",
+            title: translate(CommonLabels, "Users"),
             path: "/users"
         },
         {
-            title: "Meu Perfil",
+            title: translate(CommonLabels, "My profile"),
             path: `/users/${username}`
         }
     ]
