@@ -1,9 +1,11 @@
 import { Box, Button, FormLabel, Heading, Input, Table, TableContainer, Tbody, Th, Thead, Tr } from "@chakra-ui/react"
 import { LegendsColor, LegendsSize } from "../../styles/constants.style"
 import { IItemStats } from "../../types/item.type"
-import { useCallback, useMemo, useState } from "react"
+import { useCallback, useContext, useMemo, useState } from "react"
 import { DeleteIcon } from "@chakra-ui/icons"
 import { useAlert } from "../../hooks/useAlert"
+import { I18nContext } from "../../contexts/i18n.context"
+import { ErrorList } from "../../i18n/errors.i18n"
 
 type EntityFormPropertiesProps = {
     onChange: (value: object) => void,
@@ -30,22 +32,24 @@ export const EntityFormProperties = ({
 
     const { alert } = useAlert()
 
+    const { translate } = useContext(I18nContext)
+
     const onSubmit = useCallback(() => {
         if (!form.name) {
-            return alert({ text: "O nome da propriedade não pode ser vazio." })
+            return alert({ text: translate(ErrorList, "The property name cannot be empty") })
         }
         if (!form.value) {
-            return alert({ text: "O valor da propriedade não pode ser vazio." })
+            return alert({ text: translate(ErrorList, "The property value cannot be empty") })
         }
         if (value?.[form.name]) {
-            return alert({ text: "Já existe uma propriedade com esse nome." })
+            return alert({ text: translate(ErrorList, "Already exists a property with this name") })
         }
         onChange({ ...value, [form.name]: form.value })
         setForm({
             name: "",
             value: ""
         })
-    }, [form.name, form.value, onChange, value, alert])
+    }, [form.name, form.value, value, onChange, alert, translate])
 
     const deleteIcon = useCallback((key: string) => {
         onChange({ ...value, [key]: undefined })
