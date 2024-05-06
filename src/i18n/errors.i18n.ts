@@ -41,4 +41,19 @@ export const ErrorList: I18nData = {
         "es": "Autenticación requerida",
         "pt-br": "Autenticação necessária"
     },
+    "The property name cannot be empty": {
+        "en": "The property name cannot be empty.",
+        "es": "El nombre de la propiedad no puede estar vacío.",
+        "pt-br": "O nome da propriedade não pode ser vazio."
+    },
+    "The property value cannot be empty": {
+        "en": "The property value cannot be empty.",
+        "es": "El valor de la propiedad no puede estar vacío.",
+        "pt-br": "O valor da propriedade não pode ser vazio."
+    },
+    "Already exists a property with this name": {
+        "en": "Already exists a property with this name.",
+        "es": "Ya existe una propiedad con este nombre.",
+        "pt-br": "Já existe uma propriedade com esse nome."
+    }
 }
