@@ -156,4 +156,49 @@ export const FormLabels: I18nData = {
         "es": "Crear",
         "pt-br": "Criar"
     },
+    "The type must be a text": {
+        "en": "The type must be a text.",
+        "es": "El tipo debe ser un texto.",
+        "pt-br": "O tipo deve ser um texto."
+    },
+    "The image must by valid": {
+        "en": "The image must be valid.",
+        "es": "La imagen debe ser válida.",
+        "pt-br": "A imagem deve ser válida."
+    },
+    "The author must be a text": {
+        "en": "The author must be a text.",
+        "es": "El autor debe ser un texto.",
+        "pt-br": "O autor deve ser um texto."
+    },
+    "The description must be a text": {
+        "en": "The description must be a text.",
+        "es": "La descripción debe ser un texto.",
+        "pt-br": "A descrição deve ser um texto."
+    },
+    "The description is required": {
+        "en": "The description is required.",
+        "es": "La descripción es obligatoria.",
+        "pt-br": "A descrição é obrigatória."
+    },
+    "The properties must be valid": {
+        "en": "The properties must be valid.",
+        "es": "Las propiedades deben ser válidas.",
+        "pt-br": "As propriedades devem ser válidas."
+    },
+    "The properties are required": {
+        "en": "The properties are required.",
+        "es": "Las propiedades son obligatorias.",
+        "pt-br": "As propriedades são obrigatórias."
+    },
+    "The title must be a text": {
+        "en": "The title must be a text.",
+        "es": "El título debe ser un texto.",
+        "pt-br": "O título deve ser um texto."
+    },
+    "The title is required": {
+        "en": "The title is required.",
+        "es": "El título es obligatorio.",
+        "pt-br": "O título é obrigatório."
+    },
 }
