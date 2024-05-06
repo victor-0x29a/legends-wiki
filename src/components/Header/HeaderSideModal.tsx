@@ -41,7 +41,7 @@ export const HeaderSideModal = ({
             in={isOpen}
             direction="right"
             transition={{
-                exit: { delay: 0.4 }
+                exit: { delay: 0.4, duration: 1 },
             }}
             style={{
                 zIndex: 100
