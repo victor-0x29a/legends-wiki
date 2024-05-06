@@ -4,7 +4,9 @@ import { LegendsColor, LegendsSize } from "../../styles/constants.style";
 import EntityImage from "../../components/EntityImage/EntityImage";
 import { DeleteIcon, EditIcon, WarningIcon } from "@chakra-ui/icons";
 import { PaginationBar } from "../../components/PaginationBar/PaginationBar";
-import { useMemo } from "react";
+import { useCallback, useContext, useMemo } from "react";
+import { I18nContext } from "../../contexts/i18n.context";
+import { FormLabels } from "../../i18n/forms.i18n";
 
 type IEntityTableProps = {
     isLoading: boolean;
@@ -23,6 +25,10 @@ type IEntityTableProps = {
 export const EntityTable = ({ isLoading, entityList, onEntityEditClick, onEntityRemoveClick, paginationProps }: IEntityTableProps) => {
     const hasEntities = useMemo(() => entityList.length > 0, [entityList])
 
+    const { translate } = useContext(I18nContext)
+
+    const translateLabel = useCallback((label: string) => translate(FormLabels, label), [translate])
+
     return <>
         <Table>
             <Thead>
@@ -31,13 +37,13 @@ export const EntityTable = ({ isLoading, entityList, onEntityEditClick, onEntity
                         ID
                     </Th>
                     <Th color={LegendsColor.textColors.white}>
-                        Imagem
+                        {translateLabel("Image")}
                     </Th>
                     <Th color={LegendsColor.textColors.white}>
-                        Título
+                        {translateLabel("Title")}
                     </Th>
                     <Th color={LegendsColor.textColors.white}>
-                        Ações
+                        {translateLabel("Actions")}
                     </Th>
                 </Tr>
             </Thead>
@@ -47,7 +53,7 @@ export const EntityTable = ({ isLoading, entityList, onEntityEditClick, onEntity
                         <Th colSpan={12} textAlign={"center"}>
                             <Spinner width={16} height={16} />
                             <Text marginTop={LegendsSize.margin.normal} fontSize={LegendsSize.fontSize.normal}>
-                                Carregando entidades
+                                {translateLabel("Loading entities")}
                             </Text>
                         </Th>
                     </Tr>
@@ -75,7 +81,7 @@ export const EntityTable = ({ isLoading, entityList, onEntityEditClick, onEntity
             <Box w={"100%"} textAlign={"center"} marginTop={LegendsSize.margin.normal}>
                 <Text fontSize={LegendsSize.fontSize.normal}>
                     <WarningIcon display={"inline"} marginRight={LegendsSize.margin.small} />
-                    Não há entidades para serem exibidas
+                    {translateLabel("No entities to display")}
                 </Text>
             </Box>
         )}

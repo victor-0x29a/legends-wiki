@@ -121,4 +121,29 @@ export const FormLabels: I18nData = {
         "es": "Secciones",
         "pt-br": "Seções"
     },
+    "Image": {
+        "en": "Image",
+        "es": "Imagen",
+        "pt-br": "Imagem"
+    },
+    "Actions": {
+        "en": "Actions",
+        "es": "Acciones",
+        "pt-br": "Ações"
+    },
+    "Loading entities": {
+        "en": "Loading entities",
+        "es": "Cargando entidades",
+        "pt-br": "Carregando entidades"
+    },
+    "No entities to display": {
+        "en": "No entities to display",
+        "es": "No hay entidades para mostrar",
+        "pt-br": "Não há entidades para exibir"
+    },
+    "Create entity": {
+        "en": "Create entity",
+        "es": "Crear entidad",
+        "pt-br": "Criar entidade"
+    },
 }
