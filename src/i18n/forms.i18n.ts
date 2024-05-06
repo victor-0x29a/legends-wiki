@@ -90,5 +90,30 @@ export const FormLabels: I18nData = {
         "en": "Action",
         "es": "Acción",
         "pt-br": "Ação"
-    }
+    },
+    "Use image:": {
+        "en": "Use image:",
+        "es": "Usar imagen:",
+        "pt-br": "Usar imagem:"
+    },
+    "Use internal image:": {
+        "en": "Use internal image:",
+        "es": "Usar imagen interna:",
+        "pt-br": "Usar imagem interna:"
+    },
+    "Name of internal image": {
+        "en": "Name of internal image",
+        "es": "Nombre de la imagen interna",
+        "pt-br": "Nome da imagem interna"
+    },
+    "Link of the image": {
+        "en": "Link of the image",
+        "es": "Enlace de la imagen",
+        "pt-br": "Link da imagem"
+    },
+    "Alt of image": {
+        "en": "Alt of image",
+        "es": "Alt de la imagen",
+        "pt-br": "Alt da imagem"
+    },
 }
