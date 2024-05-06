@@ -116,4 +116,9 @@ export const FormLabels: I18nData = {
         "es": "Alt de la imagen",
         "pt-br": "Alt da imagem"
     },
+    "Sections": {
+        "en": "Sections",
+        "es": "Secciones",
+        "pt-br": "Seções"
+    },
 }
