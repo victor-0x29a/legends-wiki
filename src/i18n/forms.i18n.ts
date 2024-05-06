@@ -206,4 +206,29 @@ export const FormLabels: I18nData = {
         "es": "Auditoría",
         "pt-br": "Auditoria"
     },
+    "Login successful": {
+        "en": "Login successful",
+        "es": "Inicio de sesión exitoso",
+        "pt-br": "Login efetuado"
+    },
+    "User": {
+        "en": "User",
+        "es": "Usuario",
+        "pt-br": "Usuário"
+    },
+    "Password": {
+        "en": "Password",
+        "es": "Contraseña",
+        "pt-br": "Senha"
+    },
+    "Login": {
+        "en": "Login",
+        "es": "Iniciar sesión",
+        "pt-br": "Entrar"
+    },
+    "Entering on account": {
+        "en": "Entering on account",
+        "es": "Ingresando en la cuenta",
+        "pt-br": "Entrando na conta"
+    },
 }
