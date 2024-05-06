@@ -201,4 +201,9 @@ export const FormLabels: I18nData = {
         "es": "El título es obligatorio.",
         "pt-br": "O título é obrigatório."
     },
+    "Audit": {
+        "en": "Audit",
+        "es": "Auditoría",
+        "pt-br": "Auditoria"
+    },
 }
