@@ -1,7 +1,10 @@
 import { useQuery } from "@tanstack/react-query"
 import { EntityModel } from "../../../api"
-import { useCallback, useState } from "react"
+import { useCallback, useContext, useState } from "react"
 import { ImageObject } from "../../../types/entity.type"
+import { useAlert } from "../../../hooks/useAlert"
+import { I18nContext } from "../../../contexts/i18n.context"
+import { FormLabels } from "../../../i18n/forms.i18n"
 
 const STALE_TIME = 1000 * 60 * 10
 
@@ -25,6 +28,7 @@ type IUseEntityList = {
         perPage: number
         totalPages: number
     }
+    removeEntity: (id: number) => void
 }
 
 export const useEntityList = (): IUseEntityList => {
@@ -58,12 +62,28 @@ export const useEntityList = (): IUseEntityList => {
         staleTime: STALE_TIME
     })
 
+    const { translate } = useContext(I18nContext)
+
+    const { alert } = useAlert()
+
+    const [isLoadingDeletion, setIsLoadingDeletion] = useState(false)
+
+    const removeEntity = useCallback((id: number) => {
+        setIsLoadingDeletion(true)
+        EntityModel.delete(id)
+            .then(() => {
+                alert({ text: translate(FormLabels, "Deleted entity"), type: "success" })
+            })
+            .finally(() => setIsLoadingDeletion(false))
+    }, [alert, translate])
+
     return {
         filters,
         onChangePage,
         onChangePerPage,
         onChangeTitle,
-        isLoading: isLoading || isFetching,
+        isLoading: isLoading || isFetching || isLoadingDeletion,
+        removeEntity,
         entityList: (data?.entries || []) as { id: number; title: string; image: ImageObject | null; }[],
         pagination: {
             page: filters.page || 1,
