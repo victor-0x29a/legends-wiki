@@ -16,7 +16,7 @@ export const Header = () => {
 
     useOutsideClick({
         ref: modalReference as React.RefObject<HTMLElement>,
-        handler: () => toggleModal(),
+        handler: toggleModal,
         enabled: isOpenModal
     })
 
