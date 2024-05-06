@@ -10,5 +10,85 @@ export const FormLabels: I18nData = {
         "en": "Creation of entity",
         "es": "Creación de entidad",
         "pt-br": "Criação de entidade"
+    },
+    "Not required": {
+        "en": "Not required.",
+        "es": "No requerido.",
+        "pt-br": "Não obrigatório."
+    },
+    "Put a title": {
+        "en": "Put a title.",
+        "es": "Pon un título.",
+        "pt-br": "Coloque um título."
+    },
+    "Put a description": {
+        "en": "Put a description.",
+        "es": "Pon una descripción.",
+        "pt-br": "Coloque uma descrição."
+    },
+    "Author": {
+        "en": "Author",
+        "es": "Autor",
+        "pt-br": "Autor"
+    },
+    "Title": {
+        "en": "Title",
+        "es": "Título",
+        "pt-br": "Título"
+    },
+    "Description": {
+        "en": "Description",
+        "es": "Descripción",
+        "pt-br": "Descrição"
+    },
+    "Entity type": {
+        "en": "Entity type",
+        "es": "Tipo de entidad",
+        "pt-br": "Tipo da entidade"
+    },
+    "Properties": {
+        "en": "Properties",
+        "es": "Propiedades",
+        "pt-br": "Propriedades"
+    },
+    "Name of the property": {
+        "en": "Name of the property",
+        "es": "Nombre de la propiedad",
+        "pt-br": "Nome da propriedade"
+    },
+    "Value of the property": {
+        "en": "Value of the property",
+        "es": "Valor de la propiedad",
+        "pt-br": "Valor da propriedade"
+    },
+    "Put the name": {
+        "en": "Put the name",
+        "es": "Pon el nombre",
+        "pt-br": "Coloque o nome"
+    },
+    "Put the value": {
+        "en": "Put the value",
+        "es": "Pon el valor",
+        "pt-br": "Coloque o valor"
+    },
+    "Add": {
+        "en": "Add",
+        "es": "Añadir",
+        "pt-br": "Adicionar"
+    },
+    "Property": {
+        "en": "Property",
+        "es": "Propiedad",
+        "pt-br": "Propriedade"
+    },
+    "Value": {
+        "en": "Value",
+        "es": "Valor",
+        "pt-br": "Valor"
+    },
+    "Action": {
+        "en": "Action",
+        "es": "Acción",
+        "pt-br": "Ação"
     }
 }

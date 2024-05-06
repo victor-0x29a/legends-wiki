@@ -8,7 +8,9 @@ import { IItemStats } from "../../types/item.type"
 import { EntityFormImage } from "./EntityFormImage"
 import { EntityFormSections } from "./EntityFormSections"
 import { LegendsSize } from "../../styles/constants.style"
-import { FormEvent, useCallback } from "react"
+import { FormEvent, useCallback, useContext } from "react"
+import { I18nContext } from "../../contexts/i18n.context"
+import { FormLabels } from "../../i18n/forms.i18n"
 
 type initialValues = {
     title: string,
@@ -84,18 +86,20 @@ export const EntityForm = ({
         formik.submitForm()
     }, [formik])
 
+    const { translate } = useContext(I18nContext)
+
     return (
         <FormControl as="form" onSubmit={onFormSubmit}>
-            <FormLabel>Autor</FormLabel>
-            <Input placeholder="Não obrigatório." name="author" required={false} onChange={formik.handleChange} value={formik.values?.author || ""} disabled={isLoading} />
+            <FormLabel>{translate(FormLabels, "Author")}</FormLabel>
+            <Input placeholder={translate(FormLabels, "Not required")} name="author" required={false} onChange={formik.handleChange} value={formik.values?.author || ""} disabled={isLoading} />
             <FormError errorData={formik.errors.author} />
-            <FormLabel>Título</FormLabel>
-            <Input name="title" placeholder="Coloque um título." onChange={formik.handleChange} value={formik.values.title} disabled={isLoading} />
+            <FormLabel>{translate(FormLabels, "Title")}</FormLabel>
+            <Input name="title" placeholder={translate(FormLabels, "Put a title")} onChange={formik.handleChange} value={formik.values.title} disabled={isLoading} />
             <FormError errorData={formik.errors.title} />
-            <FormLabel>Descrição</FormLabel>
-            <Input placeholder="Coloque uma descrição." name="description" onChange={formik.handleChange} value={formik.values.description} disabled={isLoading} />
+            <FormLabel>{translate(FormLabels, "Description")}</FormLabel>
+            <Input placeholder={translate(FormLabels, "Put a description")} name="description" onChange={formik.handleChange} value={formik.values.description} disabled={isLoading} />
             <FormError errorData={formik.errors.description} />
-            <FormLabel>Tipo da entidade</FormLabel>
+            <FormLabel>{translate(FormLabels, "Entity type")}</FormLabel>
             <RadioGroup defaultValue={entityTypesArray[0]} name="type" value={formik.values.type}>
                 <HStack>
                     {entityTypesArray.map((type, index) => (
