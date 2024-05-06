@@ -231,4 +231,14 @@ export const FormLabels: I18nData = {
         "es": "Ingresando en la cuenta",
         "pt-br": "Entrando na conta"
     },
+    "Name of user is required": {
+        "en": "Name of user is required.",
+        "es": "Nombre de usuario es obligatorio.",
+        "pt-br": "Nome de usuário é obrigatório."
+    },
+    "Password is required": {
+        "en": "Password is required.",
+        "es": "Contraseña es obligatoria.",
+        "pt-br": "Senha é obrigatória."
+    },
 }
