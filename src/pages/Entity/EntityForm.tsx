@@ -11,6 +11,7 @@ import { LegendsSize } from "../../styles/constants.style"
 import { FormEvent, useCallback, useContext } from "react"
 import { I18nContext } from "../../contexts/i18n.context"
 import { FormLabels } from "../../i18n/forms.i18n"
+import { EntityList } from "../../i18n/entity.i18n"
 
 type initialValues = {
     title: string,
@@ -103,7 +104,7 @@ export const EntityForm = ({
             <RadioGroup defaultValue={entityTypesArray[0]} name="type" value={formik.values.type}>
                 <HStack>
                     {entityTypesArray.map((type, index) => (
-                        <Radio value={type} key={`${index}-ratio-item-entity-creation`} isDisabled={isLoading} onClick={() => formik.setFieldValue("type", type)}>{entityTypes?.[type] || ""}</Radio>
+                        <Radio value={type} key={`${index}-ratio-item-entity-creation`} isDisabled={isLoading} onClick={() => formik.setFieldValue("type", type)}>{translate(EntityList, entityTypes?.[type])}</Radio>
                     ))}
                 </HStack>
             </RadioGroup>
