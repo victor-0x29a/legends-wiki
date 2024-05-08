@@ -15,5 +15,20 @@ export const CommonLabels: I18nData = {
         "en": "My profile",
         "es": "Mi perfil",
         "pt-br": "Meu perfil"
-    }
+    },
+    "You want to delete entity with ID": {
+        "en": "You want to delete entity with ID",
+        "es": "Desea eliminar la entidad con ID",
+        "pt-br": "Deseja deletar a entidade com ID"
+    },
+    "Delete entity": {
+        "en": "Delete entity",
+        "es": "Eliminar entidad",
+        "pt-br": "Deletar entidade"
+    },
+    "Delete": {
+        "en": "Delete",
+        "es": "Eliminar",
+        "pt-br": "Deletar"
+    },
 }
