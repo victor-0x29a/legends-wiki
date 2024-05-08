@@ -241,4 +241,14 @@ export const FormLabels: I18nData = {
         "es": "Contraseña es obligatoria.",
         "pt-br": "Senha é obrigatória."
     },
+    "Deleted entity": {
+        "en": "Deleted entity",
+        "es": "Entidad eliminada",
+        "pt-br": "Entidade excluída"
+    },
+    "Try again": {
+        "en": "Try again more later",
+        "es": "Intentar de nuevo más tarde",
+        "pt-br": "Tentar novamente mais tarde"
+    },
 }
