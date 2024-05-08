@@ -4,15 +4,17 @@ import { LegendsColor, LegendsSize } from "../../styles/constants.style";
 import EntityImage from "../../components/EntityImage/EntityImage";
 import { DeleteIcon, EditIcon, WarningIcon } from "@chakra-ui/icons";
 import { PaginationBar } from "../../components/PaginationBar/PaginationBar";
-import { useCallback, useContext, useMemo } from "react";
+import { useCallback, useContext, useMemo, useState } from "react";
 import { I18nContext } from "../../contexts/i18n.context";
 import { FormLabels } from "../../i18n/forms.i18n";
+import { EntityDeleteModal } from "./EntityDeleteModal";
 
 type IEntityTableProps = {
     isLoading: boolean;
+    isLoadingDeletion: boolean;
     entityList: MinimalEntity[]
     onEntityEditClick: (id: number) => () => void
-    onEntityRemoveClick: () => () => void,
+    onEntityRemoveClick: (id: number) => Promise<void>,
     paginationProps: {
         onChangePage: (page: number) => void;
         onChangePerPage: (perPage: number) => void;
@@ -22,12 +24,32 @@ type IEntityTableProps = {
     }
 }
 
-export const EntityTable = ({ isLoading, entityList, onEntityEditClick, onEntityRemoveClick, paginationProps }: IEntityTableProps) => {
+export const EntityTable = ({
+    isLoading,
+    entityList,
+    onEntityEditClick,
+    onEntityRemoveClick,
+    paginationProps,
+    isLoadingDeletion
+}: IEntityTableProps) => {
     const hasEntities = useMemo(() => entityList.length > 0, [entityList])
 
     const { translate } = useContext(I18nContext)
 
     const translateLabel = useCallback((label: string) => translate(FormLabels, label), [translate])
+
+    const [entitySelected, setEntitySelected] = useState<number | null>(null)
+
+    const hasEntitySelected = useMemo(() => entitySelected !== null, [entitySelected])
+
+    const clearEntitySelected = useCallback(() => setEntitySelected(null), [])
+
+    const onDelete = useCallback((id: number) => {
+        onEntityRemoveClick(id)
+            .then(() => {
+                clearEntitySelected()
+            })
+    }, [clearEntitySelected, onEntityRemoveClick])
 
     return <>
         <Table>
@@ -71,12 +93,19 @@ export const EntityTable = ({ isLoading, entityList, onEntityEditClick, onEntity
                         </Th>
                         <Th>
                             <EditIcon onClick={onEntityEditClick(id)} marginRight={LegendsSize.margin.small} cursor={"pointer"} boxSize={5} />
-                            <DeleteIcon onClick={onEntityRemoveClick()} cursor={"pointer"} boxSize={5} />
+                            <DeleteIcon onClick={() => setEntitySelected(id)} cursor={"pointer"} boxSize={5} />
                         </Th>
                     </Tr>
                 ))}
             </Tbody>
         </Table>
+        <EntityDeleteModal
+            isLoading={isLoadingDeletion}
+            entityID={entitySelected}
+            isOpen={hasEntitySelected}
+            onClose={clearEntitySelected}
+            onConfirm={onDelete}
+        />
         {!hasEntities && !isLoading && (
             <Box w={"100%"} textAlign={"center"} marginTop={LegendsSize.margin.normal}>
                 <Text fontSize={LegendsSize.fontSize.normal}>
