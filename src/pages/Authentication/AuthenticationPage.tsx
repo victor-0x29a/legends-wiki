@@ -1,5 +1,5 @@
 import { ViewIcon, ViewOffIcon } from "@chakra-ui/icons";
-import { Button, Container, FormControl, FormLabel, Input, InputGroup, InputLeftAddon } from "@chakra-ui/react";
+import { Box, Button, Container, FormControl, FormLabel, Input, InputGroup, InputLeftAddon } from "@chakra-ui/react";
 import { FormEvent, useCallback, useContext, useState } from "react";
 import { LegendsSize } from "../../styles/constants.style";
 import { useFormik } from "formik";
@@ -9,6 +9,8 @@ import { UserModel } from "../../api";
 import { AuthContext } from "../../contexts/auth.context";
 import { useError } from "../../hooks/useError";
 import { useAlert } from "../../hooks/useAlert";
+import { I18nContext } from "../../contexts/i18n.context";
+import { FormLabels } from "../../i18n/forms.i18n";
 
 const INITIAL_DATA = {
     username: "",
@@ -22,6 +24,8 @@ export const AuthenticationPage = () => {
 
     const { translateErrors } = useError()
 
+    const { translate } = useContext(I18nContext)
+
     const { alert } = useAlert()
 
     const {
@@ -34,10 +38,10 @@ export const AuthenticationPage = () => {
             setIsLoading(true)
             return UserModel.signIn(values).then(({ token }) => {
                 authenticate(token)
-                alert({ text: "Login efetuado", type: "success" })
+                alert({ text: translate(FormLabels, "Login successful"), type: "success" })
             }).catch((errorList) => {
                 const errors = translateErrors(errorList)
-                errors.forEach((error) => alert({ text: error }))
+                errors!.forEach((error) => alert({ text: error }))
             }).finally(() => {
                 setIsLoading(false)
             })
@@ -51,25 +55,27 @@ export const AuthenticationPage = () => {
     }, [formik])
 
     return (
-        <Container size={"sm"} w="100vw" h="100vh" display={"flex"} justifyContent={"center"} alignItems={"center"}>
-            <FormControl as="form" onSubmit={onSubmit}>
-                <FormLabel>Usuário</FormLabel>
-                <Input type="text" name="username" onChange={formik.handleChange} onBlur={formik.handleBlur} disabled={isLoading} />
-                <FormError errorData={formik.errors.username} />
-                <FormLabel>Senha</FormLabel>
-                <InputGroup>
-                    <InputLeftAddon onClick={togglePasswordVisibility} bgColor={"transparent"}>
-                        {showPassword ?
-                            <ViewOffIcon /> :
-                            <ViewIcon />}
-                    </InputLeftAddon>
-                    <Input type={showPassword ? "text" : "password"} name="password" onChange={formik.handleChange} onBlur={formik.handleBlur} disabled={isLoading} />
-                </InputGroup>
-                <FormError errorData={formik.errors.password} />
-                <Button w={"100%"} marginTop={LegendsSize.margin.normal} type="submit" colorScheme="green" loadingText="Entrando na conta" isLoading={isLoading}>
-                    Entrar
-                </Button>
-            </FormControl>
+        <Container marginTop={"20%"}>
+            <Box display={"flex"} justifyContent={"center"}>
+                <FormControl as="form" onSubmit={onSubmit} maxW={"400px"}>
+                    <FormLabel>{translate(FormLabels, "User")}</FormLabel>
+                    <Input type="text" name="username" onChange={formik.handleChange} onBlur={formik.handleBlur} disabled={isLoading} />
+                    <FormError errorData={formik.errors.username} />
+                    <FormLabel>{translate(FormLabels, "Password")}</FormLabel>
+                    <InputGroup>
+                        <InputLeftAddon onClick={togglePasswordVisibility} bgColor={"transparent"}>
+                            {showPassword ?
+                                <ViewOffIcon /> :
+                                <ViewIcon />}
+                        </InputLeftAddon>
+                        <Input type={showPassword ? "text" : "password"} name="password" onChange={formik.handleChange} onBlur={formik.handleBlur} disabled={isLoading} />
+                    </InputGroup>
+                    <FormError errorData={formik.errors.password} />
+                    <Button w={"100%"} marginTop={LegendsSize.margin.normal} type="submit" colorScheme="green" loadingText={translate(FormLabels, "Entering on account")} isLoading={isLoading}>
+                        {translate(FormLabels, "Login")}
+                    </Button>
+                </FormControl>
+            </Box>
         </Container>
     );
 }

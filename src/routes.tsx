@@ -5,14 +5,18 @@ import { AuthenticationPage } from "./pages/Authentication/AuthenticationPage";
 import { PrivateRoute } from "./private-route";
 import { RedirectPage } from "./pages/Dashboard/RedirectPage";
 import { ListEntityPage } from "./pages/Entity/ListEntityPage";
+import Layout from "./layout";
 
 export const router = createBrowserRouter([
     {
         path: "*",
-        element: <NotFound />
+        element: <Layout>
+            <NotFound />
+        </Layout>
     },
     {
         path: "entity",
+        element: <Layout />,
         children: [
             {
                 path: "",
@@ -30,6 +34,7 @@ export const router = createBrowserRouter([
     },
     {
         path: "auth",
+        element: <Layout />,
         children: [
             {
                 path: "",

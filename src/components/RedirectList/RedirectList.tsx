@@ -7,7 +7,7 @@ import { InfoOutlineIcon } from "@chakra-ui/icons"
 export const RedirectList = ({
     list
 }: IRedirectListProps) => {
-    return <Box display={"flex"} justifyContent={"center"} gap={LegendsSize.margin.normal} marginTop={LegendsSize.margin.normal} cursor={"pointer"}>
+    return <Box display={"flex"} justifyContent={"center"} gap={LegendsSize.margin.normal} marginTop={LegendsSize.margin.normal} cursor={"pointer"} position={"relative"} zIndex={1}>
         {list.map(({ title, path }, index) => (
             <Link to={path} key={`redirect-page-${index}-#${path}`}>
                 <Card padding={"0"} backgroundColor={"transparent"} boxShadow={`0 0 4px ${LegendsColor.textColors.white}`} minW={"200px"} maxW={"200px"} borderRadius={LegendsSize.borderRadius.small}>

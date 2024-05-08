@@ -9,7 +9,10 @@ const List = (filters: EntityFilters): Promise<ListEntityResponse> => CreateServ
     params: filters
 }).then(extractData).catch(getError)
 
+const Delete = (id: number) => CreateServerInstance().delete(`/entity/${id}`).catch(getError)
+
 export const EntityDomain = {
     Create,
-    List
+    List,
+    Delete
 }

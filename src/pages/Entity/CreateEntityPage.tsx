@@ -3,11 +3,13 @@ import { Container } from "@chakra-ui/react"
 import { entityTypesArray } from "./entity.constant"
 import { EntityForm } from "./EntityForm"
 import { EntityModel } from "../../api"
-import { useCallback, useState } from "react"
+import { useCallback, useContext, useState } from "react"
 import { useNavigate } from "react-router-dom"
 import { useAlert } from "../../hooks/useAlert"
 import { useError } from "../../hooks/useError"
 import { DashboardHeader } from "../Dashboard/Header"
+import { I18nContext } from "../../contexts/i18n.context"
+import { FormLabels } from "../../i18n/forms.i18n"
 
 const BaseEntityForm = {
     title: "",
@@ -30,12 +32,14 @@ export const CreateEntityPage = () => {
 
     const { translateErrors } = useError()
 
+    const { translate } = useContext(I18nContext)
+
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const onSubmit = useCallback((values: any) => {
         setIsLoading(true)
         EntityModel.create(values)
             .then(() => {
-                alert({ text: "Entidade criada", type: "success" })
+                alert({ text: translate(FormLabels, "Entity created"), type: "success" })
                 Navigate("/entity")
             })
             .catch((errorList) => {
@@ -45,13 +49,13 @@ export const CreateEntityPage = () => {
             .finally(() => {
                 setIsLoading(false)
             })
-    }, [Navigate, alert, translateErrors])
+    }, [Navigate, alert, translate, translateErrors])
 
     const onBack = useCallback(() => Navigate("/entity"), [Navigate])
 
     return (
         <Container maxW="800px">
-            <DashboardHeader title="Criação de entidade" onBackClick={onBack} />
+            <DashboardHeader title={translate(FormLabels, "Creation of entity")} onBackClick={onBack} />
             <EntityForm initialValues={BaseEntityForm} onSubmit={onSubmit} isLoading={isLoading} />
         </Container>
     )
