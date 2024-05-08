@@ -29,7 +29,7 @@ type IUseEntityList = {
         perPage: number
         totalPages: number
     }
-    removeEntity: (id: number) => void
+    removeEntity: (id: number) => Promise<void>
 }
 
 export const useEntityList = (): IUseEntityList => {
@@ -69,9 +69,9 @@ export const useEntityList = (): IUseEntityList => {
 
     const [isLoadingDeletion, setIsLoadingDeletion] = useState(false)
 
-    const removeEntity = useCallback((id: number) => {
+    const removeEntity = useCallback(async (id: number) => {
         setIsLoadingDeletion(true)
-        EntityModel.delete(id)
+        return EntityModel.delete(id)
             .then(() => {
                 alert({ text: translate(FormLabels, "Deleted entity"), type: "success" })
             })
