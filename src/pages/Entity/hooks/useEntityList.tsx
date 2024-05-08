@@ -30,13 +30,17 @@ type IUseEntityList = {
         totalPages: number
     }
     removeEntity: (id: number) => Promise<void>
+    refreshList: () => void
 }
 
 export const useEntityList = (): IUseEntityList => {
     const [filters, setFilters] = useState({
         page: 1,
-        perPage: 10
+        perPage: 10,
+        refresh: false
     })
+
+    const refreshList = useCallback(() => setFilters((curr) => ({ ...curr, refresh: !curr.refresh })), [])
 
     const onChangePage = useCallback((page: number) => {
         setFilters((curr) => ({ ...curr, page }))
@@ -94,6 +98,7 @@ export const useEntityList = (): IUseEntityList => {
             page: filters.page || 1,
             perPage: filters.perPage || 10,
             totalPages: data?.totalPages || 1
-        }
+        },
+        refreshList
     }
 }
