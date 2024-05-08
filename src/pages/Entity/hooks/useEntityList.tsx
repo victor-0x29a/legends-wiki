@@ -18,6 +18,7 @@ type IUseEntityList = {
     onChangePerPage: (perPage: number) => void
     onChangeTitle: (title: string) => void
     isLoading: boolean
+    isLoadingDeletion: boolean
     entityList: {
         id: number
         title: string
@@ -74,6 +75,9 @@ export const useEntityList = (): IUseEntityList => {
             .then(() => {
                 alert({ text: translate(FormLabels, "Deleted entity"), type: "success" })
             })
+            .catch(() => {
+                alert({ text: translate(FormLabels, "Try again"), type: "error" })
+            })
             .finally(() => setIsLoadingDeletion(false))
     }, [alert, translate])
 
@@ -82,7 +86,8 @@ export const useEntityList = (): IUseEntityList => {
         onChangePage,
         onChangePerPage,
         onChangeTitle,
-        isLoading: isLoading || isFetching || isLoadingDeletion,
+        isLoading: isLoading || isFetching,
+        isLoadingDeletion,
         removeEntity,
         entityList: (data?.entries || []) as { id: number; title: string; image: ImageObject | null; }[],
         pagination: {
