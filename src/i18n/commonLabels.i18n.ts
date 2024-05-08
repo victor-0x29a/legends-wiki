@@ -31,4 +31,9 @@ export const CommonLabels: I18nData = {
         "es": "Eliminar",
         "pt-br": "Deletar"
     },
+    "Deleting entity": {
+        "en": "Deleting entity",
+        "es": "Eliminando entidad",
+        "pt-br": "Deletando entidade"
+    },
 }
