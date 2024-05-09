@@ -8,6 +8,7 @@ import { AddIcon } from "@chakra-ui/icons";
 import { LegendsSize } from "../../styles/constants.style";
 import { I18nContext } from "../../contexts/i18n.context";
 import { FormLabels } from "../../i18n/forms.i18n";
+import { CommonLabels } from "../../i18n/commonLabels.i18n";
 
 export const ListEntityPage = () => {
     const {
@@ -54,7 +55,7 @@ export const ListEntityPage = () => {
 
     return (
         <Container maxW={"800px"}>
-            <DashboardHeader title="Entidades" onBackClick={onBack} />
+            <DashboardHeader title={translate(CommonLabels, "Entities")} onBackClick={onBack} />
             <Box display={"flex"} marginBottom={LegendsSize.margin.large}>
                 <Button onClick={onCreate} leftIcon={<AddIcon />} colorScheme="green">
                     {translate(FormLabels, "Create entity")}
