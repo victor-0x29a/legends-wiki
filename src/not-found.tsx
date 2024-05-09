@@ -9,7 +9,7 @@ import { CommonLabels } from "./i18n/commonLabels.i18n";
 export const NotFound = () => {
     const Navigate = useNavigate()
 
-    const onClick = useCallback(() => Navigate("/"), [Navigate])
+    const onClick = useCallback(() => Navigate(-1), [Navigate])
 
     const { translate } = useContext(I18nContext)
 
