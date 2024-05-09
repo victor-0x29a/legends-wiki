@@ -2,12 +2,16 @@ import { Heading, Container, Box, Text, Button } from "@chakra-ui/react";
 import { LegendsColor, LegendsSize } from "./styles/constants.style";
 import { WarningIcon } from "@chakra-ui/icons";
 import { useNavigate } from "react-router-dom";
-import { useCallback } from "react";
+import { useCallback, useContext } from "react";
+import { I18nContext } from "./contexts/i18n.context";
+import { CommonLabels } from "./i18n/commonLabels.i18n";
 
 export const NotFound = () => {
     const Navigate = useNavigate()
 
-    const onClick = useCallback(() => Navigate("/"), [Navigate])
+    const onClick = useCallback(() => Navigate(-1), [Navigate])
+
+    const { translate } = useContext(I18nContext)
 
     return (
         <Container maxW={"100%"} display={"flex"} justifyContent={"center"} h={"100%"} flexDirection={"column"}>
@@ -16,13 +20,13 @@ export const NotFound = () => {
                     <WarningIcon boxSize={14} marginBottom={LegendsSize.margin.normal} />
                 </Box>
                 <Heading as="h2" size={"lg"} color={LegendsColor.textColors.white} textAlign={"center"}>
-                    Conteúdo não encontrado.
+                    {translate(CommonLabels, "Content not found")}
                 </Heading>
                 <Text marginTop={LegendsSize.margin.small} marginBottom={LegendsSize.margin.small}>
-                    O conteúdo que você está procurando não foi encontrado, foi removido ou está em manutenção.
+                    {translate(CommonLabels, "Content not found text")}
                 </Text>
                 <Button w={"100%"} colorScheme="green" onClick={onClick}>
-                    Voltar
+                    {translate(CommonLabels, "Back")}
                 </Button>
             </Container>
         </Container>

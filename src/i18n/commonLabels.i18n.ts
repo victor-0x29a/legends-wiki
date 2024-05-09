@@ -36,4 +36,19 @@ export const CommonLabels: I18nData = {
         "es": "Eliminando entidad",
         "pt-br": "Deletando entidade"
     },
+    "Content not found": {
+        "en": "Content not found.",
+        "es": "Contenido no encontrado.",
+        "pt-br": "Conteúdo não encontrado."
+    },
+    "Content not found text": {
+        "pt-br": "O conteúdo que você está procurando não foi encontrado, foi removido ou está em manutenção.",
+        "en": "The content you are looking for was not found, has been removed, or is undergoing maintenance.",
+        "es": "El contenido que busca no se encontró, se eliminó o está en mantenimiento."
+    },
+    "Back": {
+        "en": "Back",
+        "es": "Atrás",
+        "pt-br": "Voltar"
+    }
 }

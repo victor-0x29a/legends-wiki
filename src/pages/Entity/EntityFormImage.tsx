@@ -34,7 +34,7 @@ export const EntityFormImage = ({
     return (
         <Box>
             <Heading size={"md"} marginTop={LegendsSize.margin.normal} marginBottom={LegendsSize.margin.small}>
-                Imagem
+                {translate(FormLabels, "Image")}
             </Heading>
             <Box display={"flex"}>
                 <Box>
