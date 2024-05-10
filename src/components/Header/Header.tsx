@@ -56,7 +56,7 @@ export const Header = () => {
             </Box>
             <HeaderSideModal
                 isOpen={isOpenModal}
-                ref={modalReference as React.RefObject<HTMLElement>}
+                reference={modalReference as React.RefObject<HTMLElement>}
                 toggleModal={() => setIsOpenModal(false)}
             />
         </Box>

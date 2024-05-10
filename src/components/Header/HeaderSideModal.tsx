@@ -10,7 +10,7 @@ import { EntityList } from "../../i18n/entity.i18n";
 
 export const HeaderSideModal = ({
     isOpen,
-    ref,
+    reference,
     toggleModal
 }: IHeaderSideModalProps) => {
     const { RoutesConstant } = useContants()
@@ -36,47 +36,52 @@ export const HeaderSideModal = ({
         return "300px"
     }, [isMobile])
     return (
-        <Slide
-            ref={ref as unknown as React.RefObject<HTMLDivElement>}
-            in={isOpen}
-            direction="right"
-            transition={{
-                exit: { delay: 0.4, duration: 1 },
-            }}
-            style={{
-                zIndex: 100
-            }}>
-            <Box
-                bgColor={LegendsColor.backgroundColors.secondary}
-                display={"flex"}
-                flexDirection={"column"}
-                position={"absolute"}
-                overflowY={"auto"}
-                right={0}
-                top={0}
-                w={modalWidth}
-                h={"100%"}
-                maxH="100vh"
-                zIndex={101}
-                color={LegendsColor.textColors.black}>
-                <HeaderSideModalItem
-                    section={translate(EntityList, "Geral")}
-                    sectionChilds={parsedRoutesConstant}
-                    isMobile={isMobile}
-                    onCloseClick={toggleModal}
-                />
-            </Box>
-            {!isMobile && <Fade
+        <>
+            {!isMobile && isOpen && <Fade
                 in={isOpen}
                 transition={{
                     enter: { delay: 0.3 },
                     exit: { delay: 0.2 }
                 }}
                 style={{
-                    zIndex: 99
+                    zIndex: 99,
+                    position: 'absolute',
+                    top: 0,
+                    left: 0
                 }}>
                 <Box zIndex={100} width={'100vw'} height={'100vh'} backgroundColor={"rgba(0, 0,0, 0.4)"} />
             </Fade>}
-        </Slide>
+            <Slide
+                in={isOpen}
+                direction="right"
+                transition={{
+                    exit: { delay: 0.4, duration: 1 },
+                }}
+                style={{
+                    zIndex: 100
+                }}>
+                <Box
+                    ref={reference as unknown as React.RefObject<HTMLDivElement>}
+                    bgColor={LegendsColor.backgroundColors.secondary}
+                    display={"flex"}
+                    flexDirection={"column"}
+                    position={"absolute"}
+                    overflowY={"auto"}
+                    right={0}
+                    top={0}
+                    w={modalWidth}
+                    h={"100%"}
+                    maxH="100vh"
+                    zIndex={101}
+                    color={LegendsColor.textColors.black}>
+                    <HeaderSideModalItem
+                        section={translate(EntityList, "Geral")}
+                        sectionChilds={parsedRoutesConstant}
+                        isMobile={isMobile}
+                        onCloseClick={toggleModal}
+                    />
+                </Box>
+            </Slide>
+        </>
     );
 }

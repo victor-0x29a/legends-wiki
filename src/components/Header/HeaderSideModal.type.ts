@@ -1,5 +1,5 @@
 export type IHeaderSideModalProps = {
     isOpen: boolean;
-    ref: React.RefObject<HTMLElement>;
+    reference: React.RefObject<HTMLElement>;
     toggleModal: () => void;
 }
