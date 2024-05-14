@@ -5,6 +5,7 @@ import { ImageObject } from "../../../types/entity.type"
 import { useAlert } from "../../../hooks/useAlert"
 import { I18nContext } from "../../../contexts/i18n.context"
 import { FormLabels } from "../../../i18n/forms.i18n"
+import { useError } from "../../../hooks/useError"
 
 const STALE_TIME = 1000 * 60 * 10
 
@@ -71,6 +72,8 @@ export const useEntityList = (): IUseEntityList => {
 
     const { alert } = useAlert()
 
+    const { translateErrors } = useError()
+
     const [isLoadingDeletion, setIsLoadingDeletion] = useState(false)
 
     const removeEntity = useCallback(async (id: number) => {
@@ -79,11 +82,12 @@ export const useEntityList = (): IUseEntityList => {
             .then(() => {
                 alert({ text: translate(FormLabels, "Deleted entity"), type: "success" })
             })
-            .catch(() => {
-                alert({ text: translate(FormLabels, "Try again"), type: "error" })
+            .catch((error) => {
+                translateErrors(error)!
+                    .forEach((error) => alert({ text: error, type: "error" }))
             })
             .finally(() => setIsLoadingDeletion(false))
-    }, [alert, translate])
+    }, [alert, translate, translateErrors])
 
     return {
         filters,
