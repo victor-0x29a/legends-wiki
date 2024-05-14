@@ -11,8 +11,12 @@ const List = (filters: EntityFilters): Promise<ListEntityResponse> => CreateServ
 
 const Delete = (id: number) => CreateServerInstance().delete(`/entity/${id}`).catch(getError)
 
+const View = (id: number) => CreateServerInstance().get(`/entity/${id}`).then(extractData).catch(getError)
+
+
 export const EntityDomain = {
     Create,
     List,
-    Delete
+    Delete,
+    View
 }
