@@ -11,7 +11,7 @@ export const useError = () => {
 
     const { alert } = useAlert()
 
-    const translateErrors = useCallback((errorList: string[]) => {
+    const translateErrors = useCallback((errorList: string[]): string[] | void => {
         if (errorList.includes("Required authentication") || errorList.includes("Token not provided.") || errorList.includes("Token invalid.")) {
             alert({ text: translate(ErrorList, "Required authentication") })
             return logout()
