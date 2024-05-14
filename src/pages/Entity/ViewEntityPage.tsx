@@ -7,9 +7,11 @@ import BasicHeader from "../../components/BasicHeader"
 import { LegendsSize } from "../../styles/constants.style"
 import StatsInfo from "../../components/StatsInfo"
 import { IItemStats } from "../../types/item.type"
-import { useMemo } from "react"
+import { useContext, useMemo } from "react"
 import MDEditor from "@uiw/react-md-editor"
 import { DashboardHeader } from "../Dashboard/Header"
+import { I18nContext } from "../../contexts/i18n.context"
+import { CommonLabels } from "../../i18n/commonLabels.i18n"
 
 const DEFAULT_CONTAINER_PROPS = {
     paddingTop: LegendsSize.padding.normal,
@@ -17,6 +19,8 @@ const DEFAULT_CONTAINER_PROPS = {
 
 export const ViewEntityPage = () => {
     const Navigate = useNavigate()
+
+    const { translate } = useContext(I18nContext)
 
     const { type, id } = useParams()
 
@@ -49,7 +53,7 @@ export const ViewEntityPage = () => {
     }
 
     return <Box {...DEFAULT_CONTAINER_PROPS}>
-        <DashboardHeader onBackClick={() => Navigate(-1)} title={"Visualizando"} />
+        <DashboardHeader onBackClick={() => Navigate(-1)} title={translate(CommonLabels, "Back")} />
         <BasicHeader
             title={entity?.title}
             imageDetails={(entity?.image || { src: '', alt: '' })}
