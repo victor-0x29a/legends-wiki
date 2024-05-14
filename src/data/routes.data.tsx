@@ -18,5 +18,10 @@ export const PublicRoutes = [
         label: "Bosses",
         path: `/${BOSS_ENTITY}`,
         icon: <GiSkullWithSyringe {...defaultIconProps} />
+    },
+    {
+        label: "Itens",
+        path: "/item",
+        icon: <GiSuperMushroom {...defaultIconProps} />
     }
 ]

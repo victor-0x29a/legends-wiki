@@ -10,8 +10,11 @@ export const COLLECTIBLE_ENTITY = "collectibles"
 
 export const BOSS_ENTITY = "boss"
 
+export const ITEM_ENTITY = "item"
+
 export const Entities = [
     ARMOR_ENTITY,
     COLLECTIBLE_ENTITY,
-    BOSS_ENTITY
+    BOSS_ENTITY,
+    ITEM_ENTITY
 ]

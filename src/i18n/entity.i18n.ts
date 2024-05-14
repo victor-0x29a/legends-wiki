@@ -20,5 +20,10 @@ export const EntityList: I18nData = {
         "en": "Bosses",
         "es": "Jefes",
         "pt-br": "Chefes"
+    },
+    "Itens": {
+        "en": "Items",
+        "es": "Artículos",
+        "pt-br": "Itens"
     }
 }
