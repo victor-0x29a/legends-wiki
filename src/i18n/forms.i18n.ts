@@ -249,6 +249,6 @@ export const FormLabels: I18nData = {
     "Try again": {
         "en": "Try again more later",
         "es": "Intentar de nuevo más tarde",
-        "pt-br": "Tentar novamente mais tarde"
+        "pt-br": "Tente novamente mais tarde"
     },
 }
