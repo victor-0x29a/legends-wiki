@@ -44,7 +44,7 @@ export const ViewEntityPage = () => {
                     </li>
                 ))}
             </Box>
-            <SkeletonText noOfLines={30} lineHeight={"1rem"} />
+            <SkeletonText noOfLines={5} lineHeight={"1rem"} />
         </Box>
     }
 
