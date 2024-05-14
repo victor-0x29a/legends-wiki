@@ -38,6 +38,7 @@ export type MinimalEntity = {
     id: number
     title: string
     image: null | ImageObject
+    type: string
 }
 
 export type ListEntityResponse = {
