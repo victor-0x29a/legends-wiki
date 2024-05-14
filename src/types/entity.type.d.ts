@@ -14,6 +14,11 @@ export type Entity = {
     type: string
 }
 
+interface FindOneEntity extends Entity {
+    createdAt: string
+    updatedAt: string
+}
+
 export type CreateEntity = {
     title: string
     properties: object

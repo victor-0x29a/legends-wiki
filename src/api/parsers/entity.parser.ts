@@ -1,4 +1,4 @@
-import { CreateEntity, EntityFilters } from "../../types/entity.type";
+import { CreateEntity, EntityFilters, FindOneEntity } from "../../types/entity.type";
 
 export const EntityParser = {
     create: (data: CreateEntity) => ({
@@ -9,5 +9,6 @@ export const EntityParser = {
     list: ({ page, perPage }: EntityFilters) => ({
         page,
         perPage
-    })
+    }),
+    single: (entity: FindOneEntity) => entity
 }
