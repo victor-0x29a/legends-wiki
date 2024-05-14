@@ -8,6 +8,7 @@ import { useCallback, useContext, useMemo, useState } from "react";
 import { I18nContext } from "../../contexts/i18n.context";
 import { FormLabels } from "../../i18n/forms.i18n";
 import { EntityDeleteModal } from "./EntityDeleteModal";
+import { useNavigate } from "react-router-dom";
 
 type IEntityTableProps = {
     isLoading: boolean;
@@ -32,6 +33,8 @@ export const EntityTable = ({
     paginationProps,
     isLoadingDeletion
 }: IEntityTableProps) => {
+    const Navigate = useNavigate()
+
     const hasEntities = useMemo(() => entityList.length > 0, [entityList])
 
     const { translate } = useContext(I18nContext)
@@ -50,6 +53,10 @@ export const EntityTable = ({
                 clearEntitySelected()
             })
     }, [clearEntitySelected, onEntityRemoveClick])
+
+    const mountRedirectLink = useCallback((id: number, type: string) => () => {
+        Navigate(`/entity/${type}/${id}`)
+    }, [Navigate])
 
     return <>
         <Table>
@@ -80,9 +87,9 @@ export const EntityTable = ({
                         </Th>
                     </Tr>
                 )}
-                {!isLoading && entityList.map(({ id, title, image }) => (
+                {!isLoading && entityList.map(({ id, title, image, type }) => (
                     <Tr key={`item-${id}-entity-list-page`}>
-                        <Th color={LegendsColor.textColors.gray}>
+                        <Th color={LegendsColor.textColors.gray} onClick={mountRedirectLink(id, type)} cursor={"pointer"}>
                             {id}
                         </Th>
                         <Th color={LegendsColor.textColors.gray}>

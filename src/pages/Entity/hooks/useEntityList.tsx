@@ -1,7 +1,7 @@
 import { useQuery } from "@tanstack/react-query"
 import { EntityModel } from "../../../api"
 import { useCallback, useContext, useState } from "react"
-import { ImageObject } from "../../../types/entity.type"
+import { MinimalEntity } from "../../../types/entity.type"
 import { useAlert } from "../../../hooks/useAlert"
 import { I18nContext } from "../../../contexts/i18n.context"
 import { FormLabels } from "../../../i18n/forms.i18n"
@@ -20,11 +20,7 @@ type IUseEntityList = {
     onChangeTitle: (title: string) => void
     isLoading: boolean
     isLoadingDeletion: boolean
-    entityList: {
-        id: number
-        title: string
-        image: null | ImageObject
-    }[]
+    entityList: MinimalEntity[]
     pagination: {
         page: number
         perPage: number
@@ -97,7 +93,7 @@ export const useEntityList = (): IUseEntityList => {
         isLoading: isLoading || isFetching,
         isLoadingDeletion,
         removeEntity,
-        entityList: (data?.entries || []) as { id: number; title: string; image: ImageObject | null; }[],
+        entityList: (data?.entries || []) as MinimalEntity[],
         pagination: {
             page: filters.page || 1,
             perPage: filters.perPage || 10,
