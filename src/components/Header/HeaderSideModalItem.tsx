@@ -10,15 +10,18 @@ export const HeaderSideModalItem = ({
     section,
     sectionChilds,
     isMobile,
-    onCloseClick = () => { }
+    onCloseClick = () => { },
+    showCloseIcon = true
 }: IHeaderSideModalItemProps) => {
     return (
         <Box position={"relative"}>
-            <Box display={"flex"} justifyContent={"flex-end"} paddingRight={LegendsSize.padding.normal} paddingTop={LegendsSize.padding.normal} right={0} top={0} position={"absolute"} cursor={"pointer"}>
-                <IconWrapper lightMode={true}>
-                    <CloseIcon h={5} w={5} onClick={onCloseClick} />
-                </IconWrapper>
-            </Box>
+            {showCloseIcon && (
+                <Box display={"flex"} justifyContent={"flex-end"} paddingRight={LegendsSize.padding.normal} paddingTop={LegendsSize.padding.normal} right={0} top={0} position={"absolute"} cursor={"pointer"}>
+                    <IconWrapper lightMode={true}>
+                        <CloseIcon h={5} w={5} onClick={onCloseClick} />
+                    </IconWrapper>
+                </Box>
+            )}
             <Heading
                 color={LegendsColor.textColors.emphasis.primary}
                 display={"flex"}

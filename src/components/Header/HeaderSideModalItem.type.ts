@@ -7,4 +7,5 @@ export type IHeaderSideModalItemProps = {
         onClick: () => void;
     }[]
     onCloseClick: () => void
+    showCloseIcon?: boolean
 }

@@ -7,25 +7,36 @@ import { useContext, useMemo } from "react";
 import { useNavigate } from "react-router-dom";
 import { I18nContext } from "../../contexts/i18n.context";
 import { EntityList } from "../../i18n/entity.i18n";
+import { CommonLabels } from "../../i18n/commonLabels.i18n";
 
 export const HeaderSideModal = ({
     isOpen,
     reference,
     toggleModal
 }: IHeaderSideModalProps) => {
-    const { RoutesConstant } = useContants()
+    const { PublicRoutesConstant, PrivateRoutesConstant } = useContants()
 
     const Navigate = useNavigate()
 
-    const parsedRoutesConstant = useMemo(() => {
-        return RoutesConstant.map((route) => {
+    const parsedPublicRoutesConstant = useMemo(() => {
+        return PublicRoutesConstant.map((route) => {
             return {
                 icon: route.icon,
                 label: route.label,
                 onClick: () => Navigate(route.path)
             }
         })
-    }, [RoutesConstant, Navigate])
+    }, [PublicRoutesConstant, Navigate])
+
+    const parsedPrivateRoutesConstant = useMemo(() => {
+        return PrivateRoutesConstant.map((route) => {
+            return {
+                icon: route.icon,
+                label: route.label,
+                onClick: () => Navigate(route.path)
+            }
+        })
+    }, [PrivateRoutesConstant, Navigate])
 
     const { translate } = useContext(I18nContext)
 
@@ -76,9 +87,16 @@ export const HeaderSideModal = ({
                     color={LegendsColor.textColors.black}>
                     <HeaderSideModalItem
                         section={translate(EntityList, "Geral")}
-                        sectionChilds={parsedRoutesConstant}
+                        sectionChilds={parsedPublicRoutesConstant}
                         isMobile={isMobile}
                         onCloseClick={toggleModal}
+                    />
+                    <HeaderSideModalItem
+                        section={translate(CommonLabels, "Admin")}
+                        sectionChilds={parsedPrivateRoutesConstant}
+                        isMobile={isMobile}
+                        onCloseClick={toggleModal}
+                        showCloseIcon={false}
                     />
                 </Box>
             </Slide>
