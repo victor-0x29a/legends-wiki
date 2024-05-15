@@ -50,5 +50,10 @@ export const CommonLabels: I18nData = {
         "en": "Back",
         "es": "Atrás",
         "pt-br": "Voltar"
-    }
+    },
+    "Leave": {
+        "en": "Leave",
+        "es": "Salir",
+        "pt-br": "Sair"
+    },
 }

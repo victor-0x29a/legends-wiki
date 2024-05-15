@@ -1,4 +1,5 @@
 import { GiLegArmor, GiSuperMushroom, GiSkullWithSyringe } from "react-icons/gi"
+import { BiExit } from "react-icons/bi";
 import { ARMOR_ENTITY, BOSS_ENTITY, COLLECTIBLE_ENTITY } from "../constants"
 
 const defaultIconProps = { size: 20 }
@@ -23,5 +24,13 @@ export const PublicRoutes = [
         label: "Itens",
         path: "/item",
         icon: <GiSuperMushroom {...defaultIconProps} />
+    }
+]
+
+export const PrivateRoutes = [
+    {
+        label: "Leave",
+        path: "/logout",
+        icon: <BiExit {...defaultIconProps} />
     }
 ]
