@@ -16,6 +16,10 @@ export const router = createBrowserRouter([
         </Layout>
     },
     {
+        path: "logout",
+        element: <LogoutPage />
+    },
+    {
         path: "entity",
         element: <Layout />,
         children: [
