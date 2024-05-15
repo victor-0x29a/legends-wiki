@@ -7,6 +7,7 @@ import { RedirectPage } from "./pages/Dashboard/RedirectPage";
 import { ListEntityPage } from "./pages/Entity/ListEntityPage";
 import Layout from "./layout";
 import { ViewEntityPage } from "./pages/Entity/ViewEntityPage";
+import { LogoutPage } from "./pages/Authentication/LogoutPage";
 
 export const router = createBrowserRouter([
     {
