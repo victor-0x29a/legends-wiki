@@ -8,6 +8,7 @@ import { useNavigate } from "react-router-dom";
 import { I18nContext } from "../../contexts/i18n.context";
 import { EntityList } from "../../i18n/entity.i18n";
 import { CommonLabels } from "../../i18n/commonLabels.i18n";
+import { AuthContext } from "../../contexts/auth.context";
 
 export const HeaderSideModal = ({
     isOpen,
@@ -15,6 +16,8 @@ export const HeaderSideModal = ({
     toggleModal
 }: IHeaderSideModalProps) => {
     const { PublicRoutesConstant, PrivateRoutesConstant } = useContants()
+
+    const { token } = useContext(AuthContext)
 
     const Navigate = useNavigate()
 
@@ -43,6 +46,8 @@ export const HeaderSideModal = ({
             parsedPrivateRoutesConstant: privateRoutes
         }
     }, [Navigate, PrivateRoutesConstant, PublicRoutesConstant])
+
+    const isEnabledPrivateRoutes = useMemo(() => Boolean(token), [token])
 
     const { translate } = useContext(I18nContext)
 
@@ -97,13 +102,15 @@ export const HeaderSideModal = ({
                         isMobile={isMobile}
                         onCloseClick={toggleModal}
                     />
-                    <HeaderSideModalItem
-                        section={translate(CommonLabels, "Admin")}
-                        sectionChilds={parsedPrivateRoutesConstant}
-                        isMobile={isMobile}
-                        onCloseClick={toggleModal}
-                        showCloseIcon={false}
-                    />
+                    {isEnabledPrivateRoutes && (
+                        <HeaderSideModalItem
+                            section={translate(CommonLabels, "Admin")}
+                            sectionChilds={parsedPrivateRoutesConstant}
+                            isMobile={isMobile}
+                            onCloseClick={toggleModal}
+                            showCloseIcon={false}
+                        />
+                    )}
                 </Box>
             </Slide>
         </>
