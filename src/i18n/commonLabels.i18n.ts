@@ -56,4 +56,9 @@ export const CommonLabels: I18nData = {
         "es": "Salir",
         "pt-br": "Sair"
     },
+    "Admin": {
+        "en": "Admin",
+        "es": "Admin",
+        "pt-br": "Admin"
+    }
 }

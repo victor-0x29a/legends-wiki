@@ -7,15 +7,7 @@ import { CommonLabels } from "../i18n/commonLabels.i18n"
 export const useContants = () => {
     const { translate } = useContext(I18nContext)
 
-    const RoutesConstant = useMemo(() => {
-        const translatedPublicRoutes = PublicRoutes.map((route) => {
-            const translatedLabel = translate(EntityList, route.label)
-
-            return {
-                ...route,
-                label: translatedLabel
-            }
-        })
+    const PrivateRoutesConstant = useMemo(() => {
         const translatedPrivateRoutes = PrivateRoutes.map((route) => {
             const translatedLabel = translate(CommonLabels, route.label)
 
@@ -24,10 +16,23 @@ export const useContants = () => {
                 label: translatedLabel
             }
         })
-        return [...translatedPublicRoutes, ...translatedPrivateRoutes]
+        return translatedPrivateRoutes
+    }, [translate])
+
+    const PublicRoutesConstant = useMemo(() => {
+        const translatedPublicRoutes = PublicRoutes.map((route) => {
+            const translatedLabel = translate(EntityList, route.label)
+
+            return {
+                ...route,
+                label: translatedLabel
+            }
+        })
+        return translatedPublicRoutes
     }, [translate])
 
     return {
-        RoutesConstant
+        PublicRoutesConstant,
+        PrivateRoutesConstant
     }
 }
