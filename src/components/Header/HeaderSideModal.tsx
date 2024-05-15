@@ -18,25 +18,31 @@ export const HeaderSideModal = ({
 
     const Navigate = useNavigate()
 
-    const parsedPublicRoutesConstant = useMemo(() => {
-        return PublicRoutesConstant.map((route) => {
+    const {
+        parsedPublicRoutesConstant,
+        parsedPrivateRoutesConstant
+    } = useMemo(() => {
+        const publicRoutes = PublicRoutesConstant.map((route) => {
             return {
                 icon: route.icon,
                 label: route.label,
                 onClick: () => Navigate(route.path)
             }
         })
-    }, [PublicRoutesConstant, Navigate])
 
-    const parsedPrivateRoutesConstant = useMemo(() => {
-        return PrivateRoutesConstant.map((route) => {
+        const privateRoutes = PrivateRoutesConstant.map((route) => {
             return {
                 icon: route.icon,
                 label: route.label,
                 onClick: () => Navigate(route.path)
             }
         })
-    }, [PrivateRoutesConstant, Navigate])
+
+        return {
+            parsedPublicRoutesConstant: publicRoutes,
+            parsedPrivateRoutesConstant: privateRoutes
+        }
+    }, [Navigate, PrivateRoutesConstant, PublicRoutesConstant])
 
     const { translate } = useContext(I18nContext)
 
