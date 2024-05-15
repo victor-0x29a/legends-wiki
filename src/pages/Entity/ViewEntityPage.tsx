@@ -7,14 +7,35 @@ import BasicHeader from "../../components/BasicHeader"
 import { LegendsSize } from "../../styles/constants.style"
 import StatsInfo from "../../components/StatsInfo"
 import { IItemStats } from "../../types/item.type"
-import { useContext, useMemo } from "react"
+import { useContext, useEffect, useMemo, useState } from "react"
 import MDEditor from "@uiw/react-md-editor"
 import { DashboardHeader } from "../Dashboard/Header"
 import { I18nContext } from "../../contexts/i18n.context"
 import { CommonLabels } from "../../i18n/commonLabels.i18n"
+import { ImageObject } from "../../types/entity.type"
 
 const DEFAULT_CONTAINER_PROPS = {
     paddingTop: LegendsSize.padding.normal,
+}
+
+const SkeletonPage = () => {
+    return <Box {...DEFAULT_CONTAINER_PROPS}>
+        <Box display={"flex"} >
+            <Skeleton height={"50px"} w="100px" h={"100px"} borderRadius={LegendsSize.padding.normal} />
+            <Box>
+                <Skeleton height={"1rem"} w={"10rem"} marginTop={"1rem"} marginLeft={"0.5rem"} />
+                <Skeleton height={"1rem"} w={"30rem"} marginTop={"1rem"} marginLeft={"0.5rem"} />
+            </Box>
+        </Box>
+        <Box display={"flex"} gap="1rem" paddingTop={"1rem"} paddingBottom={"1rem"}>
+            {Array.from({ length: 4 }).map((_, index) => (
+                <li key={`skeleton-stats-info-${index}`} style={{ listStyle: "none" }}>
+                    <Skeleton height={"1rem"} w={"10rem"} />
+                </li>
+            ))}
+        </Box>
+        <SkeletonText noOfLines={5} lineHeight={"1rem"} />
+    </Box>
 }
 
 export const ViewEntityPage = () => {
@@ -28,35 +49,49 @@ export const ViewEntityPage = () => {
 
     const canCenterStats = useMemo(() => Object.keys(entity?.properties || {}).length < 3, [entity?.properties])
 
+    const canLoadInternalImage = useMemo(() => {
+        if (!entity || isLoading) return false
+        return !(entity.image?.src || '').startsWith("https://")
+    }, [entity, isLoading])
+
+    const [image, setImage] = useState<ImageObject | null>(null)
+
+    const imageObject = useMemo(() => {
+        if (canLoadInternalImage && image) return image
+
+        if (!entity?.image || (canLoadInternalImage && !image)) return { src: '', alt: '' }
+
+        return { src: entity?.image?.src, alt: entity?.image?.alt }
+    }, [canLoadInternalImage, entity?.image, image])
+
+    useEffect(() => {
+        if (!canLoadInternalImage) return
+        const importImage = async (imageSrc: string, imageAlt: string) => {
+            try {
+                const response = await fetch(`../../src/assets/private-images/${imageSrc}`);
+                const blob = await response.blob();
+                const imageUrl = URL.createObjectURL(blob);
+                setImage({ src: imageUrl, alt: imageAlt });
+            } catch (_error) {
+                setImage(null)
+            }
+        }
+        importImage(entity!.image!.src, entity!.image!.alt)
+    }, [canLoadInternalImage, entity])
+
     if (!type || !Entities.includes(type)) {
         return <NotFound />
     }
 
     if (isLoading) {
-        return <Box {...DEFAULT_CONTAINER_PROPS}>
-            <Box display={"flex"} >
-                <Skeleton height={"50px"} w="100px" h={"100px"} borderRadius={LegendsSize.padding.normal} />
-                <Box>
-                    <Skeleton height={"1rem"} w={"10rem"} marginTop={"1rem"} marginLeft={"0.5rem"} />
-                    <Skeleton height={"1rem"} w={"30rem"} marginTop={"1rem"} marginLeft={"0.5rem"} />
-                </Box>
-            </Box>
-            <Box display={"flex"} gap="1rem" paddingTop={"1rem"} paddingBottom={"1rem"}>
-                {Array.from({ length: 4 }).map((_, index) => (
-                    <li key={`skeleton-stats-info-${index}`} style={{ listStyle: "none" }}>
-                        <Skeleton height={"1rem"} w={"10rem"} />
-                    </li>
-                ))}
-            </Box>
-            <SkeletonText noOfLines={5} lineHeight={"1rem"} />
-        </Box>
+        return <SkeletonPage />
     }
 
     return <Box {...DEFAULT_CONTAINER_PROPS}>
         <DashboardHeader onBackClick={() => Navigate(-1)} title={translate(CommonLabels, "Back")} />
         <BasicHeader
             title={entity?.title}
-            imageDetails={(entity?.image || { src: '', alt: '' })}
+            imageDetails={imageObject}
             position="right"
             subtitle={entity?.description} />
 
