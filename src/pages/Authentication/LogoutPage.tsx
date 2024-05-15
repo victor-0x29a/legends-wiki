@@ -1,6 +1,7 @@
-import { useContext, useMemo } from "react"
+import { useContext, useEffect, useMemo } from "react"
 import { AuthContext } from "../../contexts/auth.context"
 import { useNavigate } from "react-router-dom"
+import { Box, Text } from "@chakra-ui/react"
 
 export const LogoutPage = () => {
     const { token, logout } = useContext(AuthContext)
@@ -9,10 +10,16 @@ export const LogoutPage = () => {
 
     const hasToken = useMemo(() => Boolean(token), [token])
 
-    if (hasToken) {
-        logout()
-        return Navigate('/auth/login')
-    }
+    useEffect(() => {
+        if (hasToken) {
+            logout()
+            return Navigate('/auth/login')
+        }
+        return Navigate('/')
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [hasToken])
 
-    return Navigate('/')
+    return <Box>
+        <Text>Logout...</Text>
+    </Box>
 }
