@@ -60,5 +60,15 @@ export const CommonLabels: I18nData = {
         "en": "Admin",
         "es": "Admin",
         "pt-br": "Admin"
-    }
+    },
+    "List internal images": {
+        "en": "List of internal images",
+        "es": "Lista de imágenes internas",
+        "pt-br": "Lista de imagens internas"
+    },
+    "Image coppied": {
+        "en": "Image coppied",
+        "es": "Imagen copiada",
+        "pt-br": "Imagem copiada"
+    },
 }
