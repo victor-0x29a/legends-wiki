@@ -16,6 +16,10 @@ export const GlobalStyle = createGlobalStyle`
     font-style: normal;
 }
 
+*::selection {
+    background-color: ${LegendsColor.textColors.emphasis.secondary};
+}
+
 body {
     width: 100vw;
     height: 100vh;
