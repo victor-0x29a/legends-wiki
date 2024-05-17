@@ -1,6 +1,6 @@
 import { Box, FormLabel, Heading, Input, Switch } from "@chakra-ui/react"
 import { LegendsSize } from "../../styles/constants.style"
-import { useCallback, useContext, useState } from "react"
+import { useCallback, useContext, useMemo, useState } from "react"
 import { I18nContext } from "../../contexts/i18n.context"
 import { FormLabels } from "../../i18n/forms.i18n"
 import { EntityFormImageListModal } from "./EntityFormImageListModal"
@@ -22,8 +22,17 @@ export const EntityFormImage = ({
     value,
     isLoading = false
 }: EntityForImageProps) => {
-    const [isUsingImage, setIsUsingImage] = useState(false)
-    const [isUsingInternalImage, setIsUsingInternalImage] = useState(false)
+    const [isUsingImage, setIsUsingImage] = useState(value || false)
+
+    const defaultValueIsUsingImage = useMemo(() => {
+        if (!value) return false
+
+        const spplitedSrc = value.src.split(".")
+
+        return spplitedSrc.length == 2
+    }, [value])
+
+    const [isUsingInternalImage, setIsUsingInternalImage] = useState(defaultValueIsUsingImage)
 
     const onChangeData = useCallback((field: string, valueFromField: string) => {
         onChange({
