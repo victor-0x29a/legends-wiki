@@ -1,6 +1,6 @@
 import { Image, ImageProps } from "@chakra-ui/react"
 import { IEntityImageProps } from "./EntityImage.type"
-import { useMemo } from "react"
+import { useEffect, useMemo, useState } from "react"
 import { LegendsSize } from "../../styles/constants.style"
 
 const MountedImage = ({
@@ -16,24 +16,44 @@ const MountedImage = ({
 }
 
 const EntityImage = ({ image, others = {} }: IEntityImageProps) => {
+    const [internalImageAttrs, setInternalImageAttrs] = useState<null | { src: string, alt: string }>(null)
+
     const hasImage = useMemo(() => image !== null, [image])
+
+    const isInternalImage = useMemo(() => {
+        return !(image?.src || '').startsWith("https://")
+    }, [image?.src])
+
     const isValidImage = useMemo(() => {
         if (!hasImage) return false
 
-        const spplitedSrc = image!.src.split(" ")
-
-        const finalSrc = spplitedSrc[0].split(".")?.[1]
-
-        const imageExtensions = ["svg", "png", "jpg", "jpeg", "gif", "webp", "bmp", "ico"]
-
-        const isComponentImage = spplitedSrc.length === 1 && (imageExtensions.includes(finalSrc) || false)
-
-        if (isComponentImage) return true
+        if (isInternalImage) return true
 
         const srcImageIsValid = image!.src.startsWith("http") || image!.src.startsWith("data:image")
 
         return srcImageIsValid
-    }, [hasImage, image])
+    }, [hasImage, image, isInternalImage])
+
+    useEffect(() => {
+        const fetchImage = async (fileName: string, imageAlt: string) => {
+            try {
+                const response = await fetch(`../../src/assets/private-images/${fileName}`);
+                const blob = await response.blob();
+                const imageUrl = URL.createObjectURL(blob);
+                setInternalImageAttrs({ src: imageUrl, alt: imageAlt });
+            } catch (_error) {
+                setInternalImageAttrs(null)
+            }
+        }
+        if (isInternalImage) {
+            fetchImage(image!.src, image!.alt)
+        }
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [isInternalImage])
+
+    if (isInternalImage && internalImageAttrs) {
+        return <MountedImage src={internalImageAttrs.src} alt={internalImageAttrs.alt} />
+    }
 
     if (!hasImage) {
         return <MountedImage src="https://via.placeholder.com/150" alt="Any fallback image" />
