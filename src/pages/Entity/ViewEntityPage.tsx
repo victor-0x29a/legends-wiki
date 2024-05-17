@@ -7,12 +7,11 @@ import BasicHeader from "../../components/BasicHeader"
 import { LegendsSize } from "../../styles/constants.style"
 import StatsInfo from "../../components/StatsInfo"
 import { IItemStats } from "../../types/item.type"
-import { useContext, useEffect, useMemo, useState } from "react"
+import { useContext, useMemo } from "react"
 import MDEditor from "@uiw/react-md-editor"
 import { DashboardHeader } from "../Dashboard/Header"
 import { I18nContext } from "../../contexts/i18n.context"
 import { CommonLabels } from "../../i18n/commonLabels.i18n"
-import { ImageObject } from "../../types/entity.type"
 
 const DEFAULT_CONTAINER_PROPS = {
     paddingTop: LegendsSize.padding.normal,
@@ -49,35 +48,11 @@ export const ViewEntityPage = () => {
 
     const canCenterStats = useMemo(() => Object.keys(entity?.properties || {}).length < 3, [entity?.properties])
 
-    const canLoadInternalImage = useMemo(() => {
-        if (!entity || isLoading) return false
-        return !(entity.image?.src || '').startsWith("https://")
-    }, [entity, isLoading])
-
-    const [image, setImage] = useState<ImageObject | null>(null)
-
     const imageObject = useMemo(() => {
-        if (canLoadInternalImage && image) return image
-
-        if (!entity?.image || (canLoadInternalImage && !image)) return { src: '', alt: '' }
+        if (!entity?.image) return { src: '', alt: '' }
 
         return { src: entity?.image?.src, alt: entity?.image?.alt }
-    }, [canLoadInternalImage, entity?.image, image])
-
-    useEffect(() => {
-        if (!canLoadInternalImage) return
-        const importImage = async (imageSrc: string, imageAlt: string) => {
-            try {
-                const response = await fetch(`../../src/assets/private-images/${imageSrc}`);
-                const blob = await response.blob();
-                const imageUrl = URL.createObjectURL(blob);
-                setImage({ src: imageUrl, alt: imageAlt });
-            } catch (_error) {
-                setImage(null)
-            }
-        }
-        importImage(entity!.image!.src, entity!.image!.alt)
-    }, [canLoadInternalImage, entity])
+    }, [entity?.image])
 
     if (!type || !Entities.includes(type)) {
         return <NotFound />
