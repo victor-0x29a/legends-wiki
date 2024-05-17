@@ -19,7 +19,7 @@ interface FindOneEntity extends Entity {
     updatedAt: string
 }
 
-export type CreateEntity = {
+export interface CreateEntity {
     title: string
     properties: object
     description: string
@@ -28,6 +28,8 @@ export type CreateEntity = {
     sections: string | null
     type: string
 }
+
+export interface EditEntityPayload extends Partial<Entity> { }
 
 export type EntityFilters = {
     page: number
@@ -41,7 +43,7 @@ export type MinimalEntity = {
     type: string
 }
 
-export type ListEntityResponse = {
+export interface ListEntityResponse {
     page: number
     perPage: number
     totalPages: number
