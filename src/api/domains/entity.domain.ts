@@ -1,4 +1,4 @@
-import { CreateEntity, EntityFilters, ListEntityResponse } from "../../types/entity.type";
+import { CreateEntity, EditEntityPayload, EntityFilters, ListEntityResponse } from "../../types/entity.type";
 import { CreateServerInstance } from "../instance";
 import { extractData } from "../utils/extract-data";
 import { getError } from "../utils/get-error";
@@ -13,10 +13,13 @@ const Delete = (id: number) => CreateServerInstance().delete(`/entity/${id}`).ca
 
 const View = (id: number) => CreateServerInstance().get(`/entity/${id}`).then(extractData).catch(getError)
 
+const Edit = (id: number, data: EditEntityPayload) => CreateServerInstance().put(`/entity/${id}`, data).catch(getError)
+
 
 export const EntityDomain = {
     Create,
     List,
     Delete,
-    View
+    View,
+    Edit
 }
