@@ -1,6 +1,6 @@
 import { Image, ImageProps } from "@chakra-ui/react"
 import { IEntityImageProps } from "./EntityImage.type"
-import { useEffect, useMemo, useState } from "react"
+import { useCallback, useEffect, useMemo, useState } from "react"
 import { LegendsSize } from "../../styles/constants.style"
 
 const MountedImage = ({
@@ -24,6 +24,8 @@ const EntityImage = ({ image, others = {} }: IEntityImageProps) => {
         return !(image?.src || '').startsWith("https://")
     }, [image?.src])
 
+    const [isFetchingImage, setIsFetchingImage] = useState(false)
+
     const isValidImage = useMemo(() => {
         if (!hasImage) return false
 
@@ -34,17 +36,22 @@ const EntityImage = ({ image, others = {} }: IEntityImageProps) => {
         return srcImageIsValid
     }, [hasImage, image, isInternalImage])
 
-    useEffect(() => {
-        const fetchImage = async (fileName: string, imageAlt: string) => {
-            try {
-                const response = await fetch(`../../src/assets/private-images/${fileName}`);
-                const blob = await response.blob();
-                const imageUrl = URL.createObjectURL(blob);
-                setInternalImageAttrs({ src: imageUrl, alt: imageAlt });
-            } catch (_error) {
-                setInternalImageAttrs(null)
-            }
+    const fetchImage = useCallback(async (fileName: string, imageAlt: string) => {
+        if (isFetchingImage) return
+        setIsFetchingImage(true)
+        try {
+            const response = await fetch(`../../src/assets/private-images/${fileName}`);
+            const blob = await response.blob();
+            const imageUrl = URL.createObjectURL(blob);
+            setInternalImageAttrs({ src: imageUrl, alt: imageAlt });
+        } catch (_error) {
+            setInternalImageAttrs(null)
+        } finally {
+            setIsFetchingImage(false)
         }
+    }, [isFetchingImage])
+
+    useEffect(() => {
         if (isInternalImage) {
             fetchImage(image!.src, image!.alt)
         }
