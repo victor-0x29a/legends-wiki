@@ -4,6 +4,9 @@ import { useCallback, useContext, useState } from "react"
 import { I18nContext } from "../../contexts/i18n.context"
 import { FormLabels } from "../../i18n/forms.i18n"
 import { EntityFormImageListModal } from "./EntityFormImageListModal"
+import { IconWrapper } from "../../components/IconWrapper/IconWrapper"
+import { InfoIcon } from "@chakra-ui/icons"
+import { IconWrapperCustomCss } from "./EntityFormImageStyles"
 
 type EntityForImageProps = {
     onChange: (value: object) => void,
@@ -37,8 +40,14 @@ export const EntityFormImage = ({
 
     return (
         <Box>
-            <Heading size={"md"} marginTop={LegendsSize.margin.normal} marginBottom={LegendsSize.margin.small} onClick={toggleModalOfFiles}>
+            <Heading size={"md"} marginTop={LegendsSize.margin.normal} marginBottom={LegendsSize.margin.small}>
                 {translate(FormLabels, "Image")}
+                <IconWrapper customCss={IconWrapperCustomCss}>
+                    <InfoIcon
+                        onClick={toggleModalOfFiles}
+                        cursor={"pointer"}
+                    />
+                </IconWrapper>
             </Heading>
             <Box display={"flex"}>
                 <Box>
