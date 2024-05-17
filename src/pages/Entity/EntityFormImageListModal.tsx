@@ -1,6 +1,6 @@
 import { useCallback, useContext, useEffect, useState } from "react"
 import { I18nContext } from "../../contexts/i18n.context"
-import { CircularProgress, Heading, List, ListItem, Modal, ModalBody, ModalCloseButton, ModalContent, ModalOverlay } from "@chakra-ui/react"
+import { Box, CircularProgress, Heading, List, ListItem, Modal, ModalBody, ModalCloseButton, ModalContent, ModalOverlay } from "@chakra-ui/react"
 import { LegendsColor, LegendsSize, LegendsValues } from "../../styles/constants.style"
 import { CommonLabels } from "../../i18n/commonLabels.i18n"
 import { useAlert } from "../../hooks/useAlert"
@@ -22,9 +22,13 @@ export const EntityFormImageListModal = ({
     const { alert } = useAlert()
 
     const copyFileName = useCallback((fileName: string) => {
-        alert({ text: translate(CommonLabels, "Image coppied"), type: "success" })
+        alert({ text: translate(CommonLabels, "Name of file has coppied"), type: "success" })
         return navigator.clipboard.writeText(fileName)
     }, [alert, translate])
+
+    const [isLoading, setIsLoading] = useState(true)
+
+    const changeIsLoading = useCallback(() => setTimeout(() => setIsLoading((curr) => !curr), 800), [])
 
     useEffect(() => {
         if (!isOpennedModalOfFiles) return
@@ -37,22 +41,34 @@ export const EntityFormImageListModal = ({
                     setLoadingProgress(80)
                     return data.json().then(setInternalFilesList)
                 })
-                .finally(() => setLoadingProgress(100))
+                .finally(() => {
+                    setLoadingProgress(100)
+                    changeIsLoading()
+                })
         }, 1300)
-    }, [isOpennedModalOfFiles])
+    }, [changeIsLoading, isOpennedModalOfFiles])
 
-    return <Modal isOpen={isOpennedModalOfFiles} onClose={toggleModalOfFiles}>
+    const onClose = useCallback(() => {
+        if (isLoading) return
+        setIsLoading(true)
+        setLoadingProgress(0)
+        toggleModalOfFiles()
+    }, [toggleModalOfFiles, isLoading])
+
+    return <Modal isOpen={isOpennedModalOfFiles} onClose={onClose}>
         <ModalOverlay />
         <ModalContent color={LegendsColor.textColors.gray} bgColor={LegendsColor.backgroundColors.primary}>
             <ModalCloseButton />
             <ModalBody>
-                {(loadingProgress !== 100) ? (
-                    <CircularProgress value={loadingProgress} />
+                <Heading as="h6" fontSize={LegendsSize.fontSize.large} marginBottom={2}>
+                    {translate(CommonLabels, 'List internal images')}
+                </Heading>
+                {isLoading ? (
+                    <Box display={"flex"} justifyContent={"center"}>
+                        <CircularProgress value={loadingProgress} marginTop={"1rem"} />
+                    </Box>
                 ) : (
                     <>
-                        <Heading as="h6" fontSize={LegendsSize.fontSize.large} marginBottom={2}>
-                            {translate(CommonLabels, 'List internal images')}
-                        </Heading>
                         <List
                             minH="200px"
                             maxH="200px"
@@ -68,6 +84,8 @@ export const EntityFormImageListModal = ({
                                     _hover={{
                                         color: LegendsColor.textColors.gray
                                     }}
+                                    userSelect={"none"}
+                                    textAlign={"center"}
                                     onClick={() => copyFileName(file)}
                                 >
                                     {file}

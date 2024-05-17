@@ -66,9 +66,9 @@ export const CommonLabels: I18nData = {
         "es": "Lista de imágenes internas",
         "pt-br": "Lista de imagens internas"
     },
-    "Image coppied": {
-        "en": "Image coppied",
-        "es": "Imagen copiada",
-        "pt-br": "Imagem copiada"
+    "Name of file has coppied": {
+        "en": "Name of archive has coppied",
+        "es": "Nombre del archivo copiado",
+        "pt-br": "Nome do arquivo copiado"
     },
 }

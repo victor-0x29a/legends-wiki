@@ -3,6 +3,7 @@ import { LegendsSize } from "../../styles/constants.style"
 import { useCallback, useContext, useState } from "react"
 import { I18nContext } from "../../contexts/i18n.context"
 import { FormLabels } from "../../i18n/forms.i18n"
+import { EntityFormImageListModal } from "./EntityFormImageListModal"
 
 type EntityForImageProps = {
     onChange: (value: object) => void,
@@ -12,7 +13,6 @@ type EntityForImageProps = {
     } | null,
     isLoading?: boolean
 }
-
 
 export const EntityFormImage = ({
     onChange,
@@ -31,9 +31,13 @@ export const EntityFormImage = ({
 
     const { translate } = useContext(I18nContext)
 
+    const [isOpennedModalOfFiles, setIsOpennedModalOfFiles] = useState(false)
+
+    const toggleModalOfFiles = useCallback(() => setIsOpennedModalOfFiles((curr) => !curr), [])
+
     return (
         <Box>
-            <Heading size={"md"} marginTop={LegendsSize.margin.normal} marginBottom={LegendsSize.margin.small}>
+            <Heading size={"md"} marginTop={LegendsSize.margin.normal} marginBottom={LegendsSize.margin.small} onClick={toggleModalOfFiles}>
                 {translate(FormLabels, "Image")}
             </Heading>
             <Box display={"flex"}>
@@ -60,6 +64,9 @@ export const EntityFormImage = ({
                     </Box>
                 </Box>
             )}
+            <EntityFormImageListModal
+                isOpennedModalOfFiles={isOpennedModalOfFiles} toggleModalOfFiles={toggleModalOfFiles}
+            />
         </Box>
     )
 }
