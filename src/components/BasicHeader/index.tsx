@@ -1,6 +1,7 @@
 import { useMemo } from "react"
 import { BasicHeaderContainer } from "./BasicHeader.style"
 import { IBasicHeaderProps } from "./BasicHeader.type"
+import EntityImage from "../EntityImage/EntityImage"
 
 const BasicHeader = ({
     imageDetails,
@@ -16,7 +17,10 @@ const BasicHeader = ({
     return (
         <BasicHeaderContainer className={position}>
             <div className="content">
-                {hasImage ? <img src={imageDetails!.src} alt={imageDetails!.alt} />: icon}
+                {hasImage ? <EntityImage image={{
+                    src: imageDetails!.src,
+                    alt: imageDetails!.alt
+                }} /> : icon}
                 {isBottom && bottomChild}
             </div>
 
