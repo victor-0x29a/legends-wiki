@@ -71,4 +71,9 @@ export const CommonLabels: I18nData = {
         "es": "Nombre del archivo copiado",
         "pt-br": "Nome do arquivo copiado"
     },
+    "Hub": {
+        "en": "Hub",
+        "es": "Hub",
+        "pt-br": "Hub"
+    },
 }
