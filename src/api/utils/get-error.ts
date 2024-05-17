@@ -25,6 +25,10 @@ export const getError = (error: unknown) => {
             return ["Internal error"]
         }
 
+        const errorList = responseData?.errorList
+
+        if (!errorList || !Array.isArray(errorList)) return ["Internal error"]
+
         return responseData?.errorList
     }()
 
