@@ -8,6 +8,7 @@ import { ListEntityPage } from "./pages/Entity/ListEntityPage";
 import Layout from "./layout";
 import { ViewEntityPage } from "./pages/Entity/ViewEntityPage";
 import { LogoutPage } from "./pages/Authentication/LogoutPage";
+import { EditEntityPage } from "./pages/Entity/EditEntityPage";
 
 export const router = createBrowserRouter([
     {
@@ -40,6 +41,12 @@ export const router = createBrowserRouter([
                 path: ":type/:id",
                 element: <PrivateRoute forProtect={true}>
                     <ViewEntityPage />
+                </PrivateRoute>
+            },
+            {
+                path: "edit/:id",
+                element: <PrivateRoute forProtect={true}>
+                    <EditEntityPage />
                 </PrivateRoute>
             }
         ]
