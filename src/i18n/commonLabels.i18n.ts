@@ -76,4 +76,9 @@ export const CommonLabels: I18nData = {
         "es": "Hub",
         "pt-br": "Hub"
     },
+    "Entity has updated": {
+        "en": "Entity has updated",
+        "es": "Entidad ha sido actualizada",
+        "pt-br": "Entidade foi atualizada"
+    }
 }
