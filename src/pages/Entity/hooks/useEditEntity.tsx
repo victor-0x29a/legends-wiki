@@ -7,6 +7,7 @@ import { I18nContext } from "../../../contexts/i18n.context"
 import { CommonLabels } from "../../../i18n/commonLabels.i18n"
 import { EntityModel } from "../../../api"
 import { useNavigate } from "react-router-dom"
+import { useError } from "../../../hooks/useError"
 
 interface useEditEntityProps {
     isLoading: boolean
@@ -23,6 +24,10 @@ export const useEditEntity = (id: number): useEditEntityProps => {
     const {
         alert
     } = useAlert()
+
+    const {
+        translateErrors
+    } = useError()
 
     const {
         translate
@@ -42,6 +47,7 @@ export const useEditEntity = (id: number): useEditEntityProps => {
 
         if (!hasPayload) {
             setIsLoading(false)
+            Navigate(-1)
             return alert({
                 text: translate(CommonLabels, "Entity has updated"),
                 type: "success"
@@ -56,8 +62,14 @@ export const useEditEntity = (id: number): useEditEntityProps => {
                 })
                 Navigate(-1)
             })
+            .catch((errors) => {
+                translateErrors(errors)!
+                    .forEach((error) => {
+                        alert({ text: error })
+                    })
+            })
             .finally(() => setIsLoading(false))
-    }, [Navigate, alert, id, originalData, translate])
+    }, [Navigate, alert, id, originalData, translate, translateErrors])
 
     return {
         originalData,
