@@ -13,7 +13,7 @@ import { I18nContext } from "../../contexts/i18n.context"
 import { FormLabels } from "../../i18n/forms.i18n"
 import { EntityList } from "../../i18n/entity.i18n"
 
-type initialValues = {
+export type initialValuesEntityForm = {
     title: string,
     properties: IItemStats,
     description: string,
@@ -26,9 +26,9 @@ type initialValues = {
     type: string,
 }
 
-type IEntityFormProps = {
-    initialValues: initialValues,
-    onSubmit: (values: initialValues) => void,
+interface IEntityFormProps {
+    initialValues: initialValuesEntityForm,
+    onSubmit: (values: initialValuesEntityForm) => void,
     isLoading?: boolean,
     isEdition?: boolean
 }
@@ -91,28 +91,83 @@ export const EntityForm = ({
 
     return (
         <FormControl as="form" onSubmit={onFormSubmit}>
-            <FormLabel>{translate(FormLabels, "Author")}</FormLabel>
-            <Input placeholder={translate(FormLabels, "Not required")} name="author" required={false} onChange={formik.handleChange} value={formik.values?.author || ""} disabled={isLoading} />
-            <FormError errorData={formik.errors.author} />
-            <FormLabel>{translate(FormLabels, "Title")}</FormLabel>
-            <Input name="title" placeholder={translate(FormLabels, "Put a title")} onChange={formik.handleChange} value={formik.values.title} disabled={isLoading} />
+            <FormLabel>
+                {translate(FormLabels, "Author")}
+            </FormLabel>
+            <Input
+                placeholder={translate(FormLabels, "Not required")}
+                name="author"
+                required={false}
+                onChange={formik.handleChange}
+                value={formik.values?.author || ""}
+                disabled={isLoading}
+            />
+            <FormError
+                errorData={formik.errors.author}
+            />
+            <FormLabel>
+                {translate(FormLabels, "Title")}
+            </FormLabel>
+            <Input
+                name="title"
+                placeholder={translate(FormLabels, "Put a title")}
+                onChange={formik.handleChange}
+                value={formik.values.title}
+                disabled={isLoading}
+            />
             <FormError errorData={formik.errors.title} />
-            <FormLabel>{translate(FormLabels, "Description")}</FormLabel>
-            <Input placeholder={translate(FormLabels, "Put a description")} name="description" onChange={formik.handleChange} value={formik.values.description} disabled={isLoading} />
+            <FormLabel>
+                {translate(FormLabels, "Description")}
+            </FormLabel>
+            <Input
+                placeholder={translate(FormLabels, "Put a description")}
+                name="description"
+                onChange={formik.handleChange}
+                value={formik.values.description}
+                disabled={isLoading}
+            />
             <FormError errorData={formik.errors.description} />
-            <FormLabel>{translate(FormLabels, "Entity type")}</FormLabel>
-            <RadioGroup defaultValue={entityTypesArray[0]} name="type" value={formik.values.type}>
+            <FormLabel>
+                {translate(FormLabels, "Entity type")}
+            </FormLabel>
+            <RadioGroup
+                defaultValue={entityTypesArray[0]}
+                name="type"
+                value={formik.values.type}
+            >
                 <HStack>
                     {entityTypesArray.map((type, index) => (
-                        <Radio value={type} key={`${index}-ratio-item-entity-creation`} isDisabled={isLoading} onClick={() => formik.setFieldValue("type", type)}>{translate(EntityList, entityTypes?.[type])}</Radio>
+                        <Radio
+                            value={type}
+                            key={`${index}-ratio-item-entity-creation`}
+                            isDisabled={isLoading} onClick={() => formik.setFieldValue("type", type)}>
+                            {translate(EntityList, entityTypes?.[type])}
+                        </Radio>
                     ))}
                 </HStack>
             </RadioGroup>
             <FormError errorData={formik.errors.type} />
-            <EntityFormProperties onChange={(value) => formik.setFieldValue('properties', value)} value={formik.values.properties} isLoading={isLoading} />
-            <EntityFormImage onChange={(value) => formik.setFieldValue('image', value)} value={formik.values.image} isLoading={isLoading} />
-            <EntityFormSections onChange={(value) => formik.setFieldValue('sections', value)} value={formik.values.sections} isLoading={isLoading} />
-            <Button marginTop={LegendsSize.margin.normal} w="100%" colorScheme="green" type="submit" marginBottom={LegendsSize.margin.large}>
+            <EntityFormProperties
+                onChange={(value) => formik.setFieldValue('properties', value)}
+                value={formik.values.properties}
+                isLoading={isLoading}
+            />
+            <EntityFormImage
+                onChange={(value) => formik.setFieldValue('image', value)}
+                value={formik.values.image}
+                isLoading={isLoading}
+            />
+            <EntityFormSections
+                onChange={(value) => formik.setFieldValue('sections', value)}
+                value={formik.values.sections}
+                isLoading={isLoading} />
+            <Button
+                marginTop={LegendsSize.margin.normal}
+                w="100%"
+                colorScheme="green"
+                type="submit"
+                marginBottom={LegendsSize.margin.large}
+            >
                 {isEdition ? translate(FormLabels, "Edit") : translate(FormLabels, "Create")}
             </Button>
         </FormControl>
