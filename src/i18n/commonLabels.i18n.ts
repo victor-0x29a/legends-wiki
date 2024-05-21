@@ -80,5 +80,10 @@ export const CommonLabels: I18nData = {
         "en": "Entity has updated",
         "es": "Entidad ha sido actualizada",
         "pt-br": "Entidade foi atualizada"
-    }
+    },
+    "Edit entity": {
+        "en": "Edit entity",
+        "es": "Editar entidad",
+        "pt-br": "Editar entidade"
+    },
 }
