@@ -31,9 +31,7 @@ Run: `yarn storybook`
 
 Run: `yarn test`
 
-And to run the cypress, install all dependencies from [cypress docs](https://docs.cypress.io/guides/getting-started/installing-cypress)
-
-Now, run `yarn cy:open`
+And to run the cypress, install all dependencies from [cypress docs](https://docs.cypress.io/guides/getting-started/installing-cypress) and run `yarn cy:open`
 
 # Conventional commits for this project
 
