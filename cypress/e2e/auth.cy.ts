@@ -1,4 +1,4 @@
-describe('template spec', () => {
+describe('auth spec', () => {
   it('defined', () => {
     cy.visit('/auth')
   })
