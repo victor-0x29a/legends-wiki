@@ -57,21 +57,50 @@ export const EntityFormProperties = ({
     }, [onChange, value])
 
     return <>
-        <Heading size={"md"} marginTop={LegendsSize.margin.normal} marginBottom={LegendsSize.margin.small}>{translate(FormLabels, "Properties")}</Heading>
+        <Heading
+            size={"md"}
+            marginTop={LegendsSize.margin.normal}
+            marginBottom={LegendsSize.margin.small}
+        >
+            {translate(FormLabels, "Properties")}
+        </Heading>
         <Box w={"100%"}>
-            <Box display={"flex"} justifyContent={"space-between"} w="100%">
+            <Box
+                display={"flex"}
+                justifyContent={"space-between"}
+                w="100%"
+            >
                 <Box w={"35%"}>
-                    <FormLabel>{translate(FormLabels, "Name of the property")}</FormLabel>
-                    <Input value={form.name} placeholder={translate(FormLabels, "Put the name")} type="text" onChange={(event) => setForm((curr) => ({ ...curr, name: event.target.value }))} disabled={isLoading} />
+                    <FormLabel>
+                        {translate(FormLabels, "Name of the property")}
+                    </FormLabel>
+                    <Input
+                        value={form.name}
+                        placeholder={translate(FormLabels, "Put the name")}
+                        type="text"
+                        onChange={(event) => setForm((curr) => ({ ...curr, name: event.target.value }))}
+                        disabled={isLoading}
+                    />
                 </Box>
                 <Box w={"35%"}>
-                    <FormLabel>{translate(FormLabels, "Value of the property")}</FormLabel>
-                    <Input value={form.value} placeholder={translate(FormLabels, "Put the value")} type="text"
-                        onChange={(event) => setForm((curr) => ({ ...curr, value: event.target.value }))} disabled={isLoading} />
+                    <FormLabel>
+                        {translate(FormLabels, "Value of the property")}
+                    </FormLabel>
+                    <Input
+                        value={form.value}
+                        placeholder={translate(FormLabels, "Put the value")}
+                        type="text"
+                        onChange={(event) => setForm((curr) => ({ ...curr, value: event.target.value }))} disabled={isLoading}
+                    />
                 </Box>
 
                 <Box w={"25%"} display={"flex"} alignItems={"end"}>
-                    <Button colorScheme="green" w={"90%"} onClick={onSubmit}>{translate(FormLabels, "Add")}</Button>
+                    <Button
+                        colorScheme="green"
+                        w={"90%"}
+                        onClick={onSubmit}>
+                        {translate(FormLabels, "Add")}
+                    </Button>
                 </Box>
             </Box>
             {showTable && (
@@ -79,9 +108,15 @@ export const EntityFormProperties = ({
                     <Table size="md">
                         <Thead>
                             <Tr>
-                                <Th color={LegendsColor.textColors.white}>{translate(FormLabels, "Property")}</Th>
-                                <Th color={LegendsColor.textColors.white}>{translate(FormLabels, "Value")}</Th>
-                                <Th color={LegendsColor.textColors.white}>{translate(FormLabels, "Action")}</Th>
+                                <Th color={LegendsColor.textColors.white}>
+                                    {translate(FormLabels, "Property")}
+                                </Th>
+                                <Th color={LegendsColor.textColors.white}>
+                                    {translate(FormLabels, "Value")}
+                                </Th>
+                                <Th color={LegendsColor.textColors.white}>
+                                    {translate(FormLabels, "Action")}
+                                </Th>
                             </Tr>
                         </Thead>
                         <Tbody>

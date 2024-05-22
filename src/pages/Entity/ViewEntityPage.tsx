@@ -20,15 +20,32 @@ const DEFAULT_CONTAINER_PROPS = {
 const SkeletonPage = () => {
     return <Box {...DEFAULT_CONTAINER_PROPS}>
         <Box display={"flex"} >
-            <Skeleton height={"50px"} w="100px" h={"100px"} borderRadius={LegendsSize.padding.normal} />
+            <Skeleton
+                height={"50px"}
+                w="100px"
+                h={"100px"}
+                borderRadius={LegendsSize.padding.normal}
+            />
             <Box>
-                <Skeleton height={"1rem"} w={"10rem"} marginTop={"1rem"} marginLeft={"0.5rem"} />
-                <Skeleton height={"1rem"} w={"30rem"} marginTop={"1rem"} marginLeft={"0.5rem"} />
+                <Skeleton
+                    height={"1rem"} w={"10rem"}
+                    marginTop={"1rem"} marginLeft={"0.5rem"}
+                />
+                <Skeleton
+                    height={"1rem"} w={"30rem"}
+                    marginTop={"1rem"} marginLeft={"0.5rem"}
+                />
             </Box>
         </Box>
-        <Box display={"flex"} gap="1rem" paddingTop={"1rem"} paddingBottom={"1rem"}>
+        <Box
+            display={"flex"} gap="1rem"
+            paddingTop={"1rem"} paddingBottom={"1rem"}
+        >
             {Array.from({ length: 4 }).map((_, index) => (
-                <li key={`skeleton-stats-info-${index}`} style={{ listStyle: "none" }}>
+                <li
+                    key={`skeleton-stats-info-${index}`}
+                    style={{ listStyle: "none" }}
+                >
                     <Skeleton height={"1rem"} w={"10rem"} />
                 </li>
             ))}
@@ -63,7 +80,10 @@ export const ViewEntityPage = () => {
     }
 
     return <Box {...DEFAULT_CONTAINER_PROPS}>
-        <DashboardHeader onBackClick={() => Navigate(-1)} title={translate(CommonLabels, "Back")} />
+        <DashboardHeader
+            onBackClick={() => Navigate(-1)}
+            title={translate(CommonLabels, "Back")}
+        />
         <BasicHeader
             title={entity?.title}
             imageDetails={imageObject}
