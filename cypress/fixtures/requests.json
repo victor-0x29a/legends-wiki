@@ -69,6 +69,131 @@
                     "totalPages": 1,
                     "entries": []
                 }
+            },
+            {
+                "statusCode": 200,
+                "headers": {
+                    "content-type": "application/json"
+                },
+                "body": {
+                    "page": 1,
+                    "perPage": 10,
+                    "totalPages": 2,
+                    "entries": [
+                        {
+                           "id":1,
+                           "title":"Artico 2",
+                           "image":{
+                              "src":"cd8aac35ff466cd7a4b68dc1456ff25d.jpg",
+                              "alt":"Urso polar"
+                           },
+                           "type":"item"
+                        },
+                        {
+                           "id":2,
+                           "title":"Artico 3",
+                           "image":{
+                              "src":"cd8aac35ff466cd7a4b68dc1456ff25d.jpg",
+                              "alt":"Urso polar"
+                           },
+                           "type":"item"
+                        },
+                        {
+                           "id":3,
+                           "title":"Artico 4",
+                           "image":{
+                              "src":"cd8aac35ff466cd7a4b68dc1456ff25d.jpg",
+                              "alt":"Urso polar"
+                           },
+                           "type":"item"
+                        },
+                        {
+                            "id":4,
+                            "title":"Artico 5",
+                            "image":{
+                               "src":"cd8aac35ff466cd7a4b68dc1456ff25d.jpg",
+                               "alt":"Urso polar"
+                            },
+                            "type":"item"
+                        },
+                        {
+                            "id": 5,
+                            "title":"Artico 6",
+                            "image":{
+                               "src":"cd8aac35ff466cd7a4b68dc1456ff25d.jpg",
+                               "alt":"Urso polar"
+                            },
+                            "type":"item"
+                        },
+                        {
+                            "id": 6,
+                            "title":"Artico 7",
+                            "image":{
+                               "src":"cd8aac35ff466cd7a4b68dc1456ff25d.jpg",
+                               "alt":"Urso polar"
+                            },
+                            "type":"item"
+                        },
+                        {
+                            "id": 7,
+                            "title":"Artico 8",
+                            "image":{
+                               "src":"cd8aac35ff466cd7a4b68dc1456ff25d.jpg",
+                               "alt":"Urso polar"
+                            },
+                            "type":"item"
+                        },
+                        {
+                            "id": 9,
+                            "title":"Artico 15",
+                            "image":{
+                               "src":"cd8aac35ff466cd7a4b68dc1456ff25d.jpg",
+                               "alt":"Urso polar"
+                            },
+                            "type":"item"
+                        },
+                        {
+                            "id": 44,
+                            "title":"Artico 12",
+                            "image":{
+                               "src":"cd8aac35ff466cd7a4b68dc1456ff25d.jpg",
+                               "alt":"Urso polar"
+                            },
+                            "type":"item"
+                        },
+                        {
+                            "id": 301,
+                            "title":"Artico xpto",
+                            "image":{
+                               "src":"cd8aac35ff466cd7a4b68dc1456ff25d.jpg",
+                               "alt":"Urso polar"
+                            },
+                            "type":"item"
+                        }
+                    ]
+                }
+            },
+            {
+                "statusCode": 200,
+                "headers": {
+                    "content-type": "application/json"
+                },
+                "body": {
+                    "page": 2,
+                    "perPage": 10,
+                    "totalPages": 2,
+                    "entries": [
+                        {
+                            "id": 99,
+                            "title":"Artico full",
+                            "image":{
+                               "src":"cd8aac35ff466cd7a4b68dc1456ff25d.jpg",
+                               "alt":"Urso polar"
+                            },
+                            "type":"item"
+                        }
+                    ]
+                }
             }
         ]
     }
