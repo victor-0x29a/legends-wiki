@@ -11,8 +11,13 @@ export const useError = () => {
 
     const { alert } = useAlert()
 
-    const translateErrors = useCallback((errorList: string[]): string[] | void => {
+    const translateErrors = useCallback((errorList: string[], isLogin?: boolean): string[] | void => {
         if (errorList.includes("Required authentication") || errorList.includes("Token not provided.") || errorList.includes("Token invalid.")) {
+
+            if (errorList.includes('Required authentication') && isLogin) {
+                return alert({ text: translate(ErrorList, "User or password incorrect") })
+            }
+
             alert({ text: translate(ErrorList, "Required authentication") })
             return logout()
         }

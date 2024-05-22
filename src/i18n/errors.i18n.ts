@@ -55,5 +55,10 @@ export const ErrorList: I18nData = {
         "en": "Already exists a property with this name.",
         "es": "Ya existe una propiedad con este nombre.",
         "pt-br": "Já existe uma propriedade com esse nome."
+    },
+    "User or password incorrect": {
+        "en": "User or password incorrect",
+        "es": "Usuario o contraseña incorrectos",
+        "pt-br": "Usuário ou senha incorretos"
     }
 }

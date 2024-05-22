@@ -40,8 +40,8 @@ export const AuthenticationPage = () => {
                 authenticate(token)
                 alert({ text: translate(FormLabels, "Login successful"), type: "success" })
             }).catch((errorList) => {
-                const errors = translateErrors(errorList)
-                errors!.forEach((error) => alert({ text: error }))
+                const errors = translateErrors(errorList, true)
+                errors && errors!.forEach((error) => alert({ text: error }))
             }).finally(() => {
                 setIsLoading(false)
             })
