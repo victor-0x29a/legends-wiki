@@ -38,6 +38,14 @@ export const useEditEntity = (id: number): useEditEntityProps => {
         isLoading: isLoadingEntity
     } = useEntity(id)
 
+    const onSuccessCallback = useCallback(() => {
+        Navigate(-1)
+        alert({
+            text: translate(CommonLabels, "Entity has updated"),
+            type: "success"
+        })
+    }, [Navigate, alert, translate])
+
     const Edit = useCallback((data: Record<string, unknown>) => {
         setIsLoading(true)
 
@@ -47,20 +55,12 @@ export const useEditEntity = (id: number): useEditEntityProps => {
 
         if (!hasPayload) {
             setIsLoading(false)
-            Navigate(-1)
-            return alert({
-                text: translate(CommonLabels, "Entity has updated"),
-                type: "success"
-            })
+            return onSuccessCallback()
         }
 
         EntityModel.edit(Number(id), payload)
             .then(() => {
-                alert({
-                    text: translate(CommonLabels, "Entity has updated"),
-                    type: "success"
-                })
-                Navigate(-1)
+                onSuccessCallback()
             })
             .catch((errors) => {
                 translateErrors(errors)!
@@ -69,7 +69,7 @@ export const useEditEntity = (id: number): useEditEntityProps => {
                     })
             })
             .finally(() => setIsLoading(false))
-    }, [Navigate, alert, id, originalData, translate, translateErrors])
+    }, [alert, id, onSuccessCallback, originalData, translateErrors])
 
     return {
         originalData,
