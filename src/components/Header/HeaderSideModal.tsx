@@ -71,7 +71,12 @@ export const HeaderSideModal = ({
                     top: 0,
                     left: 0
                 }}>
-                <Box zIndex={100} width={'100vw'} height={'100vh'} backgroundColor={"rgba(0, 0,0, 0.4)"} />
+                <Box
+                    zIndex={100}
+                    width={'100vw'}
+                    height={'100vh'}
+                    backgroundColor={"rgba(0, 0,0, 0.4)"}
+                />
             </Fade>}
             <Slide
                 in={isOpen}

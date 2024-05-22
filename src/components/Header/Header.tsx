@@ -33,24 +33,54 @@ export const Header = () => {
     }, [onChangeLocale])
 
     return (
-        <Box as="header" w={"100%"} padding={LegendsSize.padding.small} display={"flex"} bgColor={LegendsColor.backgroundColors.secondary} boxShadow={`0 0 10px ${LegendsColor.backgroundColors.secondary}`} justifyContent={"space-between"} alignItems={"center"}>
-            <Image src={Logo} alt="Legends logo" objectFit={"cover"} width={"120px"} />
-            <Box display={"flex"} flexDirection={"row"} justifyContent={"flex-end"} alignItems={"center"} gap="1rem">
+        <Box
+            as="header"
+            w={"100%"}
+            padding={LegendsSize.padding.small}
+            display={"flex"}
+            bgColor={LegendsColor.backgroundColors.secondary}
+            boxShadow={`0 0 10px ${LegendsColor.backgroundColors.secondary}`}
+            justifyContent={"space-between"}
+            alignItems={"center"}
+        >
+            <Image
+                src={Logo}
+                alt="Legends logo"
+                objectFit={"cover"}
+                width={"120px"}
+            />
+            <Box
+                display={"flex"}
+                flexDirection={"row"}
+                justifyContent={"flex-end"}
+                alignItems={"center"}
+                gap="1rem"
+            >
                 <Box display={"inline-block"}>
-                    <Select options={I18nLanguages} onSelect={onLanguageSelect} placeholder="I18N" others={{
-                        variant: "filled",
-                        bgColor: 'transparent',
-                        css: I18nStyle,
-                        placeholder: null,
-                        icon: (<IconWrapper lightMode={true}>
-                            <BiCaretDown />
-                        </IconWrapper>),
-                        cursor: "pointer"
-                    }} />
+                    <Select
+                        options={I18nLanguages}
+                        onSelect={onLanguageSelect}
+                        placeholder="I18N"
+                        others={{
+                            variant: "filled",
+                            bgColor: 'transparent',
+                            css: I18nStyle,
+                            placeholder: null,
+                            icon: (<IconWrapper lightMode={true}>
+                                <BiCaretDown />
+                            </IconWrapper>),
+                            cursor: "pointer"
+                        }}
+                    />
                 </Box>
                 <Fade in={!isOpenModal}>
                     <IconWrapper lightMode={true}>
-                        <HamburgerIcon w={'2rem'} h={'2rem'} cursor={"pointer"} onClick={toggleModal} />
+                        <HamburgerIcon
+                            w={'2rem'}
+                            h={'2rem'}
+                            cursor={"pointer"}
+                            onClick={toggleModal}
+                        />
                     </IconWrapper>
                 </Fade>
             </Box>
