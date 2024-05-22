@@ -55,8 +55,15 @@ export const CreateEntityPage = () => {
 
     return (
         <Container maxW="800px">
-            <DashboardHeader title={translate(FormLabels, "Creation of entity")} onBackClick={onBack} />
-            <EntityForm initialValues={BaseEntityForm} onSubmit={onSubmit} isLoading={isLoading} />
+            <DashboardHeader
+                title={translate(FormLabels, "Creation of entity")}
+                onBackClick={onBack}
+            />
+            <EntityForm
+                initialValues={BaseEntityForm}
+                onSubmit={onSubmit}
+                isLoading={isLoading}
+            />
         </Container>
     )
 }

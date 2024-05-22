@@ -10,9 +10,20 @@ export const Select = ({
     others
 }: ISelectProps) => {
     return (
-        <ChakraSelect placeholder={placeholder} size={size} {...others} borderColor={LegendsColor.backgroundColors.secondary}>
+        <ChakraSelect
+            placeholder={placeholder}
+            size={size}
+            {...others}
+            borderColor={LegendsColor.backgroundColors.secondary}
+        >
             {options.map(({ value, label }) => (
-                <option key={value} value={value} onClick={() => onSelect(value)}>{label}</option>
+                <option
+                    key={value}
+                    value={value}
+                    onClick={() => onSelect(value)}
+                >
+                    {label}
+                </option>
             ))}
         </ChakraSelect>
     )

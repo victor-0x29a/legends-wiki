@@ -12,7 +12,13 @@ type IFormErrorProps = {
 export const FormError = ({ errorData, componentProps = {} }: IFormErrorProps) => {
     const { translate } = useContext(I18nContext)
     const hasError = useMemo(() => Boolean(errorData), [errorData])
-    return hasError ? <FormHelperText color={"#FF3333"} marginBottom={LegendsSize.margin.small} {...componentProps}>
-        {translate(FormLabels, errorData!)}
-    </FormHelperText> : ""
+    return hasError ? (
+        <FormHelperText
+            color={"#FF3333"}
+            marginBottom={LegendsSize.margin.small}
+            {...componentProps}
+        >
+            {translate(FormLabels, errorData!)}
+        </FormHelperText>
+    ) : ""
 }

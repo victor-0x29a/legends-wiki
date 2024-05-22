@@ -81,7 +81,9 @@ export const EntityTable = ({
                     <Tr>
                         <Th colSpan={12} textAlign={"center"}>
                             <Spinner width={16} height={16} />
-                            <Text marginTop={LegendsSize.margin.normal} fontSize={LegendsSize.fontSize.normal}>
+                            <Text
+                                marginTop={LegendsSize.margin.normal}
+                                fontSize={LegendsSize.fontSize.normal}>
                                 {translateLabel("Loading entities")}
                             </Text>
                         </Th>
@@ -89,7 +91,11 @@ export const EntityTable = ({
                 )}
                 {!isLoading && entityList.map(({ id, title, image, type }) => (
                     <Tr key={`item-${id}-entity-list-page`}>
-                        <Th color={LegendsColor.textColors.gray} onClick={mountRedirectLink(id, type)} cursor={"pointer"}>
+                        <Th
+                            color={LegendsColor.textColors.gray}
+                            onClick={mountRedirectLink(id, type)}
+                            cursor={"pointer"}
+                        >
                             {id}
                         </Th>
                         <Th color={LegendsColor.textColors.gray}>
@@ -99,8 +105,16 @@ export const EntityTable = ({
                             {title}
                         </Th>
                         <Th>
-                            <EditIcon onClick={onEntityEditClick(id)} marginRight={LegendsSize.margin.small} cursor={"pointer"} boxSize={5} />
-                            <DeleteIcon onClick={() => setEntitySelected(id)} cursor={"pointer"} boxSize={5} />
+                            <EditIcon
+                                onClick={onEntityEditClick(id)} marginRight={LegendsSize.margin.small}
+                                cursor={"pointer"}
+                                boxSize={5}
+                            />
+                            <DeleteIcon
+                                onClick={() => setEntitySelected(id)}
+                                cursor={"pointer"}
+                                boxSize={5}
+                            />
                         </Th>
                     </Tr>
                 ))}
@@ -116,7 +130,10 @@ export const EntityTable = ({
         {!hasEntities && !isLoading && (
             <Box w={"100%"} textAlign={"center"} marginTop={LegendsSize.margin.normal}>
                 <Text fontSize={LegendsSize.fontSize.normal}>
-                    <WarningIcon display={"inline"} marginRight={LegendsSize.margin.small} />
+                    <WarningIcon
+                        display={"inline"}
+                        marginRight={LegendsSize.margin.small}
+                    />
                     {translateLabel("No entities to display")}
                 </Text>
             </Box>

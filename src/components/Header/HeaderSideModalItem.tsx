@@ -16,7 +16,16 @@ export const HeaderSideModalItem = ({
     return (
         <Box position={"relative"}>
             {showCloseIcon && (
-                <Box display={"flex"} justifyContent={"flex-end"} paddingRight={LegendsSize.padding.normal} paddingTop={LegendsSize.padding.normal} right={0} top={0} position={"absolute"} cursor={"pointer"}>
+                <Box
+                    display={"flex"}
+                    justifyContent={"flex-end"}
+                    paddingRight={LegendsSize.padding.normal}
+                    paddingTop={LegendsSize.padding.normal}
+                    right={0}
+                    top={0}
+                    position={"absolute"}
+                    cursor={"pointer"}
+                >
                     <IconWrapper lightMode={true}>
                         <CloseIcon h={5} w={5} onClick={onCloseClick} />
                     </IconWrapper>

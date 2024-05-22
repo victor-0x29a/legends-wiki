@@ -55,9 +55,19 @@ export const ListEntityPage = () => {
 
     return (
         <Container maxW={"800px"}>
-            <DashboardHeader title={translate(CommonLabels, "Entities")} onBackClick={onBack} />
-            <Box display={"flex"} marginBottom={LegendsSize.margin.large}>
-                <Button onClick={onCreate} leftIcon={<AddIcon />} colorScheme="green">
+            <DashboardHeader
+                title={translate(CommonLabels, "Entities")}
+                onBackClick={onBack}
+            />
+            <Box
+                display={"flex"}
+                marginBottom={LegendsSize.margin.large}
+            >
+                <Button
+                    onClick={onCreate}
+                    leftIcon={<AddIcon />}
+                    colorScheme="green"
+                >
                     {translate(FormLabels, "Create entity")}
                 </Button>
             </Box>

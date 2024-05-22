@@ -57,10 +57,16 @@ export const EntityFormImageListModal = ({
 
     return <Modal isOpen={isOpennedModalOfFiles} onClose={onClose}>
         <ModalOverlay />
-        <ModalContent color={LegendsColor.textColors.gray} bgColor={LegendsColor.backgroundColors.primary}>
+        <ModalContent
+            color={LegendsColor.textColors.gray}
+            bgColor={LegendsColor.backgroundColors.primary}
+        >
             <ModalCloseButton />
             <ModalBody>
-                <Heading as="h6" fontSize={LegendsSize.fontSize.large} marginBottom={2}>
+                <Heading as="h6"
+                    fontSize={LegendsSize.fontSize.large}
+                    marginBottom={2}
+                >
                     {translate(CommonLabels, 'List internal images')}
                 </Heading>
                 {isLoading ? (

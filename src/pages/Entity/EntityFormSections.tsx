@@ -21,7 +21,11 @@ export const EntityFormSections = ({
 
     return (
         <Box>
-            <Heading size={"md"} marginTop={LegendsSize.margin.normal} marginBottom={LegendsSize.margin.small}>
+            <Heading
+                size={"md"}
+                marginTop={LegendsSize.margin.normal}
+                marginBottom={LegendsSize.margin.small}
+            >
                 {translate(FormLabels, "Sections")}
             </Heading>
             {!isLoading && (
