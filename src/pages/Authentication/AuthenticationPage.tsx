@@ -57,21 +57,51 @@ export const AuthenticationPage = () => {
     return (
         <Container marginTop={"20%"}>
             <Box display={"flex"} justifyContent={"center"}>
-                <FormControl as="form" onSubmit={onSubmit} maxW={"400px"}>
-                    <FormLabel>{translate(FormLabels, "User")}</FormLabel>
-                    <Input type="text" name="username" onChange={formik.handleChange} onBlur={formik.handleBlur} disabled={isLoading} />
+                <FormControl
+                    as="form"
+                    onSubmit={onSubmit}
+                    maxW={"400px"}
+                >
+                    <FormLabel>
+                        {translate(FormLabels, "User")}
+                    </FormLabel>
+                    <Input
+                        type="text"
+                        name="username"
+                        onChange={formik.handleChange}
+                        onBlur={formik.handleBlur}
+                        disabled={isLoading}
+                    />
                     <FormError errorData={formik.errors.username} />
-                    <FormLabel>{translate(FormLabels, "Password")}</FormLabel>
+                    <FormLabel>
+                        {translate(FormLabels, "Password")}
+                    </FormLabel>
                     <InputGroup>
-                        <InputLeftAddon onClick={togglePasswordVisibility} bgColor={"transparent"}>
+                        <InputLeftAddon
+                            onClick={togglePasswordVisibility}
+                            bgColor={"transparent"}
+                        >
                             {showPassword ?
                                 <ViewOffIcon /> :
                                 <ViewIcon />}
                         </InputLeftAddon>
-                        <Input type={showPassword ? "text" : "password"} name="password" onChange={formik.handleChange} onBlur={formik.handleBlur} disabled={isLoading} />
+                        <Input
+                            type={showPassword ? "text" : "password"}
+                            name="password"
+                            onChange={formik.handleChange}
+                            onBlur={formik.handleBlur}
+                            disabled={isLoading}
+                        />
                     </InputGroup>
                     <FormError errorData={formik.errors.password} />
-                    <Button w={"100%"} marginTop={LegendsSize.margin.normal} type="submit" colorScheme="green" loadingText={translate(FormLabels, "Entering on account")} isLoading={isLoading}>
+                    <Button
+                        w={"100%"}
+                        marginTop={LegendsSize.margin.normal}
+                        type="submit"
+                        colorScheme="green"
+                        loadingText={translate(FormLabels, "Entering on account")}
+                        isLoading={isLoading}
+                    >
                         {translate(FormLabels, "Login")}
                     </Button>
                 </FormControl>
