@@ -27,6 +27,14 @@ Run: `yarn dev`
 
 Run: `yarn storybook`
 
+# How to run the tests?
+
+Run: `yarn test`
+
+And to run the cypress, install all dependencies from [cypress docs](https://docs.cypress.io/guides/getting-started/installing-cypress)
+
+Now, run `yarn cy:open`
+
 # Conventional commits for this project
 
 For more clarity in your actions and a good coexistence, use this pattern to name your commits.
