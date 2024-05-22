@@ -10,8 +10,14 @@ describe('template spec', () => {
   it('validate an empty form', () => {
     cy.visit('/auth')
     cy.get('button').click()
+
     cy.get('.chakra-form__helper-text').first().should('have.text', 'Nome de usuário é obrigatório.')
     cy.get('.chakra-form__helper-text').last().should('have.text', 'Senha é obrigatória.')
+
+    cy.get('input[name="username"]').first().type('admin')
+    cy.get('input[name="password"]').last().type('passwd')
+
+    cy.get('.chakra-form__helper-text').should('not.exist')
   })
   it('validate a form', () => {
     cy.visit('/auth')
