@@ -1,0 +1,10 @@
+{
+    "options": {
+        "statusCode": 200,
+        "headers": {
+            "access-control-allow-origin": "*",
+            "access-control-allow-methods": "GET,HEAD,PUT,PATCH,POST,DELETE",
+            "access-control-allow-headers": "Origin, Content-Type, X-Auth-Token"
+        }
+    }
+}

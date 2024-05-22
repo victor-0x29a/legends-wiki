@@ -1,0 +1,24 @@
+{
+    "admin": {
+        "username": "john",
+        "password": "pass123",
+        "response": {
+            "statusCode": 200,
+            "headers": {
+                "access-control-allow-origin": "*"
+            },
+            "body": {
+                "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwidXNlcm5hbWUiOiJqb2huIiwiaWF0IjoxNzE2Mzg5MDM1LCJleHAiOjE3MTYzOTAyMzV9.VG945iOZoSDh0kXc9oOPbVuI5ZQv-0t0W8twok_bzBI"
+            }
+        },
+        "failedResponse": {
+            "statusCode": 401,
+            "headers": {
+                "access-control-allow-origin": "*"
+            },
+            "body": {
+                "errorList":["User or password invalid."]
+            }
+        }
+    }
+}
