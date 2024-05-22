@@ -8,7 +8,7 @@ export const getError = (error: unknown) => {
             return ["Internal error"]
         }
 
-        const statusCode = error?.status || 0
+        const statusCode = error?.status || error?.response?.status || 0
 
         if (statusCode === 401) {
             return ["Required authentication"]
