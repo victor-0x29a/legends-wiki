@@ -28,14 +28,30 @@ export const PaginationBar = ({
     const decreasePage = useCallback(() => onChangePage(page - 1), [onChangePage, page])
 
     return <Box width={"100%"} display={"flex"} justifyContent={"space-between"}>
-        <Button isDisabled={!hasPrevious} padding={0} bgColor={"transparent"} _hover={{
-            backgroundColor: "transparent"
-        }} onClick={decreasePage} isLoading={isLoading}>
+        <Button
+            isDisabled={!hasPrevious}
+            padding={0}
+            bgColor={"transparent"}
+            _hover={{
+                backgroundColor: "transparent"
+            }}
+            onClick={decreasePage}
+            isLoading={isLoading}
+            id="pagination-bar-action-previous"
+        >
             <ChevronLeftIcon boxSize={10} />
         </Button>
-        <Button isDisabled={!hasNext} padding={0} bgColor={"transparent"} _hover={{
-            backgroundColor: "transparent"
-        }} onClick={addPage} isLoading={isLoading}>
+        <Button
+            isDisabled={!hasNext}
+            padding={0}
+            bgColor={"transparent"}
+            _hover={{
+                backgroundColor: "transparent"
+            }}
+            onClick={addPage}
+            isLoading={isLoading}
+            id="pagination-bar-action-next"
+        >
             <ChevronRightIcon boxSize={10} />
         </Button>
     </Box>

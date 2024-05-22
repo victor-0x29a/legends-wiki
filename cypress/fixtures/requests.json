@@ -4,7 +4,72 @@
         "headers": {
             "access-control-allow-origin": "*",
             "access-control-allow-methods": "GET,HEAD,PUT,PATCH,POST,DELETE",
-            "access-control-allow-headers": "Origin, Content-Type, X-Auth-Token"
+            "access-control-allow-headers": "Origin, Content-Type, X-Auth-Token, Authorization"
         }
+    },
+    "entity": {
+        "tableResponse": [
+            {
+                "statusCode": 200,
+                "headers": {
+                    "content-type": "application/json"
+                },
+                "body": {
+                    "page": 1,
+                    "perPage": 10,
+                    "totalPages": 1,
+                    "entries": [
+                        {
+                            "id": 1,
+                            "title": "Artico 2",
+                            "image": {
+                                "src": "cd8aac35ff466cd7a4b68dc1456ff25d.jpg",
+                                "alt": "Urso polar"
+                            },
+                            "type": "item"
+                        },
+                        {
+                            "id": 2,
+                            "title": "Artico 3",
+                            "image": {
+                                "src": "cd8aac35ff466cd7a4b68dc1456ff25d.jpg",
+                                "alt": "Urso polar"
+                            },
+                            "type": "item"
+                        },
+                        {
+                            "id": 3,
+                            "title": "Artico 4",
+                            "image": {
+                                "src": "cd8aac35ff466cd7a4b68dc1456ff25d.jpg",
+                                "alt": "Urso polar"
+                            },
+                            "type": "item"
+                        },
+                        {
+                            "id": 4,
+                            "title": "Artico 5",
+                            "image": {
+                                "src": "cd8aac35ff466cd7a4b68dc1456ff25d.jpg",
+                                "alt": "Urso polar"
+                            },
+                            "type": "item"
+                        }
+                    ]
+                }
+            },
+            {
+                "statusCode": 200,
+                "headers": {
+                    "content-type": "application/json"
+                },
+                "body": {
+                    "page": 1,
+                    "perPage": 10,
+                    "totalPages": 1,
+                    "entries": []
+                }
+            }
+        ]
     }
 }
