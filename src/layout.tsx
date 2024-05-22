@@ -9,7 +9,11 @@ const Layout = ({
     children?: React.ReactNode
 }) => {
     return (
-        <Container maxW={LegendsSize.breakpoints.desktopXL} padding={0} margin={0}>
+        <Container
+            maxW={LegendsSize.breakpoints.desktopXL}
+            padding={0}
+            margin={0}
+        >
             <Header />
             <Container maxW={`1280px`}>
                 <Outlet />
