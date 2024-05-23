@@ -32,7 +32,10 @@ export const EntityDeleteModal = ({
             <ModalHeader>
                 {translate(CommonLabels, "Delete entity")}
             </ModalHeader>
-            <ModalCloseButton cursor={isLoading ? "progress" : "pointer"} />
+            <ModalCloseButton
+                cursor={isLoading ? "progress" : "pointer"}
+                id={"close-btn-delete-entity-modal"}
+            />
             <ModalBody>
                 {translate(CommonLabels, "You want to delete entity with ID")} {entityID}?
             </ModalBody>

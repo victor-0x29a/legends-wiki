@@ -244,7 +244,7 @@ export const FormLabels: I18nData = {
     "Deleted entity": {
         "en": "Deleted entity",
         "es": "Entidad eliminada",
-        "pt-br": "Entidade excluída"
+        "pt-br": "Entidade deletada"
     },
     "Try again": {
         "en": "Try again more later",
