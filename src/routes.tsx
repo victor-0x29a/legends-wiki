@@ -9,6 +9,7 @@ import Layout from "./layout";
 import { ViewEntityPage } from "./pages/Entity/ViewEntityPage";
 import { LogoutPage } from "./pages/Authentication/LogoutPage";
 import { EditEntityPage } from "./pages/Entity/EditEntityPage";
+import { ListUserPage } from "./pages/User/ListUserPage";
 
 export const router = createBrowserRouter([
     {
@@ -20,6 +21,18 @@ export const router = createBrowserRouter([
     {
         path: "logout",
         element: <LogoutPage />
+    },
+    {
+        path: "users",
+        element: <Layout />,
+        children: [
+            {
+                path: "",
+                element: <PrivateRoute forProtect={true}>
+                    <ListUserPage />
+                </PrivateRoute>
+            }
+        ]
     },
     {
         path: "entity",
