@@ -194,6 +194,28 @@
                         }
                     ]
                 }
+            },
+            {
+                "statusCode": 200,
+                "headers": {
+                    "content-type": "application/json"
+                },
+                "body": {
+                    "page": 1,
+                    "perPage": 10,
+                    "totalPages": 1,
+                    "entries": [
+                        {
+                            "id": 1,
+                            "title":"Artico 2",
+                            "image":{
+                               "src":"cd8aac35ff466cd7a4b68dc1456ff25d.jpg",
+                               "alt":"Urso polar"
+                            },
+                            "type":"item"
+                        }
+                    ]
+                }
             }
         ],
         "findOne": [
@@ -216,6 +238,28 @@
                 "type": "item",
                 "createdAt": "2024-05-14T18:50:53.140Z",
                 "updatedAt": "2024-05-14T18:50:53.140Z"
+            }
+        ],
+        "create": [
+            {
+                "statusCode": 200,
+                "body": {
+                    "title": "Artico 2",
+                    "properties": {
+                        "strength": 10,
+                        "magic": 14,
+                        "damage": 20,
+                        "protection": 0.1
+                    },
+                    "description": "Lorem lorem lorem",
+                    "author": "John Doe",
+                    "image": {
+                        "src": "cd8aac35ff466cd7a4b68dc1456ff25d.jpg",
+                        "alt": "Urso polar"
+                    },
+                    "sections": "# This is the urso polar\nWhen this is lorem because it is lorem by lorem from ipslum",
+                    "type": "item"
+                }
             }
         ]
     }

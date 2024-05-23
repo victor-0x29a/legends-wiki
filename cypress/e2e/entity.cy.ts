@@ -19,6 +19,19 @@ const MockEntityRequest = ({ entityId = 1 }) => {
         })
 }
 
+const MockCreateEntityRequest = ({ entityId }) => {
+    cy.fixture('requests.json')
+        .then(({ options, entity }) => {
+            cy.intercept('OPTIONS', '**/entity', options)
+
+            cy.intercept('POST', '**/entity', entity.create[0])
+
+            cy.intercept('OPTIONS', `**/entity/${entityId}`, options)
+
+            cy.intercept('GET', `**/entity/${entityId}`, entity.findOne[0])
+        })
+}
+
 const MockRequests = ({ responseIndex = 0 }: { responseIndex?: number }): void => {
     let token = 'value'
 
@@ -140,6 +153,20 @@ describe('entity table pagination spec', () => {
 })
 
 describe('create entity spec', () => {
+    it('should validate the form', () => {
+        MockRequestsForCreate()
+
+        cy.get('button').contains('Criar').click();
+
+        const labelsThatShouldExist = [
+            'O título é obrigatório.',
+            'A descrição é obrigatória.'
+        ]
+
+        labelsThatShouldExist.forEach(label => {
+            cy.get('body').contains(label).should('exist');
+        })
+    })
     it('should fill an image', () => {
         MockRequestsForCreate()
 
@@ -182,5 +209,77 @@ describe('create entity spec', () => {
         firstItem.click()
 
         cy.get('body').contains('Nome do arquivo copiado').should('exist')
+    })
+    it('should fill the form and create an entity', () => {
+        MockRequestsForCreate()
+
+        MockCreateEntityRequest({ entityId: 1 })
+
+        const inputs = [
+            cy.get('#entity-form-author-input'),
+            cy.get('#entity-form-title-input'),
+            cy.get('#entity-form-description-input'),
+        ]
+
+        cy.wait(200)
+
+        inputs.forEach(input => {
+            input.type('foo')
+        })
+
+        cy.wait(800)
+
+        cy.get("#entity-form-properties-name-input").type('foo')
+
+        cy.get("#entity-form-properties-value-input").type('bar')
+
+        cy.get("#entity-form-properties-button-add").click()
+
+        cy.wait(300)
+
+        const [name, value] = [
+            cy.get('#entity-form-properties-tr-0 th').eq(0),
+            cy.get('#entity-form-properties-tr-0 th').eq(1)
+        ]
+
+        cy.wait(300)
+
+        name.contains('foo')
+
+        value.contains('bar')
+
+        cy.get('.chakra-switch__thumb').first().click()
+
+        const urlImageInput = cy.get('#entity-image-input-01').first()
+
+        const altImageInput = cy.get('#entity-image-input-02').first()
+
+        cy.wait(200)
+
+        urlImageInput.type('foo')
+
+        altImageInput.type('bar')
+
+        cy.wait(200)
+
+        cy.get('#entity-sections-input div')
+        .eq(1).get('div')
+        .eq(0).get('div textarea').type('# foo title')
+
+        cy.wait(200)
+
+        MockRequestsForPagination({
+            responseIndex: 4,
+        })
+
+        cy.get('button').contains('Criar').click();
+
+        cy.wait(500)
+
+        cy.location('pathname').should('eq', '/entity')
+
+        cy.wait(300)
+
+        cy.get('tbody tr').should('have.length', 1)
     })
 })
