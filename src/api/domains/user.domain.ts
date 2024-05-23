@@ -7,7 +7,10 @@ const SignIn = (data: signInPayload) => CreateServerInstance().post("/user/sign-
 
 const FindAll = () => CreateServerInstance().get("/user").then(extractData).catch(getError)
 
+const Delete = (id: number) => CreateServerInstance().delete(`/user/${id}`).catch(getError)
+
 export const UserDomain = {
     SignIn,
-    FindAll
+    FindAll,
+    Delete
 }
