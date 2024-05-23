@@ -9,8 +9,11 @@ const FindAll = () => CreateServerInstance().get("/user").then(extractData).catc
 
 const Delete = (id: number) => CreateServerInstance().delete(`/user/${id}`).catch(getError)
 
+const FindOne = (id: number) => CreateServerInstance().get(`/user/${id}`).then(extractData).catch(getError)
+
 export const UserDomain = {
     SignIn,
     FindAll,
-    Delete
+    Delete,
+    FindOne
 }
