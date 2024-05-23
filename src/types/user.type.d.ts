@@ -6,3 +6,11 @@ export interface signInPayload {
 export interface signInResponse {
     token: string
 }
+
+export type User = {
+    id: number
+    name: string
+    username: string
+}
+
+export type findAllUsersResponse = User[]
