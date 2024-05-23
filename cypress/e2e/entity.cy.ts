@@ -7,6 +7,18 @@ const MockRequestsForPagination = ({ responseIndex = 0, page = 1, perPage = 10 }
         })
 }
 
+const MockEntityRequest = ({ entityId = 1 }) => {
+    cy.fixture('requests.json')
+        .then(({ entity, options }) => {
+            cy.intercept('OPTIONS', `**/entity/${entityId}`, options)
+
+            cy.intercept('GET', `**/entity/${entityId}`, {
+                ...entity.findOne[0],
+                id: entityId
+            })
+        })
+}
+
 const MockRequests = ({ responseIndex = 0 }: { responseIndex?: number }): void => {
     let token = 'value'
 
@@ -73,7 +85,11 @@ describe('entity table spec', () => {
     it('should navigate to edit entity page', () => {
         MockRequests({ responseIndex: 0 })
 
+        MockEntityRequest({ entityId: 1 })
+
         cy.get('tbody tr th svg').first().click();
+
+        cy.wait(500)
 
         cy.url().should('include', '/entity/edit/1');
     })
