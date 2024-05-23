@@ -255,5 +255,10 @@ export const FormLabels: I18nData = {
         "en": "Username must have at most 20 characters.",
         "es": "El nombre de usuario debe tener como máximo 20 caracteres.",
         "pt-br": "O nome de usuário deve ter no máximo 20 caracteres."
+    },
+    "Create user": {
+        "en": "Create user",
+        "es": "Crear usuario",
+        "pt-br": "Criar usuário"
     }
 }
