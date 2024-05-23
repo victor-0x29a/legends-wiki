@@ -14,3 +14,5 @@ export type User = {
 }
 
 export type findAllUsersResponse = User[]
+
+export type findOneUserResponse = User
