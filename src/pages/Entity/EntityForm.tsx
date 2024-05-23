@@ -101,6 +101,7 @@ export const EntityForm = ({
                 onChange={formik.handleChange}
                 value={formik.values?.author || ""}
                 disabled={isLoading}
+                id="entity-form-author-input"
             />
             <FormError
                 errorData={formik.errors.author}
@@ -114,6 +115,7 @@ export const EntityForm = ({
                 onChange={formik.handleChange}
                 value={formik.values.title}
                 disabled={isLoading}
+                id="entity-form-title-input"
             />
             <FormError errorData={formik.errors.title} />
             <FormLabel>
@@ -125,6 +127,7 @@ export const EntityForm = ({
                 onChange={formik.handleChange}
                 value={formik.values.description}
                 disabled={isLoading}
+                id="entity-form-description-input"
             />
             <FormError errorData={formik.errors.description} />
             <FormLabel>
@@ -139,8 +142,11 @@ export const EntityForm = ({
                     {entityTypesArray.map((type, index) => (
                         <Radio
                             value={type}
-                            key={`${index}-ratio-item-entity-creation`}
-                            isDisabled={isLoading} onClick={() => formik.setFieldValue("type", type)}>
+                            key={`${index}-ratio-item-entity`}
+                            id={`ratio-item-entity-${index}`}
+                            isDisabled={isLoading}
+                            onClick={() => formik.setFieldValue("type", type)}
+                        >
                             {translate(EntityList, entityTypes?.[type])}
                         </Radio>
                     ))}

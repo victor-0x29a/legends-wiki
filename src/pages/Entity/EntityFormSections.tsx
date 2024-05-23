@@ -29,7 +29,11 @@ export const EntityFormSections = ({
                 {translate(FormLabels, "Sections")}
             </Heading>
             {!isLoading && (
-                <MDEditor onChange={onChange} value={value} />
+                <MDEditor
+                    onChange={onChange}
+                    value={value}
+                    id='entity-sections-input'
+                />
             )}
         </Box>
     )

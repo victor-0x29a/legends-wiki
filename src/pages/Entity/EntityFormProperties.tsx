@@ -80,6 +80,7 @@ export const EntityFormProperties = ({
                         type="text"
                         onChange={(event) => setForm((curr) => ({ ...curr, name: event.target.value }))}
                         disabled={isLoading}
+                        id="entity-form-properties-name-input"
                     />
                 </Box>
                 <Box w={"35%"}>
@@ -90,7 +91,9 @@ export const EntityFormProperties = ({
                         value={form.value}
                         placeholder={translate(FormLabels, "Put the value")}
                         type="text"
-                        onChange={(event) => setForm((curr) => ({ ...curr, value: event.target.value }))} disabled={isLoading}
+                        onChange={(event) => setForm((curr) => ({ ...curr, value: event.target.value }))}
+                        disabled={isLoading}
+                        id="entity-form-properties-value-input"
                     />
                 </Box>
 
@@ -98,7 +101,9 @@ export const EntityFormProperties = ({
                     <Button
                         colorScheme="green"
                         w={"90%"}
-                        onClick={onSubmit}>
+                        onClick={onSubmit}
+                        id="entity-form-properties-button-add"
+                    >
                         {translate(FormLabels, "Add")}
                     </Button>
                 </Box>
@@ -124,7 +129,10 @@ export const EntityFormProperties = ({
                                 key,
                                 value
                             }, index) => value && (
-                                <Tr key={`${key}:${value}-#${index}-entity-form-properties`}>
+                                <Tr
+                                    key={`${key}:${value}-#${index}-entity-form-properties`}
+                                    id={`entity-form-properties-tr-${index}`}
+                                >
                                     <Th color={LegendsColor.textColors.gray}>{key}</Th>
                                     <Th color={LegendsColor.textColors.gray}>{value}</Th>
                                     <Th color={LegendsColor.textColors.gray}>
