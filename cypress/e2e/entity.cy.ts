@@ -65,6 +65,16 @@ const MockRequestsForCreate = (): void => {
         })
 }
 
+const MockRequestsForDelete = ({
+    entityId = 0
+}): void => {
+    cy.fixture('requests.json')
+        .then(({ options }) => {
+            cy.intercept('OPTIONS', `**/entity/${entityId}`, options)
+            cy.intercept('DELETE', `**/entity/${entityId}`, { statusCode: 204 })
+        })
+}
+
 describe('entity table spec', () => {
     it('should display entity table', () => {
         MockRequests({ responseIndex: 0 })
@@ -107,15 +117,6 @@ describe('entity table spec', () => {
         cy.url().should('include', '/entity/edit/1');
     })
 
-    it('should open the modal to delete an entity', () => {
-        MockRequests({ responseIndex: 0 })
-
-        cy.get('th').last().find('svg').last().click();
-
-        cy.get('button').contains('Deletar').should('exist');
-
-        cy.get('header').contains('Deletar entidade').should('exist');
-    })
 })
 
 describe('entity table pagination spec', () => {
@@ -346,6 +347,50 @@ describe('edit entity spec', () => {
         cy.get('body').contains('Entidade foi atualizada').should('exist')
 
         cy.location('pathname').should('eq', '/entity')
+
+        cy.get('tbody tr').should('have.length', 4)
+    })
+})
+
+describe('delete entity spec', () => {
+    it('should open the modal to delete an entity', () => {
+        MockRequests({ responseIndex: 0 })
+
+        cy.get('th').last().find('svg').last().click();
+
+        cy.get('button').contains('Deletar').should('exist');
+
+        cy.get('header').contains('Deletar entidade').should('exist');
+    })
+    it('should delete an entity', () => {
+        MockRequests({ responseIndex: 0 })
+
+        MockRequestsForDelete({ entityId: 4 })
+
+        cy.get('th').last().find('svg').last().click();
+
+        MockRequestsForPagination({ responseIndex: 6 })
+
+        cy.get('button').contains('Deletar').click();
+
+        cy.get('body').contains('Entidade deletada').should('exist')
+
+        cy.get('tbody tr').should('have.length', 3)
+    })
+    it('should cancel the deletion', () => {
+        MockRequests({ responseIndex: 0 })
+
+        cy.wait(500)
+
+        cy.get('th').last().find('svg').last().click();
+
+        cy.wait(200)
+
+        cy.get('#close-btn-delete-entity-modal').click();
+
+        cy.wait(200)
+
+        cy.get('body').contains('Entidade deletada').should('not.exist')
 
         cy.get('tbody tr').should('have.length', 4)
     })
