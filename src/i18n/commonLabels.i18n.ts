@@ -86,4 +86,19 @@ export const CommonLabels: I18nData = {
         "es": "Editar entidad",
         "pt-br": "Editar entidade"
     },
+    "User": {
+        "en": "User",
+        "es": "Usuario",
+        "pt-br": "Usuário"
+    },
+    "Name": {
+        "en": "Name",
+        "es": "Nombre",
+        "pt-br": "Nome"
+    },
+    "Loading users": {
+        "en": "Loading users",
+        "es": "Cargando usuarios",
+        "pt-br": "Carregando usuários"
+    },
 }
