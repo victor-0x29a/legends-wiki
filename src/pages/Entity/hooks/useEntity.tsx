@@ -3,8 +3,9 @@ import { EntityModel } from "../../../api"
 import { FindOneEntity } from "../../../types/entity.type"
 import { useError } from "../../../hooks/useError"
 import { useAlert } from "../../../hooks/useAlert"
+import { Environment } from "../../../constants"
 
-const STALE_TIME = 1000 * 60 * 2
+const STALE_TIME = Environment.isTest ? 500 : 1000 * 60 * 5
 
 type IUseEntity = {
     isLoading: boolean

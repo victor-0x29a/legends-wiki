@@ -6,8 +6,9 @@ import { useAlert } from "../../../hooks/useAlert"
 import { I18nContext } from "../../../contexts/i18n.context"
 import { FormLabels } from "../../../i18n/forms.i18n"
 import { useError } from "../../../hooks/useError"
+import { Environment } from "../../../constants"
 
-const STALE_TIME = 1000 * 60 * 10
+const STALE_TIME = Environment.isTest ? 500 : 1000 * 60 * 10
 
 type IUseEntityList = {
     filters: {
