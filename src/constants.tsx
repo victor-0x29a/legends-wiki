@@ -18,3 +18,13 @@ export const Entities = [
     BOSS_ENTITY,
     ITEM_ENTITY
 ]
+
+export const Environment = (function () {
+    const env = import.meta.env.VITE_ENVIRONMENT
+
+    return {
+        isProduction: env === 'production',
+        isDevelopment: env === 'development',
+        isTest: env === 'test'
+    }
+}())

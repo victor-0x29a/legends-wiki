@@ -29,6 +29,17 @@ const MockRequests = ({ responseIndex = 0 }: { responseIndex?: number }): void =
         })
 }
 
+const MockRequestsForCreate = (): void => {
+    cy.fixture('users.json')
+        .then(({ admin }) => {
+            cy.visit('/entity/create', {
+                onBeforeLoad(win) {
+                    win.localStorage.setItem('token', admin.response.body.token)
+                },
+            });
+        })
+}
+
 describe('entity table spec', () => {
     it('should display entity table', () => {
         MockRequests({ responseIndex: 0 })
@@ -109,5 +120,51 @@ describe('entity table pagination spec', () => {
         cy.get('tbody tr').should('have.length', 10);
 
         cy.get('#pagination-bar-action-previous').should('be.disabled')
+    })
+})
+
+describe('create entity spec', () => {
+    it('should fill an image', () => {
+        MockRequestsForCreate()
+
+        cy.get('.chakra-switch__thumb').first().click()
+
+        const urlImageInput = cy.get('#entity-image-input-01').first()
+        const altImageInput = cy.get('#entity-image-input-02').first()
+        const label = cy.get('#entity-image-label-01').first()
+
+        label.should('have.text', 'Link da imagem')
+
+        urlImageInput.type('foo')
+
+        altImageInput.type('bar')
+
+        cy.wait(1000)
+
+        urlImageInput.should('have.value', 'foo')
+        altImageInput.should('have.value', 'bar')
+
+        cy.get('.chakra-switch__thumb').last().click()
+
+        cy.wait(500)
+
+        label.should('have.text', 'Nome da imagem interna')
+    })
+    it('should show the image list modal', () => {
+        MockRequestsForCreate()
+
+        const icon = cy.get('#entity-image-info-icon-01').first()
+
+        icon.click()
+
+        cy.get('body').contains('Lista de imagens internas').should('exist')
+
+        cy.wait(2000)
+
+        const firstItem = cy.get('#entity-image-list li').first()
+
+        firstItem.click()
+
+        cy.get('body').contains('Nome do arquivo copiado').should('exist')
     })
 })

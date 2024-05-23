@@ -4,6 +4,7 @@ import { Box, CircularProgress, Heading, List, ListItem, Modal, ModalBody, Modal
 import { LegendsColor, LegendsSize, LegendsValues } from "../../styles/constants.style"
 import { CommonLabels } from "../../i18n/commonLabels.i18n"
 import { useAlert } from "../../hooks/useAlert"
+import { Environment } from "../../constants"
 
 type EntityFormImageListModalProps = {
     isOpennedModalOfFiles: boolean,
@@ -23,7 +24,12 @@ export const EntityFormImageListModal = ({
 
     const copyFileName = useCallback((fileName: string) => {
         alert({ text: translate(CommonLabels, "Name of file has coppied"), type: "success" })
-        return navigator.clipboard.writeText(fileName)
+        try {
+            if (Environment.isTest) return
+            return navigator?.clipboard?.writeText(fileName);
+        } catch (error) {
+            console.error(error)
+        }
     }, [alert, translate])
 
     const [isLoading, setIsLoading] = useState(true)
@@ -80,6 +86,7 @@ export const EntityFormImageListModal = ({
                             maxH="200px"
                             overflowY={"auto"}
                             maxW="95%"
+                            id="entity-image-list"
                         >
                             {internalFilesList.map((file, index) => (
                                 <ListItem

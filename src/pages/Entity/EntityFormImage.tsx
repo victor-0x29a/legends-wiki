@@ -59,6 +59,7 @@ export const EntityFormImage = ({
                     <InfoIcon
                         onClick={toggleModalOfFiles}
                         cursor={"pointer"}
+                        id="entity-image-info-icon-01"
                     />
                 </IconWrapper>
             </Heading>
@@ -93,7 +94,7 @@ export const EntityFormImage = ({
                     marginTop={LegendsSize.margin.small}
                 >
                     <Box w="45%">
-                        <FormLabel>
+                        <FormLabel id="entity-image-label-01">
                             {isUsingInternalImage ? translate(FormLabels, "Name of internal image") : translate(FormLabels, "Link of the image")}
                         </FormLabel>
                         <Input
@@ -101,6 +102,7 @@ export const EntityFormImage = ({
                             value={value?.src || ""}
                             onChange={(event) => onChangeData('src', event.target.value)}
                             disabled={isLoading}
+                            id="entity-image-input-01"
                         />
                     </Box>
                     <Box w="45%">
@@ -112,6 +114,7 @@ export const EntityFormImage = ({
                             value={value?.alt || ""}
                             onChange={(event) => onChangeData('alt', event.target.value)}
                             disabled={isLoading}
+                            id="entity-image-input-02"
                         />
                     </Box>
                 </Box>
