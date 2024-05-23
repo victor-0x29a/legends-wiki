@@ -1,8 +1,8 @@
-export type signInType = {
+export interface signInPayload {
     username: string
     password: string
 }
 
-export type signInResponseType = {
+export interface signInResponse {
     token: string
 }

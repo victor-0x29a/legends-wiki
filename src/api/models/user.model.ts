@@ -1,6 +1,7 @@
-import { signInResponseType, signInType } from "../../types/user.type";
+import { signInPayload, signInResponse } from "../../types/user.type";
 import { UserDomain } from "../domains";
 
 export const UserModel = {
-    signIn: (data: signInType): Promise<signInResponseType> => UserDomain.SignIn(data)
+    signIn: (data: signInPayload): Promise<signInResponse> => UserDomain.SignIn(data),
+    findAll: () => UserDomain.FindAll()
 }
