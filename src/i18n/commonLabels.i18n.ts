@@ -101,4 +101,19 @@ export const CommonLabels: I18nData = {
         "es": "Cargando usuarios",
         "pt-br": "Carregando usuários"
     },
+    "Delete user": {
+        "en": "Delete user",
+        "es": "Eliminar usuario",
+        "pt-br": "Deletar usuário"
+    },
+    "You want to delete user with ID": {
+        "en": "You want to delete user with ID",
+        "es": "Desea eliminar el usuario con ID",
+        "pt-br": "Deseja deletar o usuário com ID"
+    },
+    "Deleting user": {
+        "en": "Deleting user",
+        "es": "Eliminando usuario",
+        "pt-br": "Deletando usuário"
+    },
 }
