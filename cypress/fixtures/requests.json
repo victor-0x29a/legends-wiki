@@ -351,5 +351,24 @@
                 }
             }
         ]
+    },
+    "users": {
+        "tableResponse": [
+            {
+                "statusCode": 200,
+                "body": [
+                    {
+                        "id": 1,
+                        "name": "John Doe",
+                        "username": "jonhdoe"
+                    },
+                    {
+                        "id": 2,
+                        "name": "Jane Doe",
+                        "username": "janedoe"
+                    }
+                ]
+            }
+        ]
     }
 }
