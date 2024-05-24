@@ -12,13 +12,15 @@ import { FormLabels } from "../../i18n/forms.i18n"
 import { UserDeleteModal } from "./UserDeleteModal"
 import { useUser } from "./hooks/useUser"
 import { useAlert } from "../../hooks/useAlert"
+import { useQueryAction } from "../../hooks/useQueryAction"
 
 export const ListUserPage = () => {
     const Navigate = useNavigate()
 
     const {
         isLoading,
-        users
+        users,
+        refreshRequest
     } = useUserList()
 
     const {
@@ -57,13 +59,21 @@ export const ListUserPage = () => {
     }), [Navigate])
 
     const deleteUserCallback = useCallback(() => {
+        refreshRequest()
         alert({ text: translate(FormLabels, "User deleted"), type: "success" })
         onCloseDeleteModal()
-    }, [alert, onCloseDeleteModal, translate])
+    }, [alert, onCloseDeleteModal, translate, refreshRequest])
 
     const onDeleteUser = useCallback((id: number) => {
         deleteUser(id, deleteUserCallback)
     }, [deleteUser, deleteUserCallback])
+
+    useQueryAction({
+        queryValue: "true",
+        queryKey: "refresh",
+        inactivatedValue: "false",
+        queryAction: refreshRequest
+    })
 
     return <Container maxW={"800px"}>
         <DashboardHeader
