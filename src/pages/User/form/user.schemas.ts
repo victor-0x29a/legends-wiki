@@ -1,18 +1,18 @@
 import * as Yup from 'yup'
 
-const userSchema = {
+export const userSchema = {
     id: Yup.number()
-        .integer()
-        .positive()
-        .required(),
+    .integer()
+    .positive()
+    .required(),
     name: Yup.string()
         .default('Desconhecido')
         .required(),
     username: Yup.string()
-        .max(20)
-        .required(),
+        .max(20, "Username must have at most 20 characters")
+        .required("Name of user is required"),
     password: Yup.string()
-        .required()
+        .required("Password is required"),
 }
 
 const createUserSchema = Yup.object().shape({
