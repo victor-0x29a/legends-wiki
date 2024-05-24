@@ -10,6 +10,7 @@ import { ViewEntityPage } from "./pages/Entity/ViewEntityPage";
 import { LogoutPage } from "./pages/Authentication/LogoutPage";
 import { EditEntityPage } from "./pages/Entity/EditEntityPage";
 import { ListUserPage } from "./pages/User/ListUserPage";
+import { CreateUserPage } from "./pages/User/CreateUserPage";
 
 export const router = createBrowserRouter([
     {
@@ -30,6 +31,12 @@ export const router = createBrowserRouter([
                 path: "",
                 element: <PrivateRoute forProtect={true}>
                     <ListUserPage />
+                </PrivateRoute>
+            },
+            {
+                path: "create",
+                element: <PrivateRoute forProtect={true}>
+                    <CreateUserPage />
                 </PrivateRoute>
             }
         ]
