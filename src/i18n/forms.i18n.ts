@@ -281,4 +281,9 @@ export const FormLabels: I18nData = {
         "es": "Usuario creado",
         "pt-br": "Usuário criado"
     },
+    "User deleted": {
+        "en": "User deleted",
+        "es": "Usuario eliminado",
+        "pt-br": "Usuário deletado"
+    }
 }
