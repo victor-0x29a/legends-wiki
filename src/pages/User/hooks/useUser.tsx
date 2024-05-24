@@ -62,14 +62,15 @@ export const useUser = (): IUseUser => {
         return UserModel.delete(id)
             .then(() => callback())
             .catch((errors) => {
-                const translatedErrors = translateErrors(errors)!
-                translatedErrors && translatedErrors
-                    .forEach((error) => alert({ text: error }))
+                const translatedErrors = translateErrors(errors)
+                translatedErrors && translatedErrors.forEach((error) => alert({ text: error }))
             })
             .finally(() => setIsLoading({ ...isLoading, deletion: false }))
     }, [alert, isLoading, translateErrors])
 
     const findUser = useCallback((id: number) => {
+        if (isLoading.visualization) return
+
         if (!id || isNaN(id)) {
             return callbackWhenIdIsNotValid()
         }
@@ -78,12 +79,11 @@ export const useUser = (): IUseUser => {
         UserModel.findOne(id)
             .then((data) => setResponse((curr) => ({ ...curr, user: data })))
             .catch((errors) => {
-                const translatedErrors = translateErrors(errors)!
-                translatedErrors && translatedErrors
-                    .forEach((error) => alert({ text: error }))
+                const translatedErrors = translateErrors(errors)
+                translatedErrors && translatedErrors.forEach((error) => alert({ text: error }))
             })
             .finally(() => setIsLoading((curr) => ({ ...curr, visualization: false })))
-    }, [alert, callbackWhenIdIsNotValid, translateErrors])
+    }, [alert, callbackWhenIdIsNotValid, isLoading.visualization, translateErrors])
 
     const createUser = useCallback((data: createUserPayload, callback = () => { }) => {
         setIsLoading((curr) => ({ ...curr, creation: true }))
@@ -96,9 +96,8 @@ export const useUser = (): IUseUser => {
                 callback()
             })
             .catch((errors) => {
-                const translatedErrors = translateErrors(errors)!
-                translatedErrors && translatedErrors
-                    .forEach((error) => alert({ text: error }))
+                const translatedErrors = translateErrors(errors)
+                translatedErrors && translatedErrors.forEach((error) => alert({ text: error }))
             })
             .finally(() => setIsLoading((curr) => ({ ...curr, creation: false })))
     }, [alert, translateErrors])
@@ -118,9 +117,8 @@ export const useUser = (): IUseUser => {
         UserModel.edit(id, data)
             .then(() => callback())
             .catch((errors) => {
-                const translatedErrors = translateErrors(errors)!
-                translatedErrors && translatedErrors
-                    .forEach((error) => alert({ text: error }))
+                const translatedErrors = translateErrors(errors)
+                translatedErrors && translatedErrors.forEach((error) => alert({ text: error }))
             })
             .finally(() => setIsLoading((curr) => ({ ...curr, edition: false })))
     }, [alert, response.user, translateErrors])
