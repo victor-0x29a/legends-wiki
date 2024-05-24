@@ -146,7 +146,6 @@ describe('edit user', () => {
 
         cy.get("tbody tr").first().contains("new name")
     })
-
     it('should not send the request if the form is not changed', () => {
         MockFindOneUser({ responseIndex: 0, id: 1 })
 
@@ -168,6 +167,28 @@ describe('edit user', () => {
         cy.get('button').contains('Editar').click()
 
         cy.get('body').contains('Usuário atualizado')
+    })
+    it('should redirect to the user table if the user does not exist', () => {
+        MockFindOneUser({ responseIndex: 1, id: 1 })
+
+        let token = ''
+
+        cy.fixture('users.json')
+            .then(({ admin }) => {
+                token = admin.response.body.token
+            })
+
+        MockTable({ responseIndex: 0 })
+
+        cy.visit('/users/edit/1', {
+            onBeforeLoad(win) {
+                win.localStorage.setItem('token', token)
+            }
+        })
+
+        cy.get('body').contains('Usuário não encontrado')
+
+        cy.location('pathname').should('eq', '/users')
     })
 })
 

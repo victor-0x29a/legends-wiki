@@ -426,6 +426,14 @@
                     "name": "John Doe",
                     "username": "jonhdoe"
                 }
+            },
+            {
+                "statusCode": 404,
+                "body": {
+                    "errorList": [
+                        "User not found."
+                    ]
+                }
             }
         ],
         "createResponse": [
