@@ -3,8 +3,7 @@ import { UserModel } from "../../../api"
 import { useError } from "../../../hooks/useError"
 import { useAlert } from "../../../hooks/useAlert"
 import { createUserPayload, createUserResponse, User } from "../../../types/user.type"
-
-type identity = () => void
+import { identity } from "../../../types/app.type"
 
 interface IUseUser {
     isLoadingDeletion: boolean
