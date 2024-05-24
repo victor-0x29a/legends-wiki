@@ -31,7 +31,7 @@ export const CreateUserPage = () => {
     }), [Navigate, isLoadingCreation])
 
     const onSubmitCallback = useCallback(() => {
-        Navigate(-1)
+        Navigate("/users?refresh=true")
         alert({ text: translate(FormLabels, "User created"), type: "success" })
     }, [Navigate, alert, translate])
 
