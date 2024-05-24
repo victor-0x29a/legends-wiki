@@ -1,4 +1,4 @@
-import { useCallback, useContext, useEffect } from "react"
+import { useCallback, useContext, useEffect, useRef } from "react"
 import { I18nContext } from "../../contexts/i18n.context"
 import { Box, Container, Skeleton } from "@chakra-ui/react"
 import { DashboardHeader } from "../Dashboard/Header"
@@ -38,6 +38,8 @@ export const EditUserPage = () => {
 
     const Params = useParams()
 
+    const isFetched = useRef(false)
+
     const {
         user,
         findUser,
@@ -47,8 +49,10 @@ export const EditUserPage = () => {
     } = useUser()
 
     useEffect(() => {
+        isFetched.current = true
         findUser(Number(Params.id))
-    }, [Params.id, findUser])
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [])
 
     const onSuccessCallback = useCallback(() => {
         Navigate("/users?refresh=true")
@@ -61,14 +65,14 @@ export const EditUserPage = () => {
         editUser(user.id, payload as editUserPayload, onSuccessCallback)
     }, [editUser, isLoadingVisualization, onSuccessCallback, user])
 
-    if (!user && !isLoadingVisualization) {
+    if (isLoadingVisualization || !isFetched.current) {
+        return <EditUserPageSkeleton />
+    }
+
+    if (!user && !isFetched.current) {
         Navigate(-1)
         alert({ text: translate(CommonLabels, "User not found") })
         return
-    }
-
-    if (isLoadingVisualization) {
-        return <EditUserPageSkeleton />
     }
 
     return (
