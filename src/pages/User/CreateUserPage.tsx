@@ -7,6 +7,8 @@ import { useNavigate } from "react-router-dom"
 import { UserForm } from "./form/UserForm"
 import { useUser } from "./hooks/useUser"
 import { createUserPayload } from "../../types/user.type"
+import { useAlert } from "../../hooks/useAlert"
+import { FormLabels } from "../../i18n/forms.i18n"
 
 export const CreateUserPage = () => {
     const { translate } = useContext(I18nContext)
@@ -19,14 +21,23 @@ export const CreateUserPage = () => {
     } = useUser()
 
     const {
+        alert
+    } = useAlert()
+
+    const {
         onBackClick
     } = useMemo(() => ({
         onBackClick: () => !isLoadingCreation && Navigate(-1)
     }), [Navigate, isLoadingCreation])
 
+    const onSubmitCallback = useCallback(() => {
+        Navigate(-1)
+        alert({ text: translate(FormLabels, "User created"), type: "success" })
+    }, [Navigate, alert, translate])
+
     const handleSubmit = useCallback((payload: Record<string, string | number>) => {
-        createUser(payload as unknown as createUserPayload)
-    }, [createUser])
+        createUser(payload as unknown as createUserPayload, onSubmitCallback)
+    }, [createUser, onSubmitCallback])
 
     return <Container maxW={"800px"}>
         <DashboardHeader

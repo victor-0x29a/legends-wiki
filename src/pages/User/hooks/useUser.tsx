@@ -4,14 +4,16 @@ import { useError } from "../../../hooks/useError"
 import { useAlert } from "../../../hooks/useAlert"
 import { createUserPayload, createUserResponse, User } from "../../../types/user.type"
 
+type identity = () => void
+
 interface IUseUser {
     isLoadingDeletion: boolean
-    deleteUser: (id: number) => void
+    deleteUser: (id: number, callback?: identity) => void
     isLoadingVisualization: boolean
     findUser: (id: number) => void
     user: User | null
     isLoadingCreation: boolean
-    createUser: (data: createUserPayload) => void
+    createUser: (data: createUserPayload, callback?: identity) => void
     createdUser: createUserResponse | null
 }
 
