@@ -4,10 +4,12 @@ import { UserModel } from "../../../api"
 import { findAllUsersResponse } from "../../../types/user.type"
 import { useError } from "../../../hooks/useError"
 import { useAlert } from "../../../hooks/useAlert"
+import { useCallback, useState } from "react"
 
 interface IUseUserList {
     users: findAllUsersResponse
     isLoading: boolean
+    refreshRequest: () => void
 }
 
 const STALE_TIME = Environment.isTest ? 0 : 1000 * 60 * 2
@@ -20,6 +22,10 @@ export const useUserList = (): IUseUserList => {
     const {
         alert
     } = useAlert()
+
+    const [queryKey, setQueryKey] = useState(0)
+
+    const refreshRequest = useCallback(() => setQueryKey((curr) => curr + 1), [])
 
     const {
         isLoading,
@@ -34,11 +40,12 @@ export const useUserList = (): IUseUserList => {
                         .forEach((error) => alert({ text: error }))
                 })
         },
-        queryKey: ["find-users-key"]
+        queryKey: [`find-users-key-${queryKey}`]
     })
 
     return {
         users: data as findAllUsersResponse,
-        isLoading: isLoading || isFetching
+        isLoading: isLoading || isFetching,
+        refreshRequest
     }
 }
