@@ -1,9 +1,12 @@
-import { useCallback, useState } from "react"
+import { useCallback, useContext, useState } from "react"
 import { UserModel } from "../../../api"
 import { useError } from "../../../hooks/useError"
 import { useAlert } from "../../../hooks/useAlert"
-import { createUserPayload, createUserResponse, User } from "../../../types/user.type"
+import { createUserPayload, createUserResponse, editUserPayload, User } from "../../../types/user.type"
 import { identity } from "../../../types/app.type"
+import { useNavigate } from "react-router-dom"
+import { I18nContext } from "../../../contexts/i18n.context"
+import { CommonLabels } from "../../../i18n/commonLabels.i18n"
 
 interface IUseUser {
     isLoadingDeletion: boolean
@@ -14,13 +17,16 @@ interface IUseUser {
     isLoadingCreation: boolean
     createUser: (data: createUserPayload, callback?: identity) => void
     createdUser: createUserResponse | null
+    editUser: (id: number, data: editUserPayload, callback?: identity) => void
+    isLoadingEdition: boolean
 }
 
 export const useUser = (): IUseUser => {
     const [isLoading, setIsLoading] = useState({
         deletion: false,
         visualization: false,
-        creation: false
+        creation: false,
+        edition: false
     })
 
     const [response, setResponse] = useState<{
@@ -39,6 +45,17 @@ export const useUser = (): IUseUser => {
         alert
     } = useAlert()
 
+    const Navigate = useNavigate()
+
+    const {
+        translate
+    } = useContext(I18nContext)
+
+    const callbackWhenIdIsNotValid = useCallback(() => {
+        Navigate("/users")
+        alert({ text: translate(CommonLabels, "User not found") })
+    }, [Navigate, alert, translate])
+
     const deleteUser = useCallback((id: number, callback = () => { }) => {
         setIsLoading((curr) => ({ ...curr, deletion: true }))
         return UserModel.delete(id)
@@ -52,6 +69,10 @@ export const useUser = (): IUseUser => {
     }, [alert, isLoading, translateErrors])
 
     const findUser = useCallback((id: number) => {
+        if (!id || isNaN(id)) {
+            return callbackWhenIdIsNotValid()
+        }
+
         setIsLoading((curr) => ({ ...curr, visualization: true }))
         UserModel.findOne(id)
             .then((data) => setResponse((curr) => ({ ...curr, user: data })))
@@ -61,7 +82,7 @@ export const useUser = (): IUseUser => {
                     .forEach((error) => alert({ text: error }))
             })
             .finally(() => setIsLoading((curr) => ({ ...curr, visualization: false })))
-    }, [alert, translateErrors])
+    }, [alert, callbackWhenIdIsNotValid, translateErrors])
 
     const createUser = useCallback((data: createUserPayload, callback = () => { }) => {
         setIsLoading((curr) => ({ ...curr, creation: true }))
@@ -81,6 +102,18 @@ export const useUser = (): IUseUser => {
             .finally(() => setIsLoading((curr) => ({ ...curr, creation: false })))
     }, [alert, translateErrors])
 
+    const editUser = useCallback((id: number, data: editUserPayload, callback = () => { }) => {
+        setIsLoading((curr) => ({ ...curr, edition: true }))
+        UserModel.edit(id, data)
+            .then(() => callback())
+            .catch((errors) => {
+                const translatedErrors = translateErrors(errors)!
+                translatedErrors && translatedErrors
+                    .forEach((error) => alert({ text: error }))
+            })
+            .finally(() => setIsLoading((curr) => ({ ...curr, edition: false })))
+    }, [alert, translateErrors])
+
     return {
         isLoadingDeletion: isLoading.deletion,
         deleteUser,
@@ -89,6 +122,8 @@ export const useUser = (): IUseUser => {
         user: response.user,
         isLoadingCreation: isLoading.creation,
         createUser,
-        createdUser: response.createdUser
+        createdUser: response.createdUser,
+        editUser,
+        isLoadingEdition: isLoading.edition
     }
 }
