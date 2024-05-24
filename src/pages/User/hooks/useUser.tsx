@@ -7,6 +7,7 @@ import { identity } from "../../../types/app.type"
 import { useNavigate } from "react-router-dom"
 import { I18nContext } from "../../../contexts/i18n.context"
 import { CommonLabels } from "../../../i18n/commonLabels.i18n"
+import { getDifferentKeys } from "../../../api/utils/getDifferentKeys"
 
 interface IUseUser {
     isLoadingDeletion: boolean
@@ -104,6 +105,16 @@ export const useUser = (): IUseUser => {
 
     const editUser = useCallback((id: number, data: editUserPayload, callback = () => { }) => {
         setIsLoading((curr) => ({ ...curr, edition: true }))
+
+        const originalData = response.user
+
+        const payloadForEdit = getDifferentKeys(originalData!, data as Record<string, string | number>)
+
+        if (Object.keys(payloadForEdit).length === 0) {
+            setIsLoading((curr) => ({ ...curr, edition: false }))
+            return callback()
+        }
+
         UserModel.edit(id, data)
             .then(() => callback())
             .catch((errors) => {
@@ -112,7 +123,7 @@ export const useUser = (): IUseUser => {
                     .forEach((error) => alert({ text: error }))
             })
             .finally(() => setIsLoading((curr) => ({ ...curr, edition: false })))
-    }, [alert, translateErrors])
+    }, [alert, response.user, translateErrors])
 
     return {
         isLoadingDeletion: isLoading.deletion,
