@@ -368,6 +368,26 @@
                         "username": "janedoe"
                     }
                 ]
+            },
+            {
+                "statusCode": 200,
+                "body": [
+                    {
+                        "id": 2,
+                        "name": "Jane Doe",
+                        "username": "janedoe"
+                    }
+                ]
+            }
+        ],
+        "findOneResponse": [
+            {
+                "statusCode": 200,
+                "body":  {
+                    "id": 1,
+                    "name": "John Doe",
+                    "username": "jonhdoe"
+                }
             }
         ]
     }
