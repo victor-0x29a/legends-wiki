@@ -52,7 +52,7 @@ export const ListUserPage = () => {
         onBackClick
     } = useMemo(() => ({
         onCreateClick: () => Navigate('/users/create'),
-        onEditClick: (id: number) => Navigate(`/users/${id}`),
+        onEditClick: (id: number) => Navigate(`/users/edit/${id}`),
         onDeleteClick: (id: number) => setDeleteModalData({ isOpen: true, userId: id }),
         onCloseDeleteModal: () => setDeleteModalData((curr) => ({ ...curr, isOpen: false, })),
         onBackClick: () => Navigate(-1),
