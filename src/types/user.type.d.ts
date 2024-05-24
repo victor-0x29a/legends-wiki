@@ -31,3 +31,8 @@ export interface createUserResponse {
     updatedAt: string
     createdAt: string
 }
+
+export interface editUserPayload {
+    name?: string
+    username?: string
+}
