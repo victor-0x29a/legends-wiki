@@ -260,5 +260,20 @@ export const FormLabels: I18nData = {
         "en": "Create user",
         "es": "Crear usuario",
         "pt-br": "Criar usuário"
-    }
+    },
+    "Name": {
+        "en": "Name",
+        "es": "Nombre",
+        "pt-br": "Nome"
+    },
+    "Required": {
+        "en": "Required",
+        "es": "Requerido",
+        "pt-br": "Obrigatório"
+    },
+    "Sending form": {
+        "en": "Sending form",
+        "es": "Enviando formulario",
+        "pt-br": "Enviando formulário"
+    },
 }

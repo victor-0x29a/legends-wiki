@@ -116,4 +116,9 @@ export const CommonLabels: I18nData = {
         "es": "Eliminando usuario",
         "pt-br": "Deletando usuário"
     },
+    "Creation of user": {
+        "en": "Creation of user",
+        "es": "Creación de usuario",
+        "pt-br": "Criação de usuário"
+    },
 }
