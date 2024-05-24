@@ -121,4 +121,19 @@ export const CommonLabels: I18nData = {
         "es": "Creación de usuario",
         "pt-br": "Criação de usuário"
     },
+    "Edit user": {
+        "en": "Edit user",
+        "es": "Editar usuario",
+        "pt-br": "Editar usuário"
+    },
+    "User updated": {
+        "en": "User updated",
+        "es": "Usuario actualizado",
+        "pt-br": "Usuário atualizado"
+    },
+    "User not found": {
+        "en": "User not found",
+        "es": "Usuario no encontrado",
+        "pt-br": "Usuário não encontrado"
+    },
 }
