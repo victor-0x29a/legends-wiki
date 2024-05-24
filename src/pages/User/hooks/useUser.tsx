@@ -40,7 +40,7 @@ export const useUser = (): IUseUser => {
 
     const deleteUser = useCallback((id: number, callback = () => { }) => {
         setIsLoading((curr) => ({ ...curr, deletion: true }))
-        UserModel.delete(id)
+        return UserModel.delete(id)
             .then(() => callback())
             .catch((errors) => {
                 const translatedErrors = translateErrors(errors)!
