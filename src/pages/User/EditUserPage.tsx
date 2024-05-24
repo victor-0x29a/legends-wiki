@@ -49,6 +49,7 @@ export const EditUserPage = () => {
     } = useUser()
 
     useEffect(() => {
+        if (isFetched.current) return
         isFetched.current = true
         findUser(Number(Params.id))
         // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -69,9 +70,8 @@ export const EditUserPage = () => {
         return <EditUserPageSkeleton />
     }
 
-    if (!user && !isFetched.current) {
-        Navigate(-1)
-        alert({ text: translate(CommonLabels, "User not found") })
+    if (!user) {
+        Navigate("/users")
         return
     }
 
