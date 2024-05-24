@@ -38,9 +38,10 @@ export const useUser = (): IUseUser => {
         alert
     } = useAlert()
 
-    const deleteUser = useCallback((id: number) => {
+    const deleteUser = useCallback((id: number, callback = () => { }) => {
         setIsLoading((curr) => ({ ...curr, deletion: true }))
         UserModel.delete(id)
+            .then(() => callback())
             .catch((errors) => {
                 const translatedErrors = translateErrors(errors)!
                 translatedErrors && translatedErrors
@@ -61,13 +62,16 @@ export const useUser = (): IUseUser => {
             .finally(() => setIsLoading((curr) => ({ ...curr, visualization: false })))
     }, [alert, translateErrors])
 
-    const createUser = useCallback((data: createUserPayload) => {
+    const createUser = useCallback((data: createUserPayload, callback = () => { }) => {
         setIsLoading((curr) => ({ ...curr, creation: true }))
-        UserModel.create(data)
-            .then((data) => setResponse((curr) => ({
-                ...curr,
-                createdUser: data
-            })))
+        return UserModel.create(data)
+            .then((data) => {
+                setResponse((curr) => ({
+                    ...curr,
+                    createdUser: data
+                }))
+                callback()
+            })
             .catch((errors) => {
                 const translatedErrors = translateErrors(errors)!
                 translatedErrors && translatedErrors
