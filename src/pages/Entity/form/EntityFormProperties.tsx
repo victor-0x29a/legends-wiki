@@ -8,7 +8,7 @@ import { I18nContext } from "../../../contexts/i18n.context"
 import { ErrorList } from "../../../i18n/errors.i18n"
 import { FormLabels } from "../../../i18n/forms.i18n"
 
-type EntityFormPropertiesProps = {
+interface EntityFormPropertiesProps {
     onChange: (value: object) => void,
     value: IItemStats,
     isLoading?: boolean

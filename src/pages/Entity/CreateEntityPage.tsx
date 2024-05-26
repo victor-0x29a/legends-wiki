@@ -1,6 +1,6 @@
 
 import { Container } from "@chakra-ui/react"
-import { entityTypesArray } from "./entity.constant"
+import { entityTypesArray } from "../../entity.constant"
 import { EntityForm } from "./form/EntityForm"
 import { EntityModel } from "../../api"
 import { useCallback, useContext, useState } from "react"

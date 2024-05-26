@@ -5,7 +5,7 @@ import { useContext } from 'react';
 import { I18nContext } from '../../../contexts/i18n.context';
 import { FormLabels } from '../../../i18n/forms.i18n';
 
-type IEntityFormSectionsProps = {
+interface IEntityFormSectionsProps {
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     onChange: (value: any) => void,
     value: string,

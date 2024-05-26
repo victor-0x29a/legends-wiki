@@ -1,8 +1,7 @@
 import { useFormik } from "formik"
 import { Button, FormControl, FormLabel, HStack, Input, Radio, RadioGroup } from "@chakra-ui/react"
-import { entityTypes, entityTypesArray } from "../entity.constant"
+import { entityTypes, entityTypesArray } from "../../../entity.constant"
 import { FormError } from "../../../components/FormError/FormError"
-import * as Yup from 'yup'
 import { EntityFormProperties } from "./EntityFormProperties"
 import { IItemStats } from "../../../types/item.type"
 import { EntityFormImage } from "./EntityFormImage"
@@ -12,18 +11,19 @@ import { FormEvent, useCallback, useContext } from "react"
 import { I18nContext } from "../../../contexts/i18n.context"
 import { FormLabels } from "../../../i18n/forms.i18n"
 import { EntityList } from "../../../i18n/entity.i18n"
+import { EntitySchema } from "./entity.schemas"
 
-export type initialValuesEntityForm = {
-    title: string,
-    properties: IItemStats,
-    description: string,
-    author: string | null,
+export interface initialValuesEntityForm {
+    title: string
+    properties: IItemStats
+    description: string
+    author: string | null
     image: {
-        src: string,
+        src: string
         alt: string
-    } | null,
-    sections: string,
-    type: string,
+    } | null
+    sections: string
+    type: string
 }
 
 interface IEntityFormProps {
@@ -32,42 +32,6 @@ interface IEntityFormProps {
     isLoading?: boolean,
     isEdition?: boolean
 }
-
-const EntitySchema = Yup.object().shape({
-    title: Yup.string()
-        .required("The title is required")
-        .typeError("The title must be a text"),
-    properties: Yup.object()
-        .required("The properties are required")
-        .default({})
-        .typeError("The properties must be valid"),
-    description: Yup.string()
-        .max(2800)
-        .required("The description is required")
-        .typeError("The description must be a text"),
-    author: Yup.string()
-        .nullable()
-        .max(30)
-        .typeError("The author must be a text"),
-    image: Yup.object()
-        .nullable()
-        .test('is-image', 'The image must by valid', (value) => {
-            if (!value) return true
-
-            const keys = Object.keys(value)
-
-            if (keys.length !== 2) return false
-
-            if (!keys.includes('src') || !keys.includes('alt')) return false
-
-            return true
-        }),
-    sections: Yup.string(),
-    type: Yup.string()
-        .max(30)
-        .required()
-        .typeError("The type must be a text"),
-})
 
 export const EntityForm = ({
     initialValues,

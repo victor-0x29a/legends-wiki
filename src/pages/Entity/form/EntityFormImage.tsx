@@ -8,7 +8,7 @@ import { IconWrapper } from "../../../components/IconWrapper/IconWrapper"
 import { InfoIcon } from "@chakra-ui/icons"
 import { IconWrapperCustomCss } from "./EntityFormImageStyles"
 
-type EntityForImageProps = {
+interface EntityForImageProps {
     onChange: (value: object) => void,
     value: {
         src: string,

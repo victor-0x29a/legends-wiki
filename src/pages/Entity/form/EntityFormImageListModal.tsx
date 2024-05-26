@@ -6,7 +6,7 @@ import { CommonLabels } from "../../../i18n/commonLabels.i18n"
 import { useAlert } from "../../../hooks/useAlert"
 import { Environment } from "../../../constants"
 
-type EntityFormImageListModalProps = {
+interface EntityFormImageListModalProps {
     isOpennedModalOfFiles: boolean,
     toggleModalOfFiles: () => void,
 }
