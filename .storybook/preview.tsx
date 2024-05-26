@@ -5,6 +5,7 @@ import { GlobalStyle } from "../src/styles/global.style";
 import { I18nProvider } from "../src/contexts/i18n.context"
 import { ChakraProvider } from "@chakra-ui/react";
 import { LegendsColor } from "../src/styles/constants.style";
+import { MemoryRouter } from "react-router-dom"
 
 const preview: Preview = {
   parameters: {
@@ -21,11 +22,13 @@ const preview: Preview = {
     }),
     (Story) => (
       <ChakraProvider>
-        <I18nProvider>
-          <div style={{ backgroundColor: LegendsColor.backgroundColors.primary, padding: '2rem' }}>
-            <Story />
-          </div>
-        </I18nProvider>
+        <MemoryRouter basename="/">
+          <I18nProvider>
+            <div style={{ backgroundColor: LegendsColor.backgroundColors.primary, padding: '2rem' }}>
+              <Story />
+            </div>
+          </I18nProvider>
+        </MemoryRouter>
       </ChakraProvider>
     )
   ]
