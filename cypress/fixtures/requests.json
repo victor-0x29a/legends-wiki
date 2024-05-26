@@ -351,5 +351,100 @@
                 }
             }
         ]
+    },
+    "users": {
+        "tableResponse": [
+            {
+                "statusCode": 200,
+                "body": [
+                    {
+                        "id": 1,
+                        "name": "John Doe",
+                        "username": "jonhdoe"
+                    },
+                    {
+                        "id": 2,
+                        "name": "Jane Doe",
+                        "username": "janedoe"
+                    }
+                ]
+            },
+            {
+                "statusCode": 200,
+                "body": [
+                    {
+                        "id": 2,
+                        "name": "Jane Doe",
+                        "username": "janedoe"
+                    }
+                ]
+            },
+            {
+                "statusCode": 200,
+                "body": [
+                    {
+                        "id": 1,
+                        "name": "new name",
+                        "username": "janedoe"
+                    }
+                ]
+            },
+            {
+                "statusCode": 200,
+                "body": []
+            },
+            {
+                "statusCode": 200,
+                "body": [
+                    {
+                        "id": 1,
+                        "name": "john",
+                        "username": "johndoe"
+                    }
+                ]
+            },
+            {
+                "statusCode": 200,
+                "body": []
+            },
+            {
+                "statusCode": 200,
+                "body": [
+                    {
+                        "id": 1,
+                        "name": "Desconhecido",
+                        "username": "johndoe"
+                    }
+                ]
+            }
+        ],
+        "findOneResponse": [
+            {
+                "statusCode": 200,
+                "body":  {
+                    "id": 1,
+                    "name": "John Doe",
+                    "username": "jonhdoe"
+                }
+            },
+            {
+                "statusCode": 404,
+                "body": {
+                    "errorList": [
+                        "User not found."
+                    ]
+                }
+            }
+        ],
+        "createResponse": [
+            {
+                "id": 1,
+                "name": "Desconhecido",
+                "password": "$2b$10$kJ.8ox/0v9J2POwZyGV1Qu8YrPIKBVxDQ8dZKIa6Hwbe0WnHzR8AG",
+                "username": "john",
+                "updatedAt": "2024-05-24T14:44:24.997Z",
+                "createdAt": "2024-05-24T14:44:24.997Z"
+            }
+        ]
     }
 }

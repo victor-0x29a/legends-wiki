@@ -86,4 +86,54 @@ export const CommonLabels: I18nData = {
         "es": "Editar entidad",
         "pt-br": "Editar entidade"
     },
+    "User": {
+        "en": "User",
+        "es": "Usuario",
+        "pt-br": "Usuário"
+    },
+    "Name": {
+        "en": "Name",
+        "es": "Nombre",
+        "pt-br": "Nome"
+    },
+    "Loading users": {
+        "en": "Loading users",
+        "es": "Cargando usuarios",
+        "pt-br": "Carregando usuários"
+    },
+    "Delete user": {
+        "en": "Delete user",
+        "es": "Eliminar usuario",
+        "pt-br": "Deletar usuário"
+    },
+    "You want to delete user with ID": {
+        "en": "You want to delete user with ID",
+        "es": "Desea eliminar el usuario con ID",
+        "pt-br": "Deseja deletar o usuário com ID"
+    },
+    "Deleting user": {
+        "en": "Deleting user",
+        "es": "Eliminando usuario",
+        "pt-br": "Deletando usuário"
+    },
+    "Creation of user": {
+        "en": "Creation of user",
+        "es": "Creación de usuario",
+        "pt-br": "Criação de usuário"
+    },
+    "Edit user": {
+        "en": "Edit user",
+        "es": "Editar usuario",
+        "pt-br": "Editar usuário"
+    },
+    "User updated": {
+        "en": "User updated",
+        "es": "Usuario actualizado",
+        "pt-br": "Usuário atualizado"
+    },
+    "User not found": {
+        "en": "User not found",
+        "es": "Usuario no encontrado",
+        "pt-br": "Usuário não encontrado"
+    },
 }
