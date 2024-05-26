@@ -1,5 +1,5 @@
 import { Box, Skeleton } from "@chakra-ui/react"
-import { LegendsSize } from "../../styles/constants.style"
+import { LegendsSize } from "../../../styles/constants.style"
 
 const skeletonSequence = [
     ["100%", "100px"], ["100%", "1rem"], ["100%", "50px"],

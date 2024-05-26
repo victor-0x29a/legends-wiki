@@ -1,12 +1,12 @@
 import { Box, Button, FormLabel, Heading, Input, Table, TableContainer, Tbody, Th, Thead, Tr } from "@chakra-ui/react"
-import { LegendsColor, LegendsSize } from "../../styles/constants.style"
-import { IItemStats } from "../../types/item.type"
+import { LegendsColor, LegendsSize } from "../../../styles/constants.style"
+import { IItemStats } from "../../../types/item.type"
 import { useCallback, useContext, useMemo, useState } from "react"
 import { DeleteIcon } from "@chakra-ui/icons"
-import { useAlert } from "../../hooks/useAlert"
-import { I18nContext } from "../../contexts/i18n.context"
-import { ErrorList } from "../../i18n/errors.i18n"
-import { FormLabels } from "../../i18n/forms.i18n"
+import { useAlert } from "../../../hooks/useAlert"
+import { I18nContext } from "../../../contexts/i18n.context"
+import { ErrorList } from "../../../i18n/errors.i18n"
+import { FormLabels } from "../../../i18n/forms.i18n"
 
 type EntityFormPropertiesProps = {
     onChange: (value: object) => void,

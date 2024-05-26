@@ -1,7 +1,7 @@
 
 import { Container } from "@chakra-ui/react"
 import { entityTypesArray } from "./entity.constant"
-import { EntityForm } from "./EntityForm"
+import { EntityForm } from "./form/EntityForm"
 import { EntityModel } from "../../api"
 import { useCallback, useContext, useState } from "react"
 import { useNavigate } from "react-router-dom"

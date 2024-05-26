@@ -1,17 +1,17 @@
 import { useFormik } from "formik"
 import { Button, FormControl, FormLabel, HStack, Input, Radio, RadioGroup } from "@chakra-ui/react"
-import { entityTypes, entityTypesArray } from "./entity.constant"
-import { FormError } from "../../components/FormError/FormError"
+import { entityTypes, entityTypesArray } from "../entity.constant"
+import { FormError } from "../../../components/FormError/FormError"
 import * as Yup from 'yup'
 import { EntityFormProperties } from "./EntityFormProperties"
-import { IItemStats } from "../../types/item.type"
+import { IItemStats } from "../../../types/item.type"
 import { EntityFormImage } from "./EntityFormImage"
 import { EntityFormSections } from "./EntityFormSections"
-import { LegendsSize } from "../../styles/constants.style"
+import { LegendsSize } from "../../../styles/constants.style"
 import { FormEvent, useCallback, useContext } from "react"
-import { I18nContext } from "../../contexts/i18n.context"
-import { FormLabels } from "../../i18n/forms.i18n"
-import { EntityList } from "../../i18n/entity.i18n"
+import { I18nContext } from "../../../contexts/i18n.context"
+import { FormLabels } from "../../../i18n/forms.i18n"
+import { EntityList } from "../../../i18n/entity.i18n"
 
 export type initialValuesEntityForm = {
     title: string,

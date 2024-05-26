@@ -1,10 +1,10 @@
 import { useCallback, useContext, useEffect, useState } from "react"
-import { I18nContext } from "../../contexts/i18n.context"
+import { I18nContext } from "../../../contexts/i18n.context"
 import { Box, CircularProgress, Heading, List, ListItem, Modal, ModalBody, ModalCloseButton, ModalContent, ModalOverlay } from "@chakra-ui/react"
-import { LegendsColor, LegendsSize, LegendsValues } from "../../styles/constants.style"
-import { CommonLabels } from "../../i18n/commonLabels.i18n"
-import { useAlert } from "../../hooks/useAlert"
-import { Environment } from "../../constants"
+import { LegendsColor, LegendsSize, LegendsValues } from "../../../styles/constants.style"
+import { CommonLabels } from "../../../i18n/commonLabels.i18n"
+import { useAlert } from "../../../hooks/useAlert"
+import { Environment } from "../../../constants"
 
 type EntityFormImageListModalProps = {
     isOpennedModalOfFiles: boolean,
