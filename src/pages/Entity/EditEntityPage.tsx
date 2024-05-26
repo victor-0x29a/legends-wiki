@@ -33,7 +33,7 @@ export const EditEntityPage = () => {
         ) : (
             <EntityForm
                 initialValues={originalData as initialValuesEntityForm}
-                onSubmit={onSubmit}
+                onSubmit={(data) => onSubmit(data as unknown as Record<string, unknown>)}
                 isLoading={isLoading}
                 isEdition={true}
             />
