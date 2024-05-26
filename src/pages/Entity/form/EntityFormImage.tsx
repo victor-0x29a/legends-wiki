@@ -22,7 +22,7 @@ export const EntityFormImage = ({
     value,
     isLoading = false
 }: EntityForImageProps) => {
-    const [isUsingImage, setIsUsingImage] = useState(value || false)
+    const [isUsingImage, setIsUsingImage] = useState<boolean>(Boolean(value))
 
     const defaultValueIsUsingImage = useMemo(() => {
         if (!value) return false
