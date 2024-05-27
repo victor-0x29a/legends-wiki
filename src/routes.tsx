@@ -13,6 +13,7 @@ import { ListUserPage } from "./pages/User/ListUserPage";
 import { CreateUserPage } from "./pages/User/CreateUserPage";
 import { EditUserPage } from "./pages/User/EditUserPage";
 import { HomePage } from "./pages/home/HomePage";
+import { EntitiesVisualization } from "./pages/home/EntitiesVisualization";
 
 export const router = createBrowserRouter([
     {
@@ -23,8 +24,14 @@ export const router = createBrowserRouter([
     },
     {
         path: "",
-        element: <Layout>
+        element: <Layout isFreeSizes={true}>
             <HomePage />
+        </Layout>
+    },
+    {
+        path: ":entityType",
+        element: <Layout>
+            <EntitiesVisualization />
         </Layout>
     },
     {
