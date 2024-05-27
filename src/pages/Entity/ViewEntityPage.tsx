@@ -1,5 +1,5 @@
 import { useNavigate, useParams } from "react-router-dom"
-import { Entities } from "../../constants"
+import { Entities } from "../../entity.constant"
 import { NotFound } from "../../not-found"
 import { useEntity } from "./hooks/useEntity"
 import { Box, Skeleton, SkeletonText } from "@chakra-ui/react"

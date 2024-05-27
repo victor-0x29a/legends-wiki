@@ -1,7 +1,7 @@
 import { Box, Text } from "@chakra-ui/react"
 import { useParams } from "react-router-dom"
 import { NotFound } from "../../not-found"
-import { Entities } from "../../constants"
+import { Entities } from "../../entity.constant"
 
 export const EntitiesVisualization = () => {
     const { entityType } = useParams()
