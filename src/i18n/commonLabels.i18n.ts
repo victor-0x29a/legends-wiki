@@ -136,4 +136,9 @@ export const CommonLabels: I18nData = {
         "es": "Usuario no encontrado",
         "pt-br": "Usuário não encontrado"
     },
+    "Home": {
+        "en": "Home",
+        "es": "Inicio",
+        "pt-br": "Início"
+    },
 }
