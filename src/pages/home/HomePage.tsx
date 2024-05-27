@@ -3,9 +3,12 @@ import { DashboardContainer } from "../Dashboard/Container"
 import LogoIcon from "../../assets/logo-icon.png"
 import { LegendsColor, LegendsSize } from "../../styles/constants.style"
 import { SocialMedias } from "../../data/social-media.data"
+import { useNavigate } from "react-router-dom"
 
 export const HomePage = () => {
-    return <DashboardContainer showHeader={false} onEntityTypeChange={alert}>
+    const Navigate = useNavigate()
+
+    return <DashboardContainer showHeader={false} onEntityTypeChange={Navigate}>
         <Box
             w="100%"
             h="100%"
