@@ -66,9 +66,7 @@ export const router = createBrowserRouter([
             },
             {
                 path: ":type/:id",
-                element: <PrivateRoute forProtect={true}>
-                    <ViewEntityPage />
-                </PrivateRoute>
+                element: <ViewEntityPage />
             },
             {
                 path: "edit/:id",
