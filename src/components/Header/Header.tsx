@@ -36,6 +36,7 @@ export const Header = () => {
         <Box
             as="header"
             w={"100%"}
+            h="80px"
             padding={LegendsSize.padding.small}
             display={"flex"}
             bgColor={LegendsColor.backgroundColors.secondary}
