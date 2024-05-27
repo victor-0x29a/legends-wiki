@@ -71,12 +71,13 @@ export const ViewEntityPage = () => {
         return { src: entity?.image?.src, alt: entity?.image?.alt }
     }, [entity?.image])
 
-    if (!type || !Entities.includes(type)) {
-        return <NotFound />
-    }
-
     if (isLoading) {
         return <SkeletonPage />
+    }
+
+
+    if (!type || !Entities.includes(type) || entity?.type !== type) {
+        return <NotFound />
     }
 
     return <Box {...DEFAULT_CONTAINER_PROPS}>
