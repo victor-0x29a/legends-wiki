@@ -3,7 +3,6 @@ import { DashboardContainer } from "../Dashboard/Container"
 import LogoIcon from "../../assets/logo-icon.png"
 import { LegendsColor, LegendsSize } from "../../styles/constants.style"
 import { SocialMedias } from "../../data/social-media.data"
-import { IconWrapper } from "../../components/IconWrapper/IconWrapper"
 
 export const HomePage = () => {
     return <DashboardContainer showHeader={false} onEntityTypeChange={alert}>
