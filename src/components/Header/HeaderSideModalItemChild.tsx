@@ -3,9 +3,10 @@ import { LegendsColor, LegendsSize, LegendsValues } from "../../styles/constants
 import { IconWrapper } from "../IconWrapper/IconWrapper";
 import { IHeaderSideModalItemChildProps } from "./HeaderSideModalItemChild.type";
 
-export const HeaderSideModalChild = ({ onClick, icon, label, isMobile }: IHeaderSideModalItemChildProps) => {
+export const HeaderSideModalChild = ({ onClick, icon, label, isMobile, others = {} }: IHeaderSideModalItemChildProps) => {
     const [isHover, setIsHover] = useBoolean()
-    return <Text as="span"
+    return <Text
+        as="span"
         onClick={onClick}
         display={"flex"}
         color={LegendsColor.textColors.emphasis.secondary}
@@ -26,8 +27,13 @@ export const HeaderSideModalChild = ({ onClick, icon, label, isMobile }: IHeader
             bgColor: LegendsColor.textColors.emphasis.primary,
             color: LegendsColor.textColors.white
         }}
+        _focus={{
+            bgColor: LegendsColor.textColors.emphasis.primary,
+            color: LegendsColor.textColors.white
+        }}
         onMouseEnter={setIsHover.on}
         onMouseLeave={setIsHover.off}
+        {...others}
     >
         <IconWrapper lightMode={!isHover}>
             {icon}
