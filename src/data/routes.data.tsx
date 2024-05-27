@@ -1,11 +1,16 @@
 import { GiLegArmor, GiSuperMushroom, GiSkullWithSyringe } from "react-icons/gi"
-import { BiExit, BiLayer } from "react-icons/bi";
+import { BiExit, BiLayer, BiHome } from "react-icons/bi";
 import { ARMOR_ENTITY, BOSS_ENTITY, COLLECTIBLE_ENTITY } from "../constants"
 import { FaGear } from "react-icons/fa6";
 
 const defaultIconProps = { size: 20 }
 
 export const PublicRoutes = [
+    {
+        label: "Home",
+        path: "/",
+        icon: <BiHome {...defaultIconProps} />
+    },
     {
         label: "Armadura",
         path: `/${ARMOR_ENTITY}`,

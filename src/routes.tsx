@@ -12,12 +12,19 @@ import { EditEntityPage } from "./pages/Entity/EditEntityPage";
 import { ListUserPage } from "./pages/User/ListUserPage";
 import { CreateUserPage } from "./pages/User/CreateUserPage";
 import { EditUserPage } from "./pages/User/EditUserPage";
+import { HomePage } from "./pages/home/HomePage";
 
 export const router = createBrowserRouter([
     {
         path: "*",
         element: <Layout>
             <NotFound />
+        </Layout>
+    },
+    {
+        path: "",
+        element: <Layout>
+            <HomePage />
         </Layout>
     },
     {
