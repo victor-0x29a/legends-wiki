@@ -6,9 +6,12 @@ export const EntityParser = {
         author: data.author ? data.author : null,
         image: data.image ? data.image : null,
     }),
-    list: ({ page, perPage }: EntityFilters) => ({
+    list: ({ page, perPage, type, author, title }: EntityFilters) => ({
         page,
-        perPage
+        perPage,
+        type,
+        author,
+        title
     }),
     single: (entity: FindOneEntity) => entity,
     edit: ({
