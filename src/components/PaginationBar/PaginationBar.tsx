@@ -39,7 +39,13 @@ export const PaginationBar = ({
         onChangePerPage(Number(perPage))
     }, [onChangePerPage])
 
-    return <Box width={"100%"} display={"flex"} justifyContent={"space-between"} padding={LegendsSize.padding.normal}>
+    return <Box
+        width={"100%"}
+        display={"flex"}
+        justifyContent={"space-between"}
+        padding={LegendsSize.padding.normal}
+        id="pagination-bar-container"
+    >
         <Select
             onSelect={onPerPageChange}
             options={mountedPerPageOptions}
@@ -51,7 +57,8 @@ export const PaginationBar = ({
                 css: DefaultPerPageOptionsStyle,
                 placeholder: undefined,
                 cursor: "pointer",
-                value: perPage || PER_PAGE_OPTIONS[0].toString()
+                value: perPage || PER_PAGE_OPTIONS[0].toString(),
+                id: "pagination-bar-select-per-page"
             }}
         />
         <Box display={"flex"} gap={LegendsSize.margin.normal}>
