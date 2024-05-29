@@ -21,6 +21,7 @@ export const FeedItem = ({
         _hover={{
             border: `2px solid ${LegendsColor.textColors.white}`,
         }}
+        id="feed-item"
     >
         <EntityImage image={image} others={{
             width: '120px',

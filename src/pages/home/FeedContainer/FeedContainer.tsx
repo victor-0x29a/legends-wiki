@@ -18,10 +18,10 @@ export const FeedContainer = ({ entityType, onEntityClick }: IFeedContainerProps
         onChangePerPage
     } = useEntityFeed(entityType)
 
-    const canShowPagination = useMemo(() => totalPages > 1, [totalPages])
+    const canShowPagination = useMemo(() => entities.length > 0, [entities])
 
     return <>
-        <List display={"flex"} flexDirection={"column"}>
+        <List display={"flex"} flexDirection={"column"} id="feed-container">
             {entities.map((entity) => (
                 <ListItem
                     padding={LegendsSize.padding.normal}

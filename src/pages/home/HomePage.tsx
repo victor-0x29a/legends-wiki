@@ -33,6 +33,7 @@ export const HomePage = () => {
                 {SocialMedias.map((media, index) => (
                     <a
                         key={`social-media-${index}`}
+                        className={'social-media-redirect'}
                         style={{ margin: LegendsSize.margin.small }}
                         href={media.link}
                         target="_blank"
