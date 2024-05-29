@@ -75,4 +75,18 @@ describe('entity table pagination spec', () => {
 
         cy.get('#pagination-bar-action-previous').should('be.disabled')
     })
+
+    it('should change the perPage', () => {
+        MockRequestsForTable({ responseIndex: 2 })
+
+        MockRequestsForPagination({ responseIndex: 7, page: 1, perPage: 25 })
+
+        cy.get('tbody tr').should('have.length', 10);
+
+        cy.get('#pagination-bar-container #pagination-bar-select-per-page').select('25');
+
+        cy.wait(500)
+
+        cy.get('tbody tr').should('have.length', 11);
+    })
 })
