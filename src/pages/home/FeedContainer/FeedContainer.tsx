@@ -14,7 +14,8 @@ export const FeedContainer = ({ entityType, onEntityClick }: IFeedContainerProps
         page,
         perPage,
         totalPages,
-        onChangePage
+        onChangePage,
+        onChangePerPage
     } = useEntityFeed(entityType)
 
     const canShowPagination = useMemo(() => totalPages > 1, [totalPages])
@@ -43,7 +44,7 @@ export const FeedContainer = ({ entityType, onEntityClick }: IFeedContainerProps
                 perPage={perPage}
                 onChangePage={onChangePage}
                 totalPages={totalPages}
-                onChangePerPage={console.log}
+                onChangePerPage={onChangePerPage}
             />
         )}
     </>

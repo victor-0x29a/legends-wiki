@@ -12,6 +12,10 @@ export const useEntityFeed = (entityType: string) => {
         setPagination((prev) => ({ ...prev, page }))
     }, [])
 
+    const onChangePerPage = useCallback((perPage: number) => {
+        setPagination((prev) => ({ ...prev, perPage }))
+    }, [])
+
     const {
         data,
         isLoading,
@@ -31,6 +35,7 @@ export const useEntityFeed = (entityType: string) => {
     return {
         isLoading: isLoading || isFetching,
         onChangePage,
+        onChangePerPage,
         entities: data?.entries || [],
         page: pagination.page,
         perPage: pagination.perPage,

@@ -46,12 +46,12 @@ export const PaginationBar = ({
             placeholder="Pagination"
             others={{
                 w: "100px",
-                defaultValue: perPage || PER_PAGE_OPTIONS[0].toString(),
                 variant: "filled",
                 bgColor: 'transparent',
                 css: DefaultPerPageOptionsStyle,
                 placeholder: undefined,
-                cursor: "pointer"
+                cursor: "pointer",
+                value: perPage || PER_PAGE_OPTIONS[0].toString()
             }}
         />
         <Box display={"flex"} gap={LegendsSize.margin.normal}>
