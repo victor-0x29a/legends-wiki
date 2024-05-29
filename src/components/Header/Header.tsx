@@ -66,7 +66,7 @@ export const Header = () => {
                             variant: "filled",
                             bgColor: 'transparent',
                             css: I18nStyle,
-                            placeholder: null,
+                            placeholder: undefined,
                             icon: (<IconWrapper lightMode={true}>
                                 <BiCaretDown />
                             </IconWrapper>),
