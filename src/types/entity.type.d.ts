@@ -41,6 +41,7 @@ export type MinimalEntity = {
     title: string
     image: null | ImageObject
     type: string
+    description: string
 }
 
 export interface ListEntityResponse {
