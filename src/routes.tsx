@@ -30,7 +30,7 @@ export const router = createBrowserRouter([
     },
     {
         path: ":entityType",
-        element: <Layout>
+        element: <Layout isFreeSizes={true}>
             <EntitiesVisualization />
         </Layout>
     },
