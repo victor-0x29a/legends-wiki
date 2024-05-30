@@ -1,6 +1,5 @@
 import { useNavigate, useParams } from "react-router-dom"
 import { Entities } from "../../entity.constant"
-import { NotFound } from "../../not-found"
 import { useEntity } from "./hooks/useEntity"
 import { Box, Skeleton, SkeletonText } from "@chakra-ui/react"
 import BasicHeader from "../../components/BasicHeader"
@@ -12,6 +11,7 @@ import MDEditor from "@uiw/react-md-editor"
 import { DashboardHeader } from "../Dashboard/Header"
 import { I18nContext } from "../../contexts/i18n.context"
 import { CommonLabels } from "../../i18n/commonLabels.i18n"
+import { GenericError } from "../../generic-error"
 
 const DEFAULT_CONTAINER_PROPS = {
     paddingTop: LegendsSize.padding.normal,
@@ -61,7 +61,7 @@ export const ViewEntityPage = () => {
 
     const { type, id } = useParams()
 
-    const { entity, isLoading } = useEntity(Number(id))
+    const { entity, isLoading, setCanFetch } = useEntity(Number(id))
 
     const canCenterStats = useMemo(() => Object.keys(entity?.properties || {}).length < 3, [entity?.properties])
 
@@ -71,13 +71,13 @@ export const ViewEntityPage = () => {
         return { src: entity?.image?.src, alt: entity?.image?.alt }
     }, [entity?.image])
 
-    if (isLoading) {
-        return <SkeletonPage />
+    if (!type || !Entities.includes(type) || entity?.type !== type) {
+        setCanFetch(false)
+        return <GenericError errorDetails="Unknown entity" />
     }
 
-
-    if (!type || !Entities.includes(type) || entity?.type !== type) {
-        return <NotFound />
+    if (isLoading) {
+        return <SkeletonPage />
     }
 
     return <Box {...DEFAULT_CONTAINER_PROPS}>
