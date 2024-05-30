@@ -1,6 +1,6 @@
 import { Box, Fade, Image } from "@chakra-ui/react";
 import Logo from "../../assets/logo.png";
-import { LegendsColor, LegendsSize } from "../../styles/constants.style";
+import { HEADER_HEIGHT, LegendsColor, LegendsSize } from "../../styles/constants.style";
 import { HamburgerIcon } from "@chakra-ui/icons";
 import { IconWrapper } from "../IconWrapper/IconWrapper";
 import { useCallback, useContext, useRef, useState } from "react";
@@ -36,7 +36,7 @@ export const Header = () => {
         <Box
             as="header"
             w={"100%"}
-            h="80px"
+            h={HEADER_HEIGHT}
             padding={LegendsSize.padding.small}
             display={"flex"}
             bgColor={LegendsColor.backgroundColors.secondary}

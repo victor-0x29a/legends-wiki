@@ -53,3 +53,5 @@ export const LegendsSize = {
 export const LegendsValues = {
     transitionDuration: '340ms',
 }
+
+export const HEADER_HEIGHT = '80px'

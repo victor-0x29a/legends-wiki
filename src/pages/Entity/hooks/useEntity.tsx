@@ -4,17 +4,15 @@ import { FindOneEntity } from "../../../types/entity.type"
 import { useError } from "../../../hooks/useError"
 import { useAlert } from "../../../hooks/useAlert"
 import { Environment } from "../../../constants"
-import { useState } from "react"
 
 const STALE_TIME = Environment.isTest ? 500 : 1000 * 60 * 5
 
 type IUseEntity = {
     isLoading: boolean
     entity: FindOneEntity
-    setCanFetch: (value: boolean) => void
 }
 
-export const useEntity = (entityId: number): IUseEntity => {
+export const useEntity = (entityId: number, canFetch: boolean = true): IUseEntity => {
     const {
         translateErrors
     } = useError()
@@ -23,7 +21,6 @@ export const useEntity = (entityId: number): IUseEntity => {
         alert
     } = useAlert()
 
-    const [canFetch, setCanFetch] = useState(true)
 
     const {
         data,
@@ -48,7 +45,6 @@ export const useEntity = (entityId: number): IUseEntity => {
 
     return {
         isLoading: isLoading || isFetching,
-        entity: data as unknown as FindOneEntity,
-        setCanFetch
+        entity: data as unknown as FindOneEntity
     }
 }
