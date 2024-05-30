@@ -1,7 +1,7 @@
 export const I18nLanguages = [
-    { value: 'pt-br', label: '🇧🇷' },
-    { value: 'en', label: '🇺🇸' },
-    { value: 'es', label: '🇪🇸' }
+    { value: 'pt-br', label: 'PT-BR' },
+    { value: 'en', label: 'EN-US' },
+    { value: 'es', label: 'ES' }
 ]
 
 export const Environment = (function () {
