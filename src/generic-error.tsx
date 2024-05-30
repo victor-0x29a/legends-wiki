@@ -9,10 +9,12 @@ import { CommonLabels } from "./i18n/commonLabels.i18n";
 
 interface IGenericErrorProps {
     errorDetails?: string
+    canShowBackButton?: boolean
 }
 
 export const GenericError = ({
-    errorDetails
+    errorDetails,
+    canShowBackButton = true
 }: IGenericErrorProps) => {
     const { translate } = useContext(I18nContext)
     const Navigate = useNavigate()
@@ -34,13 +36,13 @@ export const GenericError = ({
                 {translate(ErrorList, errorDetails || "genericError")}
             </Heading>
         </Box>
-        <Box marginTop={LegendsSize.margin.normal}>
+        {canShowBackButton && (<Box marginTop={LegendsSize.margin.normal}>
             <Button
                 fontSize={LegendsSize.fontSize.large}
                 onClick={() => Navigate(-1)}
             >
                 {translate(CommonLabels, "Back")}
             </Button>
-        </Box>
+        </Box>)}
     </Box>
 }

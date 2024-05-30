@@ -30,7 +30,7 @@ export const EntitiesVisualization = () => {
         headerTitle={translate(EntityList, entityType!)}
         onHeaderBackClick={() => Navigate(-1)}
     >
-        {!canShowHeader && <GenericError errorDetails="Unknown entity" />}
+        {!canShowHeader && <GenericError errorDetails="Unknown entity" canShowBackButton={false} />}
         {canShowHeader && (
             <FeedContainer
                 entityType={entityType!}
