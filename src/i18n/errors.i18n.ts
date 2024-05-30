@@ -60,5 +60,15 @@ export const ErrorList: I18nData = {
         "en": "User or password incorrect",
         "es": "Usuario o contraseña incorrectos",
         "pt-br": "Usuário ou senha incorretos"
+    },
+    "genericError": {
+        "en": "An error occurred, try again later.",
+        "es": "Ocurrió un error, inténtalo de nuevo más tarde.",
+        "pt-br": "Ocorreu um erro, tente novamente mais tarde."
+    },
+    "Unknown entity": {
+        "pt-br": "Tipo de entidade desconhecida",
+        "en": "Unknown entity",
+        "es": "Entidad desconocida"
     }
 }

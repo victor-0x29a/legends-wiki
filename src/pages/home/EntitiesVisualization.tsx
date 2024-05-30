@@ -1,11 +1,11 @@
 import { useNavigate, useParams } from "react-router-dom"
-import { NotFound } from "../../not-found"
 import { Entities } from "../../entity.constant"
 import { DashboardContainer } from "../Dashboard/Container"
 import { useCallback, useContext, useMemo } from "react"
 import { I18nContext } from "../../contexts/i18n.context"
 import { EntityList } from "../../i18n/entity.i18n"
 import { FeedContainer } from "./FeedContainer/FeedContainer"
+import { GenericError } from "../../generic-error"
 
 export const EntitiesVisualization = () => {
     const { entityType } = useParams()
@@ -30,7 +30,7 @@ export const EntitiesVisualization = () => {
         headerTitle={translate(EntityList, entityType!)}
         onHeaderBackClick={() => Navigate(-1)}
     >
-        {!canShowHeader && <NotFound />}
+        {!canShowHeader && <GenericError errorDetails="Unknown entity" />}
         {canShowHeader && (
             <FeedContainer
                 entityType={entityType!}

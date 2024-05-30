@@ -2,6 +2,7 @@ import { useQuery } from "@tanstack/react-query"
 import { EntityModel } from "../../../api"
 import { useCallback, useState } from "react"
 import { Environment } from "../../../constants"
+import { Entities } from "../../../entity.constant"
 
 const STALE_TIME = Environment.isTest ? 500 : 1000 * 60 * 5
 
@@ -24,6 +25,7 @@ export const useEntityFeed = (entityType: string) => {
         queryKey: [JSON.stringify({ pagination, type: entityType }) + "entity-feed"],
         staleTime: STALE_TIME,
         queryFn: () => {
+            if (!Entities.includes(entityType)) return null
             return EntityModel.list({
                 page: pagination.page,
                 perPage: pagination.perPage,

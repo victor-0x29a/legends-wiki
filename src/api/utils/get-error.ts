@@ -6,7 +6,7 @@ export const getError = (error: unknown) => {
     const errorIIFE = function() {
         // @ts-expect-error - error is unknown
         if (error?.message === 'Network Error') {
-            return ["Internal error", "Required authentication"]
+            return ["Internal error"]
         }
 
         if (!isAxiosError) {
