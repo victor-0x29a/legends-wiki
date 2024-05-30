@@ -39,3 +39,4 @@ export const SocialMedias = [
         link: YT_PROFILE,
     }
 ]
+
