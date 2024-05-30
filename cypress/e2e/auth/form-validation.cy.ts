@@ -1,14 +1,14 @@
 describe('auth form specs', () => {
     it('defined', () => {
-      cy.visit('/auth')
+      cy.visit('/auth/login')
     })
     it('has a full form', () => {
-      cy.visit('/auth')
+      cy.visit('/auth/login')
       cy.get('form').should('exist')
       cy.get('button').should('exist')
     })
     it('validate an empty form', () => {
-      cy.visit('/auth')
+      cy.visit('/auth/login')
       cy.get('button').click()
 
       cy.get('.chakra-form__helper-text').first().should('have.text', 'Nome de usuário é obrigatório.')
@@ -20,7 +20,7 @@ describe('auth form specs', () => {
       cy.get('.chakra-form__helper-text').should('not.exist')
     })
     it('validate a form', () => {
-      cy.visit('/auth')
+      cy.visit('/auth/login')
       cy.get('input[name="username"]').type(Array.from({ length: 21 }).map(() => 'a').join(''))
       cy.get('input[name="password"]').type('passwd')
       cy.get('button').click()
