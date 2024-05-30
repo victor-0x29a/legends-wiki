@@ -1,6 +1,6 @@
 describe('auth form submissions spec', () => {
     it('log-in with success', () => {
-      cy.visit('/auth')
+      cy.visit('/auth/login')
 
       cy.fixture('requests.json')
         .then(({ options }) => {
@@ -22,7 +22,7 @@ describe('auth form submissions spec', () => {
       })
     })
     it('log-in with error', () => {
-      cy.visit('/auth')
+      cy.visit('/auth/login')
 
       cy.fixture('requests.json')
         .then(({ options }) => {

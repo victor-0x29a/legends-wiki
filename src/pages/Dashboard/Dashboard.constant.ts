@@ -1,0 +1,1 @@
+export const DASHBOARD_SIDE_MODAl_SIZE = 220;

@@ -59,15 +59,15 @@ const EntityImage = ({ image, others = {} }: IEntityImageProps) => {
     }, [isInternalImage])
 
     if (isInternalImage && internalImageAttrs) {
-        return <MountedImage src={internalImageAttrs.src} alt={internalImageAttrs.alt} />
+        return <MountedImage src={internalImageAttrs.src} alt={internalImageAttrs.alt} others={others} />
     }
 
     if (!hasImage) {
-        return <MountedImage src="https://via.placeholder.com/150" alt="Any fallback image" />
+        return <MountedImage src="https://via.placeholder.com/150" alt="Any fallback image" others={others} />
     }
 
     if (hasImage && !isValidImage) {
-        return <MountedImage src="https://via.placeholder.com/150" alt="Any fallback image" />
+        return <MountedImage src="https://via.placeholder.com/150" alt="Any fallback image" others={others} />
     }
 
     return <MountedImage src={image!.src} alt={image!.alt} others={others} />

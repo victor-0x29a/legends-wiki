@@ -12,12 +12,26 @@ import { EditEntityPage } from "./pages/Entity/EditEntityPage";
 import { ListUserPage } from "./pages/User/ListUserPage";
 import { CreateUserPage } from "./pages/User/CreateUserPage";
 import { EditUserPage } from "./pages/User/EditUserPage";
+import { HomePage } from "./pages/home/HomePage";
+import { EntitiesVisualization } from "./pages/home/EntitiesVisualization";
 
 export const router = createBrowserRouter([
     {
         path: "*",
         element: <Layout>
             <NotFound />
+        </Layout>
+    },
+    {
+        path: "",
+        element: <Layout isFreeSizes={true}>
+            <HomePage />
+        </Layout>
+    },
+    {
+        path: ":entityType",
+        element: <Layout isFreeSizes={true}>
+            <EntitiesVisualization />
         </Layout>
     },
     {
@@ -66,9 +80,7 @@ export const router = createBrowserRouter([
             },
             {
                 path: ":type/:id",
-                element: <PrivateRoute forProtect={true}>
-                    <ViewEntityPage />
-                </PrivateRoute>
+                element: <ViewEntityPage />
             },
             {
                 path: "edit/:id",
@@ -83,7 +95,7 @@ export const router = createBrowserRouter([
         element: <Layout />,
         children: [
             {
-                path: "",
+                path: "dashboard",
                 element: <PrivateRoute forProtect={true}>
                     <RedirectPage />
                 </PrivateRoute>

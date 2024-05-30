@@ -26,7 +26,7 @@ export const PrivateRoute = ({ children, forProtect = false }: IProtectRouteProp
         return <Navigate to="/auth/login" />
     }
 
-    if (hasToken) return <Navigate to="/auth" />
+    if (hasToken) return <Navigate to="/auth/dashboard" />
 
     return children
 }

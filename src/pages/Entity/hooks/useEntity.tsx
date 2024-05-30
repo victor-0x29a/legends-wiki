@@ -12,7 +12,7 @@ type IUseEntity = {
     entity: FindOneEntity
 }
 
-export const useEntity = (entityId: number): IUseEntity => {
+export const useEntity = (entityId: number, canFetch: boolean = true): IUseEntity => {
     const {
         translateErrors
     } = useError()
@@ -20,6 +20,7 @@ export const useEntity = (entityId: number): IUseEntity => {
     const {
         alert
     } = useAlert()
+
 
     const {
         data,
@@ -29,7 +30,7 @@ export const useEntity = (entityId: number): IUseEntity => {
         staleTime: STALE_TIME,
         queryKey: [JSON.stringify({ entityId, label: 'entity-unique-view' })],
         queryFn: async () => {
-            if (isNaN(entityId)) {
+            if (isNaN(entityId) || !canFetch) {
                 return Promise.resolve(null)
             }
 

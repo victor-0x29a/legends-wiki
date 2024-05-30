@@ -2,14 +2,17 @@ import { Box, Button } from "@chakra-ui/react"
 import { useCallback, useMemo } from "react"
 import { IPaginationProps } from "./PaginationBar.type"
 import { ChevronLeftIcon, ChevronRightIcon } from "@chakra-ui/icons"
+import { LegendsSize } from "../../styles/constants.style"
+import { Select } from "../Select"
+import { DefaultPerPageOptionsStyle } from "./PaginationBar.style"
+
+const PER_PAGE_OPTIONS = [10, 25, 50]
 
 export const PaginationBar = ({
     page,
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     perPage,
     totalPages,
     onChangePage,
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     onChangePerPage,
     isLoading
 }: IPaginationProps) => {
@@ -27,32 +30,64 @@ export const PaginationBar = ({
 
     const decreasePage = useCallback(() => onChangePage(page - 1), [onChangePage, page])
 
-    return <Box width={"100%"} display={"flex"} justifyContent={"space-between"}>
-        <Button
-            isDisabled={!hasPrevious}
-            padding={0}
-            bgColor={"transparent"}
-            _hover={{
-                backgroundColor: "transparent"
+    const mountedPerPageOptions = useMemo(() => PER_PAGE_OPTIONS.map((value) => ({
+        label: value.toString(),
+        value: value.toString()
+    })), [])
+
+    const onPerPageChange = useCallback((perPage: string) => {
+        onChangePerPage(Number(perPage))
+    }, [onChangePerPage])
+
+    return <Box
+        width={"100%"}
+        display={"flex"}
+        justifyContent={"space-between"}
+        padding={LegendsSize.padding.normal}
+        id="pagination-bar-container"
+    >
+        <Select
+            onSelect={onPerPageChange}
+            options={mountedPerPageOptions}
+            placeholder="Pagination"
+            others={{
+                w: "100px",
+                variant: "filled",
+                bgColor: 'transparent',
+                css: DefaultPerPageOptionsStyle,
+                placeholder: undefined,
+                cursor: "pointer",
+                value: perPage || PER_PAGE_OPTIONS[0].toString(),
+                id: "pagination-bar-select-per-page"
             }}
-            onClick={decreasePage}
-            isLoading={isLoading}
-            id="pagination-bar-action-previous"
-        >
-            <ChevronLeftIcon boxSize={10} />
-        </Button>
-        <Button
-            isDisabled={!hasNext}
-            padding={0}
-            bgColor={"transparent"}
-            _hover={{
-                backgroundColor: "transparent"
-            }}
-            onClick={addPage}
-            isLoading={isLoading}
-            id="pagination-bar-action-next"
-        >
-            <ChevronRightIcon boxSize={10} />
-        </Button>
+        />
+        <Box display={"flex"} gap={LegendsSize.margin.normal}>
+            <Button
+                isDisabled={!hasPrevious}
+                padding={0}
+                bgColor={"transparent"}
+                _hover={{
+                    backgroundColor: "transparent"
+                }}
+                onClick={decreasePage}
+                isLoading={isLoading}
+                id="pagination-bar-action-previous"
+            >
+                <ChevronLeftIcon boxSize={10} />
+            </Button>
+            <Button
+                isDisabled={!hasNext}
+                padding={0}
+                bgColor={"transparent"}
+                _hover={{
+                    backgroundColor: "transparent"
+                }}
+                onClick={addPage}
+                isLoading={isLoading}
+                id="pagination-bar-action-next"
+            >
+                <ChevronRightIcon boxSize={10} />
+            </Button>
+        </Box>
     </Box>
 }

@@ -1,10 +1,9 @@
 import { useNavigate, useParams } from "react-router-dom"
-import { Entities } from "../../constants"
-import { NotFound } from "../../not-found"
+import { Entities } from "../../entity.constant"
 import { useEntity } from "./hooks/useEntity"
 import { Box, Skeleton, SkeletonText } from "@chakra-ui/react"
 import BasicHeader from "../../components/BasicHeader"
-import { LegendsSize } from "../../styles/constants.style"
+import { HEADER_HEIGHT, LegendsSize } from "../../styles/constants.style"
 import StatsInfo from "../../components/StatsInfo"
 import { IItemStats } from "../../types/item.type"
 import { useContext, useMemo } from "react"
@@ -12,6 +11,7 @@ import MDEditor from "@uiw/react-md-editor"
 import { DashboardHeader } from "../Dashboard/Header"
 import { I18nContext } from "../../contexts/i18n.context"
 import { CommonLabels } from "../../i18n/commonLabels.i18n"
+import { GenericError } from "../../generic-error"
 
 const DEFAULT_CONTAINER_PROPS = {
     paddingTop: LegendsSize.padding.normal,
@@ -61,7 +61,9 @@ export const ViewEntityPage = () => {
 
     const { type, id } = useParams()
 
-    const { entity, isLoading } = useEntity(Number(id))
+    const isInvalidEntityType = useMemo(() => !type || !Entities.includes(type), [type])
+
+    const { entity, isLoading } = useEntity(Number(id), !isInvalidEntityType)
 
     const canCenterStats = useMemo(() => Object.keys(entity?.properties || {}).length < 3, [entity?.properties])
 
@@ -71,8 +73,10 @@ export const ViewEntityPage = () => {
         return { src: entity?.image?.src, alt: entity?.image?.alt }
     }, [entity?.image])
 
-    if (!type || !Entities.includes(type)) {
-        return <NotFound />
+    if (isInvalidEntityType) {
+        return <Box w="100%" h={`calc(100vh - ${HEADER_HEIGHT})`}>
+            <GenericError errorDetails="Unknown entity" />
+        </Box>
     }
 
     if (isLoading) {
@@ -94,9 +98,12 @@ export const ViewEntityPage = () => {
             stats={(entity?.properties || {}) as unknown as IItemStats}
             isCentralized={canCenterStats} />
 
-        <MDEditor.Markdown source={entity?.sections || ''} style={{
-            padding: LegendsSize.padding.normal,
-            borderRadius: LegendsSize.borderRadius.normal
-        }} />
+        <MDEditor.Markdown
+            source={entity?.sections || ''}
+            style={{
+                padding: LegendsSize.padding.normal,
+                borderRadius: LegendsSize.borderRadius.normal
+            }}
+        />
     </Box>
 }
