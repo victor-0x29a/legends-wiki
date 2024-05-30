@@ -15,10 +15,10 @@ export const Default: Story = {
         description: "This is a description",
         title: "This is a title",
         image: {
-            src: "https://via.placeholder.com/150",
+            src: "https://via.placeholder.com/120",
             alt: "This is an image"
         },
         entityId: 1,
-        entityType: "foo"
+        onClick: console.log
     }
 }
