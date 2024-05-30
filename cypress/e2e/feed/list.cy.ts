@@ -62,3 +62,11 @@ describe('feed of entity pagination', () => {
         cy.get("#feed-container #feed-item").should("have.length", 1)
     })
 })
+
+describe('feed broken', () => {
+    it('should display generic error when entity type is invalid', () => {
+        cy.visit('/foo')
+        cy.get('body').contains('Tipo de entidade desconhecida')
+        cy.get('body').should('not.contain', 'Voltar')
+    })
+})
