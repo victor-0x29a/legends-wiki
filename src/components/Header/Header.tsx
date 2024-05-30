@@ -70,7 +70,8 @@ export const Header = () => {
                             icon: (<IconWrapper lightMode={true}>
                                 <BiCaretDown />
                             </IconWrapper>),
-                            cursor: "pointer"
+                            cursor: "pointer",
+                            id: "i18n-select"
                         }}
                     />
                 </Box>
