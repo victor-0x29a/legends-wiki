@@ -23,39 +23,23 @@ const createMockedAxiosError = (status: number): AxiosError => {
 test('should return internal error when not is an AxiosError', () => {
     const error = new Error('Some error')
 
-    try {
-        getError(error)
-    } catch (error) {
-        expect(error).toEqual(['Internal error'])
-    }
+    expect(() => getError(error)).toThrow('Internal error')
 })
 
 test('should return internal error when is an internal error', () => {
     const error = new AxiosError('Spec error', '500')
 
-    try {
-        getError(error)
-    } catch (error) {
-        expect(error).toEqual(['Internal error'])
-    }
+    expect(() => getError(error)).toThrow('Internal error')
 })
 
 test('should return internal error when not have a response data', () => {
     const error = createMockedAxiosError(400)
 
-    try {
-        getError(error)
-    } catch (error) {
-        expect(error).toEqual(['Internal error'])
-    }
+    expect(() => getError(error)).toThrow('Internal error')
 })
 
 test('should return required authentication when is a 401 error', () => {
     const error = createMockedAxiosError(401)
 
-    try {
-        getError(error)
-    } catch (error) {
-        expect(error).toEqual(['Required authentication'])
-    }
+    expect(() => getError(error)).toThrow('Required authentication')
 })
