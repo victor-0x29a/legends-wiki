@@ -12,7 +12,8 @@
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
     "test": "jest",
-    "cy:open": "cypress open"
+    "cy:open": "cypress open",
+    "prepare": "husky"
   },
   "dependencies": {
     "@chakra-ui/icons": "^2.1.1",
