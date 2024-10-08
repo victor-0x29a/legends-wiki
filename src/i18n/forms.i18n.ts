@@ -285,5 +285,10 @@ export const FormLabels: I18nData = {
         "en": "User deleted",
         "es": "Usuario eliminado",
         "pt-br": "Usuário deletado"
+    },
+    "Check again the fields": {
+        "en": "Check again the fields",
+        "es": "Revise nuevamente los campos",
+        "pt-br": "Verifique novamente os campos"
     }
 }

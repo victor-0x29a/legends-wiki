@@ -11,6 +11,7 @@ import { useError } from "../../hooks/useError";
 import { useAlert } from "../../hooks/useAlert";
 import { I18nContext } from "../../contexts/i18n.context";
 import { FormLabels } from "../../i18n/forms.i18n";
+import { useFormErrorAttempt } from "../../hooks/useFormErrorAttempt";
 
 const INITIAL_DATA = {
     username: "",
@@ -20,7 +21,10 @@ const INITIAL_DATA = {
 export const AuthenticationPage = () => {
     const [isLoading, setIsLoading] = useState(false)
     const [showPassword, setShowPassword] = useState(false)
-    const togglePasswordVisibility = useCallback(() => setShowPassword((curr) => !curr), [])
+    const togglePasswordVisibility = useCallback(() => {
+        if (isLoading) return
+        setShowPassword((curr) => !curr)
+    }, [isLoading])
 
     const { translateErrors } = useError()
 
@@ -46,13 +50,24 @@ export const AuthenticationPage = () => {
                 setIsLoading(false)
             })
         },
-        validationSchema: signInSchema
+        validationSchema: signInSchema,
+        validateOnChange: false,
+        validateOnBlur: false
     })
 
     const onSubmit = useCallback((event: FormEvent) => {
         event.preventDefault()
         formik.submitForm()
     }, [formik])
+
+    const onErrorCallBack = useCallback(() => {
+        alert({
+            text: translate(FormLabels, "Check again the fields"),
+            type: "error"
+        })
+    }, [alert, translate])
+
+    useFormErrorAttempt(formik.errors, onErrorCallBack)
 
     return (
         <Container marginTop={"20%"}>
@@ -62,38 +77,43 @@ export const AuthenticationPage = () => {
                     onSubmit={onSubmit}
                     maxW={"400px"}
                 >
-                    <FormLabel>
+                    <FormLabel className="form-label">
                         {translate(FormLabels, "User")}
                     </FormLabel>
-                    <Input
-                        type="text"
-                        name="username"
-                        onChange={formik.handleChange}
-                        onBlur={formik.handleBlur}
-                        disabled={isLoading}
-                    />
-                    <FormError errorData={formik.errors.username} />
-                    <FormLabel>
-                        {translate(FormLabels, "Password")}
-                    </FormLabel>
-                    <InputGroup>
-                        <InputLeftAddon
-                            onClick={togglePasswordVisibility}
-                            bgColor={"transparent"}
-                        >
-                            {showPassword ?
-                                <ViewOffIcon /> :
-                                <ViewIcon />}
-                        </InputLeftAddon>
+                    <div className="control-group">
                         <Input
-                            type={showPassword ? "text" : "password"}
-                            name="password"
+                            type="text"
+                            name="username"
                             onChange={formik.handleChange}
                             onBlur={formik.handleBlur}
                             disabled={isLoading}
                         />
-                    </InputGroup>
-                    <FormError errorData={formik.errors.password} />
+                        <FormError errorData={formik.errors.username} />
+                    </div>
+                    <FormLabel className="form-label">
+                        {translate(FormLabels, "Password")}
+                    </FormLabel>
+                    <div className="control-group">
+                        <InputGroup>
+                            <InputLeftAddon
+                                onClick={togglePasswordVisibility}
+                                bgColor={"transparent"}
+                                opacity={isLoading ? 0.5 : 1}
+                            >
+                                {showPassword ?
+                                    <ViewOffIcon /> :
+                                    <ViewIcon />}
+                            </InputLeftAddon>
+                            <Input
+                                type={showPassword ? "text" : "password"}
+                                name="password"
+                                onChange={formik.handleChange}
+                                onBlur={formik.handleBlur}
+                                disabled={isLoading}
+                            />
+                        </InputGroup>
+                        <FormError errorData={formik.errors.password} />
+                    </div>
                     <Button
                         w={"100%"}
                         marginTop={LegendsSize.margin.normal}

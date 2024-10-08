@@ -4,6 +4,7 @@ import LogoIcon from "../../assets/logo-icon.png"
 import { LegendsColor, LegendsSize } from "../../styles/constants.style"
 import { SocialMedias } from "../../data/social-media.data"
 import { useNavigate } from "react-router-dom"
+import "./HomePage.style.scss"
 
 export const HomePage = () => {
     const Navigate = useNavigate()

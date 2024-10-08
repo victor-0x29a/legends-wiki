@@ -12,8 +12,8 @@ import { EditEntityPage } from "./pages/Entity/EditEntityPage";
 import { ListUserPage } from "./pages/User/ListUserPage";
 import { CreateUserPage } from "./pages/User/CreateUserPage";
 import { EditUserPage } from "./pages/User/EditUserPage";
-import { HomePage } from "./pages/home/HomePage";
-import { EntitiesVisualization } from "./pages/home/EntitiesVisualization";
+import { HomePage } from "./pages/Home/HomePage";
+import { EntitiesVisualization } from "./pages/Home/EntitiesVisualization";
 
 export const router = createBrowserRouter([
     {
