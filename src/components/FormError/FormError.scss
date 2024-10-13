@@ -1,16 +1,17 @@
 .form-error {
     position: absolute;
     bottom: -0.50rem;
-}
 
-.form-error__visible {
     width: 0px;
     opacity: 0;
-    animation: fadeRight 2s forwards;
     overflow: hidden;
     max-lines: 1;
     word-wrap: break-word;
     white-space: nowrap;
+}
+
+.form-error__visible {
+    animation: fadeRight 2s forwards;
 
     @keyframes fadeRight {
         to {
