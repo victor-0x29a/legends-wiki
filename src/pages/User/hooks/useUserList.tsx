@@ -5,7 +5,6 @@ import { useQuery } from "@tanstack/react-query"
 import { UserModel } from "../../../api"
 
 import { useError } from "../../../shared/hooks/useError"
-import { useAlert } from "../../../shared/hooks/useAlert"
 
 import { Environment } from "../../../constants"
 
@@ -16,12 +15,8 @@ const STALE_TIME = Environment.isTest ? 0 : 1000 * 60 * 2
 
 export const useUserList = (): IUseUserList => {
     const {
-        translateErrors
+        showErrors
     } = useError()
-
-    const {
-        alert
-    } = useAlert()
 
     const [queryKey, setQueryKey] = useState(0)
 
@@ -35,10 +30,7 @@ export const useUserList = (): IUseUserList => {
         staleTime: STALE_TIME,
         queryFn: () => {
             return UserModel.findAll()
-                .catch((errors) => {
-                    translateErrors(errors)!
-                        .forEach((error) => alert({ text: error }))
-                })
+                .catch(showErrors)
         },
         queryKey: [`find-users-key-${queryKey}`]
     })

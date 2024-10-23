@@ -33,7 +33,7 @@ export const useUser = (): IUseUser => {
     })
 
     const {
-        translateErrors
+        showErrors
     } = useError()
 
     const {
@@ -55,12 +55,9 @@ export const useUser = (): IUseUser => {
         setIsLoading((curr) => ({ ...curr, deletion: true }))
         return UserModel.delete(id)
             .then(() => callback())
-            .catch((errors) => {
-                const translatedErrors = translateErrors(errors)
-                translatedErrors && translatedErrors.forEach((error) => alert({ text: error }))
-            })
+            .catch(showErrors)
             .finally(() => setIsLoading({ ...isLoading, deletion: false }))
-    }, [alert, isLoading, translateErrors])
+    }, [isLoading, showErrors])
 
     const findUser = useCallback((id: number) => {
         if (isLoading.visualization) return
@@ -72,12 +69,9 @@ export const useUser = (): IUseUser => {
         setIsLoading((curr) => ({ ...curr, visualization: true }))
         UserModel.findOne(id)
             .then((data) => setResponse((curr) => ({ ...curr, user: data })))
-            .catch((errors) => {
-                const translatedErrors = translateErrors(errors)
-                translatedErrors && translatedErrors.forEach((error) => alert({ text: error }))
-            })
+            .catch(showErrors)
             .finally(() => setIsLoading((curr) => ({ ...curr, visualization: false })))
-    }, [alert, callbackWhenIdIsNotValid, isLoading.visualization, translateErrors])
+    }, [callbackWhenIdIsNotValid, isLoading.visualization, showErrors])
 
     const createUser = useCallback((data: createUserPayload, callback = () => { }) => {
         setIsLoading((curr) => ({ ...curr, creation: true }))
@@ -89,12 +83,9 @@ export const useUser = (): IUseUser => {
                 }))
                 callback()
             })
-            .catch((errors) => {
-                const translatedErrors = translateErrors(errors)
-                translatedErrors && translatedErrors.forEach((error) => alert({ text: error }))
-            })
+            .catch(showErrors)
             .finally(() => setIsLoading((curr) => ({ ...curr, creation: false })))
-    }, [alert, translateErrors])
+    }, [showErrors])
 
     const editUser = useCallback((id: number, data: editUserPayload, callback = () => { }) => {
         setIsLoading((curr) => ({ ...curr, edition: true }))
@@ -110,12 +101,9 @@ export const useUser = (): IUseUser => {
 
         UserModel.edit(id, data)
             .then(() => callback())
-            .catch((errors) => {
-                const translatedErrors = translateErrors(errors)
-                translatedErrors && translatedErrors.forEach((error) => alert({ text: error }))
-            })
+            .catch(showErrors)
             .finally(() => setIsLoading((curr) => ({ ...curr, edition: false })))
-    }, [alert, response.user, translateErrors])
+    }, [response.user, showErrors])
 
     return {
         isLoadingDeletion: isLoading.deletion,

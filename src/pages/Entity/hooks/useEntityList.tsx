@@ -76,7 +76,7 @@ export const useEntityList = (): IUseEntityList => {
 
     const { alert } = useAlert()
 
-    const { translateErrors } = useError()
+    const { showErrors } = useError()
 
     const [isLoadingDeletion, setIsLoadingDeletion] = useState(false)
 
@@ -86,12 +86,9 @@ export const useEntityList = (): IUseEntityList => {
             .then(() => {
                 alert({ text: translate(FormLabels, "Deleted entity"), type: "success" })
             })
-            .catch((error) => {
-                translateErrors(error)!
-                    .forEach((error) => alert({ text: error, type: "error" }))
-            })
+            .catch(showErrors)
             .finally(() => setIsLoadingDeletion(false))
-    }, [alert, translate, translateErrors])
+    }, [alert, showErrors, translate])
 
     return {
         filters,

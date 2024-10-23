@@ -27,7 +27,13 @@ export const useError = () => {
         return errorList.map((error) => translate(ErrorList, error))
     }, [alert, logout, translate])
 
+    const showErrors = useCallback((errors: string[]) => {
+        const translatedErrors = translateErrors(errors)
+        translatedErrors && translatedErrors.forEach((error) => alert({ text: error, type: "error" }))
+    }, [alert, translateErrors])
+
     return {
-        translateErrors
+        translateErrors,
+        showErrors
     }
 }

@@ -37,7 +37,7 @@ export const CreateEntityPage = () => {
         alert
     } = useAlert()
 
-    const { translateErrors } = useError()
+    const { showErrors } = useError()
 
     const { translate } = useContext(I18nContext)
 
@@ -49,14 +49,11 @@ export const CreateEntityPage = () => {
                 alert({ text: translate(FormLabels, "Entity created"), type: "success" })
                 Navigate("/entity")
             })
-            .catch((errorList) => {
-                const errors = translateErrors(errorList)
-                errors!.forEach((error) => alert({ text: error }))
-            })
+            .catch(showErrors)
             .finally(() => {
                 setIsLoading(false)
             })
-    }, [Navigate, alert, translate, translateErrors])
+    }, [Navigate, alert, showErrors, translate])
 
     const onBack = useCallback(() => Navigate("/entity"), [Navigate])
 

@@ -33,7 +33,7 @@ export const useEditEntity = (id: number): useEditEntityProps => {
     } = useAlert()
 
     const {
-        translateErrors
+        showErrors
     } = useError()
 
     const {
@@ -69,14 +69,9 @@ export const useEditEntity = (id: number): useEditEntityProps => {
             .then(() => {
                 onSuccessCallback()
             })
-            .catch((errors) => {
-                translateErrors(errors)!
-                    .forEach((error) => {
-                        alert({ text: error })
-                    })
-            })
+            .catch(showErrors)
             .finally(() => setIsLoading(false))
-    }, [alert, id, onSuccessCallback, originalData, translateErrors])
+    }, [id, onSuccessCallback, originalData, showErrors])
 
     return {
         originalData,

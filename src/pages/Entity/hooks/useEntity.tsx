@@ -3,7 +3,6 @@ import { useQuery } from "@tanstack/react-query"
 import { EntityModel } from "../../../api"
 
 import { useError } from "../../../shared/hooks/useError"
-import { useAlert } from "../../../shared/hooks/useAlert"
 
 import { Environment } from "../../../constants"
 
@@ -18,13 +17,8 @@ type IUseEntity = {
 
 export const useEntity = (entityId: number, canFetch: boolean = true): IUseEntity => {
     const {
-        translateErrors
+        showErrors
     } = useError()
-
-    const {
-        alert
-    } = useAlert()
-
 
     const {
         data,
@@ -39,9 +33,7 @@ export const useEntity = (entityId: number, canFetch: boolean = true): IUseEntit
             }
 
             const data = await EntityModel.findOne(entityId)
-                .catch((errors) => translateErrors(errors)!.forEach((error) => {
-                    alert({ text: error })
-                }))
+                .catch(showErrors)
 
             return data
         }
