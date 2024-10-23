@@ -35,4 +35,8 @@ body {
     position: relative;
     padding-bottom: 1.5rem;
 }
+
+.clickable {
+    cursor: pointer;
+}
 `
