@@ -3,7 +3,7 @@ import { FormEvent, useCallback, useContext, useState } from "react"
 import { useFormik } from "formik"
 
 import { UserModel } from "../../../api"
-import { signInSchema } from "../AuthenticationSchemas"
+import { signInSchema } from "../form/AuthenticationSchemas"
 
 import { AuthContext } from "../../../contexts/auth.context"
 import { I18nContext } from "../../../contexts/i18n.context"
