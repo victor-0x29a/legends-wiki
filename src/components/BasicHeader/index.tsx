@@ -1,7 +1,10 @@
 import { useMemo } from "react"
-import { BasicHeaderContainer } from "./BasicHeader.style"
-import { IBasicHeaderProps } from "./BasicHeader.type"
+
 import EntityImage from "../EntityImage/EntityImage"
+
+import { BasicHeaderContainer } from "./BasicHeader.style"
+
+import type { IBasicHeaderProps } from "./BasicHeader.type"
 
 const BasicHeader = ({
     imageDetails,

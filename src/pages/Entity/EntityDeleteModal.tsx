@@ -1,7 +1,11 @@
-import { Button, Modal, ModalBody, ModalCloseButton, ModalContent, ModalFooter, ModalHeader, ModalOverlay } from "@chakra-ui/react"
 import { useCallback, useContext } from "react";
-import { I18nContext } from "../../contexts/i18n.context";
-import { CommonLabels } from "../../i18n/commonLabels.i18n";
+
+import { Button, Modal, ModalBody, ModalCloseButton, ModalContent, ModalFooter, ModalHeader, ModalOverlay } from "@chakra-ui/react"
+
+import { I18nContext } from "../../shared/contexts/i18n.context";
+
+import { CommonLabels } from "../../shared/i18n/commonLabels.i18n";
+
 import { LegendsColor } from "../../styles/constants.style";
 
 type IEntityDeleteModalProps = {

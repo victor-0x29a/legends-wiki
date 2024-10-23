@@ -1,13 +1,20 @@
 import { useCallback, useContext, useState } from "react"
-import { useEntity } from "./useEntity"
-import { getDifferentKeys } from "../../../api/utils/getDifferentKeys"
-import { FindOneEntity } from "../../../types/entity.type"
-import { useAlert } from "../../../hooks/useAlert"
-import { I18nContext } from "../../../contexts/i18n.context"
-import { CommonLabels } from "../../../i18n/commonLabels.i18n"
-import { EntityModel } from "../../../api"
+
 import { useNavigate } from "react-router-dom"
-import { useError } from "../../../hooks/useError"
+
+import { EntityModel } from "../../../api"
+
+import { I18nContext } from "../../../shared/contexts/i18n.context"
+
+import { useEntity } from "./useEntity"
+import { useError } from "../../../shared/hooks/useError"
+import { useAlert } from "../../../shared/hooks/useAlert"
+
+import { getDifferentKeys } from "../../../api/utils/getDifferentKeys"
+
+import { CommonLabels } from "../../../shared/i18n/commonLabels.i18n"
+
+import type { FindOneEntity } from "../../../types/entity.type"
 
 interface useEditEntityProps {
     isLoading: boolean

@@ -1,5 +1,5 @@
-import { ARMOR_ENTITY, BOSS_ENTITY, COLLECTIBLE_ENTITY, ITEM_ENTITY, QUEST_ENTITY } from "../entity.constant";
-import { I18nData } from "../types/i18n.type";
+import { ARMOR_ENTITY, BOSS_ENTITY, COLLECTIBLE_ENTITY, ITEM_ENTITY, QUEST_ENTITY } from "../../entity.constant";
+import { I18nData } from "../../types/i18n.type";
 
 export const EntityList: I18nData = {
     "Geral": {

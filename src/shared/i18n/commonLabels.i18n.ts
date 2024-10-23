@@ -1,4 +1,4 @@
-import { I18nData } from "../types/i18n.type";
+import { I18nData } from "../../types/i18n.type";
 
 export const CommonLabels: I18nData = {
     "Entities": {

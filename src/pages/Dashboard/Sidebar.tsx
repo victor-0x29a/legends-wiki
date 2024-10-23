@@ -1,8 +1,12 @@
 import { List, ListItem } from "@chakra-ui/react"
+
 import { HeaderSideModalChild } from "../../components/Header/HeaderSideModalItemChild"
+
 import { LegendsColor, LegendsSize } from "../../styles/constants.style"
-import { IDashboardSideBarProps } from "./dashboard.type"
+
 import { DASHBOARD_SIDE_MODAl_SIZE } from "./Dashboard.constant"
+
+import type { IDashboardSideBarProps } from "./dashboard.type"
 
 export const DashboardSideBar = ({
     entityList,

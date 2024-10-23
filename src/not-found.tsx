@@ -3,8 +3,8 @@ import { LegendsColor, LegendsSize } from "./styles/constants.style";
 import { WarningIcon } from "@chakra-ui/icons";
 import { useNavigate } from "react-router-dom";
 import { useCallback, useContext } from "react";
-import { I18nContext } from "./contexts/i18n.context";
-import { CommonLabels } from "./i18n/commonLabels.i18n";
+import { I18nContext } from "./shared/contexts/i18n.context";
+import { CommonLabels } from "./shared/i18n/commonLabels.i18n";
 
 export const NotFound = () => {
     const Navigate = useNavigate()

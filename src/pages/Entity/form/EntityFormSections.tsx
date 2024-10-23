@@ -1,9 +1,12 @@
+import { useContext } from 'react';
+
+import { I18nContext } from '../../../shared/contexts/i18n.context';
+
 import { Box, Heading } from '@chakra-ui/react';
 import MDEditor from '@uiw/react-md-editor';
+
 import { LegendsSize } from '../../../styles/constants.style';
-import { useContext } from 'react';
-import { I18nContext } from '../../../contexts/i18n.context';
-import { FormLabels } from '../../../i18n/forms.i18n';
+import { FormLabels } from '../../../shared/i18n/forms.i18n';
 
 interface IEntityFormSectionsProps {
     // eslint-disable-next-line @typescript-eslint/no-explicit-any

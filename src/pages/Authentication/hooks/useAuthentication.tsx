@@ -5,14 +5,14 @@ import { useFormik } from "formik"
 import { UserModel } from "../../../api"
 import { signInSchema } from "../form/AuthenticationSchemas"
 
-import { AuthContext } from "../../../contexts/auth.context"
-import { I18nContext } from "../../../contexts/i18n.context"
+import { AuthContext } from "../../../shared/contexts/auth.context"
+import { I18nContext } from "../../../shared/contexts/i18n.context"
 
-import { useAlert } from "../../../hooks/useAlert"
-import { useError } from "../../../hooks/useError"
-import { useFormErrorAttempt } from "../../../hooks/useFormErrorAttempt"
+import { useAlert } from "../../../shared/hooks/useAlert"
+import { useError } from "../../../shared/hooks/useError"
+import { useFormErrorAttempt } from "../../../shared/hooks/useFormErrorAttempt"
 
-import { FormLabels } from "../../../i18n/forms.i18n"
+import { FormLabels } from "../../../shared/i18n/forms.i18n"
 
 import type { IUseAuthentication } from "./useAuthentication.type"
 

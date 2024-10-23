@@ -1,11 +1,17 @@
-import { useNavigate, useParams } from "react-router-dom"
-import { Entities } from "../../entity.constant"
-import { DashboardContainer } from "../Dashboard/Container"
 import { useCallback, useContext, useMemo } from "react"
-import { I18nContext } from "../../contexts/i18n.context"
-import { EntityList } from "../../i18n/entity.i18n"
+
+import { useNavigate, useParams } from "react-router-dom"
+
+import { I18nContext } from "../../shared/contexts/i18n.context"
+
+import { DashboardContainer } from "../Dashboard/Container"
 import { FeedContainer } from "./FeedContainer/FeedContainer"
+
+import { EntityList } from "../../shared/i18n/entity.i18n"
+
 import { GenericError } from "../../generic-error"
+
+import { Entities } from "../../entity.constant"
 
 export const EntitiesVisualization = () => {
     const { entityType } = useParams()

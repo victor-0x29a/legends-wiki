@@ -1,9 +1,15 @@
-import { Box, Heading, Image } from "@chakra-ui/react"
-import { DashboardContainer } from "../Dashboard/Container"
-import LogoIcon from "../../assets/logo-icon.png"
-import { LegendsColor, LegendsSize } from "../../styles/constants.style"
-import { SocialMedias } from "../../data/social-media.data"
 import { useNavigate } from "react-router-dom"
+
+import { Box, Heading, Image } from "@chakra-ui/react"
+
+import { DashboardContainer } from "../Dashboard/Container"
+
+import LogoIcon from "../../assets/logo-icon.png"
+
+import { SocialMedias } from "../../shared/data/social-media.data"
+
+import { LegendsColor, LegendsSize } from "../../styles/constants.style"
+
 import "./HomePage.style.scss"
 
 export const HomePage = () => {

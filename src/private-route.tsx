@@ -1,6 +1,8 @@
 import { useContext, useMemo } from "react"
-import { AuthContext } from "./contexts/auth.context"
+
 import { Navigate } from "react-router-dom"
+
+import { AuthContext } from "./shared/contexts/auth.context"
 
 type IProtectRouteProps = {
     children: React.ReactNode

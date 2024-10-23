@@ -1,6 +1,9 @@
-import { useQuery } from "@tanstack/react-query"
-import { EntityModel } from "../../../api"
 import { useCallback, useState } from "react"
+
+import { useQuery } from "@tanstack/react-query"
+
+import { EntityModel } from "../../../api"
+
 import { Environment } from "../../../constants"
 import { Entities } from "../../../entity.constant"
 

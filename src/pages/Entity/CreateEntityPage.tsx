@@ -1,15 +1,22 @@
+import { useCallback, useContext, useState } from "react"
+
+import { useNavigate } from "react-router-dom"
+
+import { EntityModel } from "../../api"
+
+import { I18nContext } from "../../shared/contexts/i18n.context"
+
+import { useAlert } from "../../shared/hooks/useAlert"
+import { useError } from "../../shared/hooks/useError"
+
+import { DashboardHeader } from "../Dashboard/Header"
+import { EntityForm } from "./form/EntityForm"
 
 import { Container } from "@chakra-ui/react"
+
 import { entityTypesArray } from "../../entity.constant"
-import { EntityForm } from "./form/EntityForm"
-import { EntityModel } from "../../api"
-import { useCallback, useContext, useState } from "react"
-import { useNavigate } from "react-router-dom"
-import { useAlert } from "../../hooks/useAlert"
-import { useError } from "../../hooks/useError"
-import { DashboardHeader } from "../Dashboard/Header"
-import { I18nContext } from "../../contexts/i18n.context"
-import { FormLabels } from "../../i18n/forms.i18n"
+
+import { FormLabels } from "../../shared/i18n/forms.i18n"
 
 const BaseEntityForm = {
     title: "",

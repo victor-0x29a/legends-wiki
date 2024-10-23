@@ -1,5 +1,5 @@
 import { useSearchParams } from "react-router-dom"
-import { identity } from "../types/app.type"
+import { identity } from "../../types/app.type"
 import { useEffect } from "react"
 
 type IUseQueryAction = {

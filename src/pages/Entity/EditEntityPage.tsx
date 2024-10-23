@@ -1,12 +1,19 @@
-import { useNavigate, useParams } from "react-router-dom"
-import { EntityForm, initialValuesEntityForm } from "./form/EntityForm"
-import { useEditEntity } from "./hooks/useEditEntity"
-import { EntityFormSkeleton } from "./form/EntityFormSkeleton"
-import { DashboardHeader } from "../Dashboard/Header"
-import { Box } from "@chakra-ui/react"
 import { useContext } from "react"
-import { I18nContext } from "../../contexts/i18n.context"
-import { CommonLabels } from "../../i18n/commonLabels.i18n"
+
+import { useNavigate, useParams } from "react-router-dom"
+
+import { I18nContext } from "../../shared/contexts/i18n.context"
+
+import { useEditEntity } from "./hooks/useEditEntity"
+
+import { EntityForm, initialValuesEntityForm } from "./form/EntityForm"
+import { EntityFormSkeleton } from "./form/EntityFormSkeleton"
+
+import { DashboardHeader } from "../Dashboard/Header"
+
+import { Box } from "@chakra-ui/react"
+
+import { CommonLabels } from "../../shared/i18n/commonLabels.i18n"
 
 export const EditEntityPage = () => {
     const { id } = useParams()

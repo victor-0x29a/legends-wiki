@@ -1,10 +1,13 @@
 import { Box, Heading } from "@chakra-ui/react";
-import { IHeaderSideModalItemProps } from "./HeaderSideModalItem.type"
-import { LegendsColor, LegendsSize } from "../../styles/constants.style";
+
 import { HeaderSideModalChild } from "./HeaderSideModalItemChild";
-import { CloseIcon } from "@chakra-ui/icons";
 import { IconWrapper } from "../IconWrapper/IconWrapper";
 
+import { CloseIcon } from "@chakra-ui/icons";
+
+import { LegendsColor, LegendsSize } from "../../styles/constants.style";
+
+import type { IHeaderSideModalItemProps } from "./HeaderSideModalItem.type"
 
 export const HeaderSideModalItem = ({
     section,

@@ -1,17 +1,25 @@
-import { Box, Fade, Image } from "@chakra-ui/react";
-import Logo from "../../assets/logo.png";
-import { HEADER_HEIGHT, LegendsColor, LegendsSize } from "../../styles/constants.style";
-import { HamburgerIcon } from "@chakra-ui/icons";
-import { IconWrapper } from "../IconWrapper/IconWrapper";
 import { useCallback, useContext, useRef, useState } from "react";
-import { HeaderSideModal } from "./HeaderSideModal";
+
+import { I18nContext } from "../../shared/contexts/i18n.context";
+
 import { useOutsideClick } from "@chakra-ui/react";
-import { I18nContext } from "../../contexts/i18n.context";
+
 import { Select } from "../Select";
-import { I18nLanguages } from "../../constants";
-import { language } from "../../types/i18n.type";
+import { HeaderSideModal } from "./HeaderSideModal";
+import { IconWrapper } from "../IconWrapper/IconWrapper";
+
+import { Box, Fade, Image } from "@chakra-ui/react";
+import { HamburgerIcon } from "@chakra-ui/icons";
 import { BiCaretDown } from "react-icons/bi";
+
+import { I18nLanguages } from "../../constants";
+
 import { I18nStyle } from "./Header.styles";
+import { HEADER_HEIGHT, LegendsColor, LegendsSize } from "../../styles/constants.style";
+
+import Logo from "../../assets/logo.png";
+
+import type { language } from "../../types/i18n.type";
 
 export const Header = () => {
     const [isOpenModal, setIsOpenModal] = useState(false)

@@ -1,6 +1,6 @@
 import { useCallback, useContext, useState } from "react";
 
-import { I18nContext } from "../../contexts/i18n.context";
+import { I18nContext } from "../../shared/contexts/i18n.context";
 import { useAuthentication } from "./hooks/useAuthentication";
 
 import { ViewIcon, ViewOffIcon } from "@chakra-ui/icons";
@@ -8,7 +8,7 @@ import { Box, Button, Container, FormControl, FormLabel, Input, InputGroup, Inpu
 
 import { FormError } from "../../components/FormError/FormError";
 
-import { FormLabels } from "../../i18n/forms.i18n";
+import { FormLabels } from "../../shared/i18n/forms.i18n";
 
 import { LegendsSize } from "../../styles/constants.style";
 

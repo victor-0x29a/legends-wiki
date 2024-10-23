@@ -1,11 +1,16 @@
-import { Box, Table, Tbody, Th, Thead, Tr } from "@chakra-ui/react"
-import { LegendsColor, LegendsSize } from "../../styles/constants.style"
 import { useContext, useMemo } from "react"
-import { AuthContext } from "../../contexts/auth.context"
+
+import { AuthContext } from "../../shared/contexts/auth.context"
+import { I18nContext } from "../../shared/contexts/i18n.context"
+
 import { RedirectList } from "../../components/RedirectList/RedirectList"
-import { I18nContext } from "../../contexts/i18n.context"
-import { FormLabels } from "../../i18n/forms.i18n"
-import { CommonLabels } from "../../i18n/commonLabels.i18n"
+
+import { Box, Table, Tbody, Th, Thead, Tr } from "@chakra-ui/react"
+
+import { LegendsColor, LegendsSize } from "../../styles/constants.style"
+
+import { FormLabels } from "../../shared/i18n/forms.i18n"
+import { CommonLabels } from "../../shared/i18n/commonLabels.i18n"
 
 export const AuditSection = () => {
     const mockedData = ["A row", "A second row"]

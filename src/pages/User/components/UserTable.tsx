@@ -2,13 +2,13 @@ import { useCallback, useContext } from "react"
 
 import { useNavigate } from "react-router-dom"
 
-import { I18nContext } from "../../../contexts/i18n.context"
+import { I18nContext } from "../../../shared/contexts/i18n.context"
 
 import { Spinner, Table, Tbody, Text, Th, Thead, Tr } from "@chakra-ui/react"
 import { DeleteIcon, EditIcon } from "@chakra-ui/icons"
 
-import { CommonLabels } from "../../../i18n/commonLabels.i18n"
-import { FormLabels } from "../../../i18n/forms.i18n"
+import { CommonLabels } from "../../../shared/i18n/commonLabels.i18n"
+import { FormLabels } from "../../../shared/i18n/forms.i18n"
 
 import { LegendsColor, LegendsSize } from "../../../styles/constants.style"
 

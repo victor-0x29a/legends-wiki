@@ -1,14 +1,21 @@
-import { Container } from "@chakra-ui/react"
-import { DashboardHeader } from "../Dashboard/Header"
 import { useCallback, useContext, useMemo } from "react"
-import { I18nContext } from "../../contexts/i18n.context"
-import { CommonLabels } from "../../i18n/commonLabels.i18n"
+
 import { useNavigate } from "react-router-dom"
-import { UserForm } from "./components"
+
+import { I18nContext } from "../../shared/contexts/i18n.context"
+
+import { useAlert } from "../../shared/hooks/useAlert"
 import { useUser } from "./hooks/useUser"
-import { createUserPayload } from "../../types/user.type"
-import { useAlert } from "../../hooks/useAlert"
-import { FormLabels } from "../../i18n/forms.i18n"
+
+import { DashboardHeader } from "../Dashboard/Header"
+import { UserForm } from "./components"
+
+import { Container } from "@chakra-ui/react"
+
+import { CommonLabels } from "../../shared/i18n/commonLabels.i18n"
+import { FormLabels } from "../../shared/i18n/forms.i18n"
+
+import type { createUserPayload } from "../../types/user.type"
 
 export const CreateUserPage = () => {
     const { translate } = useContext(I18nContext)

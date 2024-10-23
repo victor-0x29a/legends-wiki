@@ -4,14 +4,14 @@ import { useNavigate } from "react-router-dom"
 
 import { UserModel } from "../../../api"
 
-import { I18nContext } from "../../../contexts/i18n.context"
+import { I18nContext } from "../../../shared/contexts/i18n.context"
 
-import { useError } from "../../../hooks/useError"
-import { useAlert } from "../../../hooks/useAlert"
+import { useError } from "../../../shared/hooks/useError"
+import { useAlert } from "../../../shared/hooks/useAlert"
 
 import { getDifferentKeys } from "../../../api/utils/getDifferentKeys"
 
-import { CommonLabels } from "../../../i18n/commonLabels.i18n"
+import { CommonLabels } from "../../../shared/i18n/commonLabels.i18n"
 
 import type { createUserPayload, createUserResponse, editUserPayload, User } from "../../../types/user.type"
 import type { IUseUser } from './useUser.type'

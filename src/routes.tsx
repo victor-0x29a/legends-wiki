@@ -1,11 +1,9 @@
 import { createBrowserRouter } from "react-router-dom";
-import { NotFound } from "./not-found";
 import { CreateEntityPage } from "./pages/Entity/CreateEntityPage";
 import { AuthenticationPage } from "./pages/Authentication/AuthenticationPage";
 import { PrivateRoute } from "./private-route";
 import { RedirectPage } from "./pages/Dashboard/RedirectPage";
 import { ListEntityPage } from "./pages/Entity/ListEntityPage";
-import Layout from "./layout";
 import { ViewEntityPage } from "./pages/Entity/ViewEntityPage";
 import { LogoutPage } from "./pages/Authentication/LogoutPage";
 import { EditEntityPage } from "./pages/Entity/EditEntityPage";
@@ -14,6 +12,9 @@ import { CreateUserPage } from "./pages/User/CreateUserPage";
 import { EditUserPage } from "./pages/User/EditUserPage";
 import { HomePage } from "./pages/Home/HomePage";
 import { EntitiesVisualization } from "./pages/Home/EntitiesVisualization";
+
+import { NotFound } from "./not-found";
+import Layout from "./layout";
 
 export const router = createBrowserRouter([
     {

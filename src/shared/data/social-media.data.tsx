@@ -1,6 +1,6 @@
 import { FaInstagramSquare, FaFacebookSquare, FaTwitterSquare, FaYoutube } from "react-icons/fa";
 import { AiFillTikTok } from "react-icons/ai";
-import { LegendsSize } from "../styles/constants.style";
+import { LegendsSize } from "../../styles/constants.style";
 
 export const FB_PROFILE = "https://www.facebook.com"
 export const IG_PROFILE = "https://www.instagram.com"
@@ -39,4 +39,3 @@ export const SocialMedias = [
         link: YT_PROFILE,
     }
 ]
-

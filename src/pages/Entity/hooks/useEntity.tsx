@@ -1,9 +1,13 @@
 import { useQuery } from "@tanstack/react-query"
+
 import { EntityModel } from "../../../api"
-import { FindOneEntity } from "../../../types/entity.type"
-import { useError } from "../../../hooks/useError"
-import { useAlert } from "../../../hooks/useAlert"
+
+import { useError } from "../../../shared/hooks/useError"
+import { useAlert } from "../../../shared/hooks/useAlert"
+
 import { Environment } from "../../../constants"
+
+import type { FindOneEntity } from "../../../types/entity.type"
 
 const STALE_TIME = Environment.isTest ? 500 : 1000 * 60 * 5
 

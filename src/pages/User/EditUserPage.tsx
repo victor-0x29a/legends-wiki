@@ -1,12 +1,19 @@
 import { useCallback, useContext, useEffect, useRef } from "react"
-import { I18nContext } from "../../contexts/i18n.context"
-import { Box, Container, Skeleton } from "@chakra-ui/react"
-import { DashboardHeader } from "../Dashboard/Header"
+
 import { useNavigate, useParams } from "react-router-dom"
-import { CommonLabels } from "../../i18n/commonLabels.i18n"
-import { UserForm } from "./components"
+
+import { I18nContext } from "../../shared/contexts/i18n.context"
+
 import { useUser } from "./hooks/useUser"
-import { useAlert } from "../../hooks/useAlert"
+import { useAlert } from "../../shared/hooks/useAlert"
+
+import { DashboardHeader } from "../Dashboard/Header"
+import { UserForm } from "./components"
+
+import { Box, Container, Skeleton } from "@chakra-ui/react"
+
+import { CommonLabels } from "../../shared/i18n/commonLabels.i18n"
+
 import { editUserPayload } from "../../types/user.type"
 
 const skeletonOrder = [

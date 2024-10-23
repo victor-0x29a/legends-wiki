@@ -1,10 +1,16 @@
-import { Box, Button } from "@chakra-ui/react"
 import { useCallback, useMemo } from "react"
-import { IPaginationProps } from "./PaginationBar.type"
-import { ChevronLeftIcon, ChevronRightIcon } from "@chakra-ui/icons"
-import { LegendsSize } from "../../styles/constants.style"
+
 import { Select } from "../Select"
+
+import { Box, Button } from "@chakra-ui/react"
+
+import { ChevronLeftIcon, ChevronRightIcon } from "@chakra-ui/icons"
+
 import { DefaultPerPageOptionsStyle } from "./PaginationBar.style"
+
+import { LegendsSize } from "../../styles/constants.style"
+
+import type { IPaginationProps } from "./PaginationBar.type"
 
 const PER_PAGE_OPTIONS = [10, 25, 50]
 

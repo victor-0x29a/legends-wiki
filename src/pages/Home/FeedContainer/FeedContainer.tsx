@@ -1,11 +1,16 @@
-import { List, ListItem } from "@chakra-ui/react"
-import { IFeedContainerProps } from "./FeedContainer.type"
-import { PaginationBar } from "../../../components/PaginationBar/PaginationBar"
-import { useEntityFeed } from "../hooks/useEntityFeed"
-import { FeedItem } from "../../../components/FeedItem/FeedItem"
-import { ImageObject } from "../../../types/entity.type"
-import { LegendsSize } from "../../../styles/constants.style"
 import { useMemo } from "react"
+
+import { List, ListItem } from "@chakra-ui/react"
+
+import { useEntityFeed } from "../hooks/useEntityFeed"
+
+import { PaginationBar } from "../../../components/PaginationBar/PaginationBar"
+import { FeedItem } from "../../../components/FeedItem/FeedItem"
+
+import { LegendsSize } from "../../../styles/constants.style"
+
+import type { ImageObject } from "../../../types/entity.type"
+import type { IFeedContainerProps } from "./FeedContainer.type"
 
 export const FeedContainer = ({ entityType, onEntityClick }: IFeedContainerProps) => {
     const {

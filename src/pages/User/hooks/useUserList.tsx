@@ -4,8 +4,8 @@ import { useQuery } from "@tanstack/react-query"
 
 import { UserModel } from "../../../api"
 
-import { useError } from "../../../hooks/useError"
-import { useAlert } from "../../../hooks/useAlert"
+import { useError } from "../../../shared/hooks/useError"
+import { useAlert } from "../../../shared/hooks/useAlert"
 
 import { Environment } from "../../../constants"
 

@@ -1,12 +1,19 @@
-import { useQuery } from "@tanstack/react-query"
-import { EntityModel } from "../../../api"
 import { useCallback, useContext, useState } from "react"
-import { MinimalEntity } from "../../../types/entity.type"
-import { useAlert } from "../../../hooks/useAlert"
-import { I18nContext } from "../../../contexts/i18n.context"
-import { FormLabels } from "../../../i18n/forms.i18n"
-import { useError } from "../../../hooks/useError"
+
+import { useQuery } from "@tanstack/react-query"
+
+import { EntityModel } from "../../../api"
+
+import { I18nContext } from "../../../shared/contexts/i18n.context"
+
+import { useAlert } from "../../../shared/hooks/useAlert"
+import { useError } from "../../../shared/hooks/useError"
+
+import { FormLabels } from "../../../shared/i18n/forms.i18n"
+
 import { Environment } from "../../../constants"
+
+import type { MinimalEntity } from "../../../types/entity.type"
 
 const STALE_TIME = Environment.isTest ? 500 : 1000 * 60 * 10
 
