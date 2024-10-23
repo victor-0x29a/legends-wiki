@@ -5,8 +5,8 @@ import { I18nContext } from "../../../contexts/i18n.context"
 import { FormLabels } from "../../../i18n/forms.i18n"
 import { FormError } from "../../../components/FormError/FormError"
 import { LegendsSize } from "../../../styles/constants.style"
-import { getUserSchema } from "./user.schemas"
-import { IUserFormProps } from "./UserForm.type"
+import { getUserSchema } from "../form/user.schemas"
+import type { IUserFormProps } from "./UserForm.type"
 
 export const UserForm = ({
     initialValues,

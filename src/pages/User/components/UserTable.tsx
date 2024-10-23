@@ -1,19 +1,18 @@
-import { Spinner, Table, Tbody, Text, Th, Thead, Tr } from "@chakra-ui/react"
-import { User } from "../../types/user.type"
 import { useCallback, useContext } from "react"
-import { I18nContext } from "../../contexts/i18n.context"
-import { CommonLabels } from "../../i18n/commonLabels.i18n"
-import { LegendsColor, LegendsSize } from "../../styles/constants.style"
+
 import { useNavigate } from "react-router-dom"
-import { FormLabels } from "../../i18n/forms.i18n"
+
+import { I18nContext } from "../../../contexts/i18n.context"
+
+import { Spinner, Table, Tbody, Text, Th, Thead, Tr } from "@chakra-ui/react"
 import { DeleteIcon, EditIcon } from "@chakra-ui/icons"
 
-interface IUserTableProps {
-    users: User[]
-    isLoading: boolean
-    onUserEditClick: (id: number) => void
-    onUserDeleteClick: (id: number) => void
-}
+import { CommonLabels } from "../../../i18n/commonLabels.i18n"
+import { FormLabels } from "../../../i18n/forms.i18n"
+
+import { LegendsColor, LegendsSize } from "../../../styles/constants.style"
+
+import type { IUserTableProps } from './UserTable.type'
 
 export const UserTable = ({
     users,

@@ -1,16 +1,16 @@
-import { Environment } from "../../../constants"
-import { useQuery } from "@tanstack/react-query"
-import { UserModel } from "../../../api"
-import { findAllUsersResponse } from "../../../types/user.type"
-import { useError } from "../../../hooks/useError"
-import { useAlert } from "../../../hooks/useAlert"
 import { useCallback, useState } from "react"
 
-interface IUseUserList {
-    users: findAllUsersResponse
-    isLoading: boolean
-    refreshRequest: () => void
-}
+import { useQuery } from "@tanstack/react-query"
+
+import { UserModel } from "../../../api"
+
+import { useError } from "../../../hooks/useError"
+import { useAlert } from "../../../hooks/useAlert"
+
+import { Environment } from "../../../constants"
+
+import type { IUseUserList } from './useUserList.type'
+import type { findAllUsersResponse } from "../../../types/user.type"
 
 const STALE_TIME = Environment.isTest ? 0 : 1000 * 60 * 2
 

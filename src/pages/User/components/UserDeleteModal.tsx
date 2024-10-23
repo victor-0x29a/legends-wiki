@@ -1,16 +1,13 @@
-import { Button, Modal, ModalBody, ModalCloseButton, ModalContent, ModalFooter, ModalHeader, ModalOverlay } from "@chakra-ui/react"
 import { useCallback, useContext } from "react";
-import { I18nContext } from "../../contexts/i18n.context";
-import { CommonLabels } from "../../i18n/commonLabels.i18n";
-import { LegendsColor } from "../../styles/constants.style";
 
-type IUserDeleteModalProps = {
-    isOpen: boolean;
-    onClose: () => void;
-    onConfirm: (id: number) => void;
-    userId: number | null;
-    isLoading: boolean;
-}
+import { I18nContext } from "../../../contexts/i18n.context";
+
+import { Button, Modal, ModalBody, ModalCloseButton, ModalContent, ModalFooter, ModalHeader, ModalOverlay } from "@chakra-ui/react"
+
+import { CommonLabels } from "../../../i18n/commonLabels.i18n";
+import { LegendsColor } from "../../../styles/constants.style";
+
+import type { IUserDeleteModalProps } from './UserDeleteModal.type'
 
 export const UserDeleteModal = ({
     isOpen,

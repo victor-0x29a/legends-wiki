@@ -4,7 +4,7 @@ import { Box, Container, Skeleton } from "@chakra-ui/react"
 import { DashboardHeader } from "../Dashboard/Header"
 import { useNavigate, useParams } from "react-router-dom"
 import { CommonLabels } from "../../i18n/commonLabels.i18n"
-import { UserForm } from "./form/UserForm"
+import { UserForm } from "./components"
 import { useUser } from "./hooks/useUser"
 import { useAlert } from "../../hooks/useAlert"
 import { editUserPayload } from "../../types/user.type"
@@ -15,7 +15,7 @@ const skeletonOrder = [
     ["100%", "50px"]
 ]
 
-const EditUserPageSkeleton = () => {
+const UsersSkeleton = () => {
     return <Box>
         {skeletonOrder.map(([width, height], index) => (
             <Skeleton
@@ -67,7 +67,7 @@ export const EditUserPage = () => {
     }, [editUser, isLoadingVisualization, onSuccessCallback, user])
 
     if (isLoadingVisualization || !isFetched.current) {
-        return <EditUserPageSkeleton />
+        return <UsersSkeleton />
     }
 
     if (!user) {

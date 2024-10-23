@@ -1,26 +1,20 @@
 import { useCallback, useContext, useState } from "react"
+
+import { useNavigate } from "react-router-dom"
+
 import { UserModel } from "../../../api"
+
+import { I18nContext } from "../../../contexts/i18n.context"
+
 import { useError } from "../../../hooks/useError"
 import { useAlert } from "../../../hooks/useAlert"
-import { createUserPayload, createUserResponse, editUserPayload, User } from "../../../types/user.type"
-import { identity } from "../../../types/app.type"
-import { useNavigate } from "react-router-dom"
-import { I18nContext } from "../../../contexts/i18n.context"
-import { CommonLabels } from "../../../i18n/commonLabels.i18n"
+
 import { getDifferentKeys } from "../../../api/utils/getDifferentKeys"
 
-interface IUseUser {
-    isLoadingDeletion: boolean
-    deleteUser: (id: number, callback?: identity) => void
-    isLoadingVisualization: boolean
-    findUser: (id: number) => void
-    user: User | null
-    isLoadingCreation: boolean
-    createUser: (data: createUserPayload, callback?: identity) => void
-    createdUser: createUserResponse | null
-    editUser: (id: number, data: editUserPayload, callback?: identity) => void
-    isLoadingEdition: boolean
-}
+import { CommonLabels } from "../../../i18n/commonLabels.i18n"
+
+import type { createUserPayload, createUserResponse, editUserPayload, User } from "../../../types/user.type"
+import type { IUseUser } from './useUser.type'
 
 export const useUser = (): IUseUser => {
     const [isLoading, setIsLoading] = useState({
