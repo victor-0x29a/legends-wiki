@@ -1,73 +1,35 @@
+import { useCallback, useContext, useState } from "react";
+
+import { I18nContext } from "../../contexts/i18n.context";
+import { useAuthentication } from "./hooks/useAuthentication";
+
 import { ViewIcon, ViewOffIcon } from "@chakra-ui/icons";
 import { Box, Button, Container, FormControl, FormLabel, Input, InputGroup, InputLeftAddon } from "@chakra-ui/react";
-import { FormEvent, useCallback, useContext, useState } from "react";
-import { LegendsSize } from "../../styles/constants.style";
-import { useFormik } from "formik";
-import { signInSchema } from "./AuthenticationSchemas";
-import { FormError } from "../../components/FormError/FormError";
-import { UserModel } from "../../api";
-import { AuthContext } from "../../contexts/auth.context";
-import { useError } from "../../hooks/useError";
-import { useAlert } from "../../hooks/useAlert";
-import { I18nContext } from "../../contexts/i18n.context";
-import { FormLabels } from "../../i18n/forms.i18n";
-import { useFormErrorAttempt } from "../../hooks/useFormErrorAttempt";
 
-const INITIAL_DATA = {
-    username: "",
-    password: ""
-}
+import { FormError } from "../../components/FormError/FormError";
+
+import { FormLabels } from "../../i18n/forms.i18n";
+
+import { LegendsSize } from "../../styles/constants.style";
 
 export const AuthenticationPage = () => {
-    const [isLoading, setIsLoading] = useState(false)
     const [showPassword, setShowPassword] = useState(false)
-    const togglePasswordVisibility = useCallback(() => {
-        if (isLoading) return
-        setShowPassword((curr) => !curr)
-    }, [isLoading])
 
-    const { translateErrors } = useError()
+    const {
+        handleBlur,
+        handleChange,
+        isLoadingFormSubmit,
+        errors,
+        onSubmit
+    } = useAuthentication()
+
+    const togglePasswordVisibility = useCallback(() => {
+        if (isLoadingFormSubmit) return
+        setShowPassword((curr) => !curr)
+    }, [isLoadingFormSubmit])
 
     const { translate } = useContext(I18nContext)
 
-    const { alert } = useAlert()
-
-    const {
-        authenticate
-    } = useContext(AuthContext)
-
-    const formik = useFormik({
-        initialValues: INITIAL_DATA,
-        onSubmit: (values) => {
-            setIsLoading(true)
-            return UserModel.signIn(values).then(({ token }) => {
-                authenticate(token)
-                alert({ text: translate(FormLabels, "Login successful"), type: "success" })
-            }).catch((errorList) => {
-                const errors = translateErrors(errorList, true)
-                errors && errors!.forEach((error) => alert({ text: error }))
-            }).finally(() => {
-                setIsLoading(false)
-            })
-        },
-        validationSchema: signInSchema,
-        validateOnChange: false,
-        validateOnBlur: false
-    })
-
-    const onSubmit = useCallback((event: FormEvent) => {
-        event.preventDefault()
-        formik.submitForm()
-    }, [formik])
-
-    const onErrorCallBack = useCallback(() => {
-        alert({
-            text: translate(FormLabels, "Check again the fields"),
-            type: "error"
-        })
-    }, [alert, translate])
-
-    useFormErrorAttempt(formik.errors, onErrorCallBack)
 
     return (
         <Container marginTop={"20%"}>
@@ -84,11 +46,11 @@ export const AuthenticationPage = () => {
                         <Input
                             type="text"
                             name="username"
-                            onChange={formik.handleChange}
-                            onBlur={formik.handleBlur}
-                            disabled={isLoading}
+                            onChange={handleChange}
+                            onBlur={handleBlur}
+                            disabled={isLoadingFormSubmit}
                         />
-                        <FormError errorData={formik.errors.username} />
+                        <FormError errorData={errors.username} />
                     </div>
                     <FormLabel className="form-label">
                         {translate(FormLabels, "Password")}
@@ -98,7 +60,8 @@ export const AuthenticationPage = () => {
                             <InputLeftAddon
                                 onClick={togglePasswordVisibility}
                                 bgColor={"transparent"}
-                                opacity={isLoading ? 0.5 : 1}
+                                opacity={isLoadingFormSubmit ? 0.5 : 1}
+                                className="clickable"
                             >
                                 {showPassword ?
                                     <ViewOffIcon /> :
@@ -107,12 +70,12 @@ export const AuthenticationPage = () => {
                             <Input
                                 type={showPassword ? "text" : "password"}
                                 name="password"
-                                onChange={formik.handleChange}
-                                onBlur={formik.handleBlur}
-                                disabled={isLoading}
+                                onChange={handleChange}
+                                onBlur={handleBlur}
+                                disabled={isLoadingFormSubmit}
                             />
                         </InputGroup>
-                        <FormError errorData={formik.errors.password} />
+                        <FormError errorData={errors.password} />
                     </div>
                     <Button
                         w={"100%"}
@@ -120,7 +83,7 @@ export const AuthenticationPage = () => {
                         type="submit"
                         colorScheme="green"
                         loadingText={translate(FormLabels, "Entering on account")}
-                        isLoading={isLoading}
+                        isLoading={isLoadingFormSubmit}
                     >
                         {translate(FormLabels, "Login")}
                     </Button>
