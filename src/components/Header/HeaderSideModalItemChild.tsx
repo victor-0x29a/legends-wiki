@@ -1,7 +1,10 @@
-import { Text, useBoolean } from "@chakra-ui/react";
-import { LegendsColor, LegendsSize, LegendsValues } from "../../styles/constants.style";
 import { IconWrapper } from "../IconWrapper/IconWrapper";
-import { IHeaderSideModalItemChildProps } from "./HeaderSideModalItemChild.type";
+
+import { Text, useBoolean } from "@chakra-ui/react";
+
+import { LegendsColor, LegendsSize, LegendsValues } from "../../styles/constants.style";
+
+import type { IHeaderSideModalItemChildProps } from "./HeaderSideModalItemChild.type";
 
 export const HeaderSideModalChild = ({ onClick, icon, label, isMobile, others = {} }: IHeaderSideModalItemChildProps) => {
     const [isHover, setIsHover] = useBoolean()

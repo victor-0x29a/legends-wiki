@@ -1,14 +1,21 @@
-import { Box, Spinner, Table, Tbody, Text, Th, Thead, Tr } from "@chakra-ui/react";
-import { MinimalEntity } from "../../types/entity.type";
-import { LegendsColor, LegendsSize } from "../../styles/constants.style";
-import EntityImage from "../../components/EntityImage/EntityImage";
-import { DeleteIcon, EditIcon, WarningIcon } from "@chakra-ui/icons";
-import { PaginationBar } from "../../components/PaginationBar/PaginationBar";
 import { useCallback, useContext, useMemo, useState } from "react";
-import { I18nContext } from "../../contexts/i18n.context";
-import { FormLabels } from "../../i18n/forms.i18n";
-import { EntityDeleteModal } from "./EntityDeleteModal";
+
 import { useNavigate } from "react-router-dom";
+
+import { I18nContext } from "../../shared/contexts/i18n.context";
+
+import EntityImage from "../../components/EntityImage/EntityImage";
+import { EntityDeleteModal } from "./EntityDeleteModal";
+import { PaginationBar } from "../../components/PaginationBar/PaginationBar";
+
+import { Box, Spinner, Table, Tbody, Text, Th, Thead, Tr } from "@chakra-ui/react";
+import { DeleteIcon, EditIcon, WarningIcon } from "@chakra-ui/icons";
+
+import { FormLabels } from "../../shared/i18n/forms.i18n";
+
+import { LegendsColor, LegendsSize } from "../../styles/constants.style";
+
+import type { MinimalEntity } from "../../types/entity.type";
 
 type IEntityTableProps = {
     isLoading: boolean;

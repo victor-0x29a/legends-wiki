@@ -1,6 +1,9 @@
 import { useContext, useEffect, useMemo } from "react"
-import { AuthContext } from "../../contexts/auth.context"
+
 import { useNavigate } from "react-router-dom"
+
+import { AuthContext } from "../../shared/contexts/auth.context"
+
 import { Box, Text } from "@chakra-ui/react"
 
 export const LogoutPage = () => {

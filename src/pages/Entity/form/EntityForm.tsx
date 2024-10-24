@@ -1,17 +1,27 @@
+import { FormEvent, useCallback, useContext } from "react"
+
 import { useFormik } from "formik"
-import { Button, FormControl, FormLabel, HStack, Input, Radio, RadioGroup } from "@chakra-ui/react"
-import { entityTypes, entityTypesArray } from "../../../entity.constant"
+
+import { EntitySchema } from "./entity.schemas"
+
+import { I18nContext } from "../../../shared/contexts/i18n.context"
+
 import { FormError } from "../../../components/FormError/FormError"
-import { EntityFormProperties } from "./EntityFormProperties"
-import { IItemStats } from "../../../types/item.type"
 import { EntityFormImage } from "./EntityFormImage"
 import { EntityFormSections } from "./EntityFormSections"
+
+import { Button, FormControl, FormLabel, HStack, Input, Radio, RadioGroup } from "@chakra-ui/react"
+
+import { entityTypes, entityTypesArray } from "../../../entity.constant"
+import { EntityFormProperties } from "./EntityFormProperties"
+
 import { LegendsSize } from "../../../styles/constants.style"
-import { FormEvent, useCallback, useContext } from "react"
-import { I18nContext } from "../../../contexts/i18n.context"
-import { FormLabels } from "../../../i18n/forms.i18n"
-import { EntityList } from "../../../i18n/entity.i18n"
-import { EntitySchema } from "./entity.schemas"
+
+import { FormLabels } from "../../../shared/i18n/forms.i18n"
+
+import { EntityList } from "../../../shared/i18n/entity.i18n"
+
+import type { IItemStats } from "../../../types/item.type"
 
 export interface initialValuesEntityForm {
     title: string

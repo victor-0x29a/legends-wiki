@@ -1,14 +1,22 @@
-import { Box, Fade, Slide, useMediaQuery } from "@chakra-ui/react";
-import { IHeaderSideModalProps } from "./HeaderSideModal.type";
-import { LegendsColor } from "../../styles/constants.style";
-import { HeaderSideModalItem } from "./HeaderSideModalItem";
-import { useContants } from "../../hooks/useConstants";
 import { useContext, useMemo } from "react";
+
 import { useNavigate } from "react-router-dom";
-import { I18nContext } from "../../contexts/i18n.context";
-import { EntityList } from "../../i18n/entity.i18n";
-import { CommonLabels } from "../../i18n/commonLabels.i18n";
-import { AuthContext } from "../../contexts/auth.context";
+
+import { AuthContext } from "../../shared/contexts/auth.context";
+import { I18nContext } from "../../shared/contexts/i18n.context";
+
+import { useContants } from "../../shared/hooks/useConstants";
+
+import { HeaderSideModalItem } from "./HeaderSideModalItem";
+
+import { Box, Fade, Slide, useMediaQuery } from "@chakra-ui/react";
+
+import { EntityList } from "../../shared/i18n/entity.i18n";
+import { CommonLabels } from "../../shared/i18n/commonLabels.i18n";
+
+import { LegendsColor } from "../../styles/constants.style";
+
+import type { IHeaderSideModalProps } from "./HeaderSideModal.type";
 
 export const HeaderSideModal = ({
     isOpen,

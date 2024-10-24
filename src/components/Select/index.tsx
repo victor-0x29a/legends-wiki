@@ -1,7 +1,10 @@
-import { Select as ChakraSelect } from "@chakra-ui/react"
-import { ISelectProps } from "./Select.type"
-import { LegendsColor } from "../../styles/constants.style"
 import { useCallback } from "react"
+
+import { Select as ChakraSelect } from "@chakra-ui/react"
+
+import { LegendsColor } from "../../styles/constants.style"
+
+import type { ISelectProps } from "./Select.type"
 
 export const Select = ({
     options,

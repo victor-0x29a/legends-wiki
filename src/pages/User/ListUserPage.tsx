@@ -1,18 +1,25 @@
-import { Box, Button, Container } from "@chakra-ui/react"
-import { useUserList } from "./hooks/useUserList"
 import { useCallback, useContext, useMemo, useState } from "react"
-import { I18nContext } from "../../contexts/i18n.context"
-import { CommonLabels } from "../../i18n/commonLabels.i18n"
-import { UserTable } from "./UserTable"
-import { DashboardHeader } from "../Dashboard/Header"
+
 import { useNavigate } from "react-router-dom"
+
+import { I18nContext } from "../../shared/contexts/i18n.context"
+
+import { UserDeleteModal, UserTable } from "./components"
+import { DashboardHeader } from "../Dashboard/Header"
+
 import { AddIcon } from "@chakra-ui/icons"
-import { LegendsSize } from "../../styles/constants.style"
-import { FormLabels } from "../../i18n/forms.i18n"
-import { UserDeleteModal } from "./UserDeleteModal"
+import { Box, Button, Container } from "@chakra-ui/react"
+
 import { useUser } from "./hooks/useUser"
-import { useAlert } from "../../hooks/useAlert"
-import { useQueryAction } from "../../hooks/useQueryAction"
+import { useAlert } from "../../shared/hooks/useAlert"
+import { useQueryAction } from "../../shared/hooks/useQueryAction"
+import { useUserList } from "./hooks/useUserList"
+
+import { CommonLabels } from "../../shared/i18n/commonLabels.i18n"
+import { FormLabels } from "../../shared/i18n/forms.i18n"
+
+import { LegendsSize } from "../../styles/constants.style"
+
 
 export const ListUserPage = () => {
     const Navigate = useNavigate()

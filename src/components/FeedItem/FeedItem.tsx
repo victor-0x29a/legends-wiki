@@ -1,7 +1,10 @@
-import { Box, Heading, Text } from "@chakra-ui/react"
 import EntityImage from "../EntityImage/EntityImage"
-import { IFeedItemProps } from "./FeedItem.type"
+
+import { Box, Heading, Text } from "@chakra-ui/react"
+
 import { LegendsColor, LegendsSize, LegendsValues } from "../../styles/constants.style"
+
+import type { IFeedItemProps } from "./FeedItem.type"
 
 export const FeedItem = ({
     image,

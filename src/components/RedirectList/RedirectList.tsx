@@ -1,8 +1,11 @@
-import { Box, Card, CardHeader, Heading } from "@chakra-ui/react"
-import { IRedirectListProps } from "./RedirectList.type"
-import { LegendsColor, LegendsSize } from "../../styles/constants.style"
 import { Link } from "react-router-dom"
+
+import { Box, Card, CardHeader, Heading } from "@chakra-ui/react"
 import { InfoOutlineIcon } from "@chakra-ui/icons"
+
+import { LegendsColor, LegendsSize } from "../../styles/constants.style"
+
+import type { IRedirectListProps } from "./RedirectList.type"
 
 export const RedirectList = ({
     list

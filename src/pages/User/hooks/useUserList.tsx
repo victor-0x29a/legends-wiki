@@ -1,27 +1,22 @@
-import { Environment } from "../../../constants"
-import { useQuery } from "@tanstack/react-query"
-import { UserModel } from "../../../api"
-import { findAllUsersResponse } from "../../../types/user.type"
-import { useError } from "../../../hooks/useError"
-import { useAlert } from "../../../hooks/useAlert"
 import { useCallback, useState } from "react"
 
-interface IUseUserList {
-    users: findAllUsersResponse
-    isLoading: boolean
-    refreshRequest: () => void
-}
+import { useQuery } from "@tanstack/react-query"
+
+import { UserModel } from "../../../api"
+
+import { useError } from "../../../shared/hooks/useError"
+
+import { Environment } from "../../../constants"
+
+import type { IUseUserList } from './useUserList.type'
+import type { findAllUsersResponse } from "../../../types/user.type"
 
 const STALE_TIME = Environment.isTest ? 0 : 1000 * 60 * 2
 
 export const useUserList = (): IUseUserList => {
     const {
-        translateErrors
+        showErrors
     } = useError()
-
-    const {
-        alert
-    } = useAlert()
 
     const [queryKey, setQueryKey] = useState(0)
 
@@ -35,10 +30,7 @@ export const useUserList = (): IUseUserList => {
         staleTime: STALE_TIME,
         queryFn: () => {
             return UserModel.findAll()
-                .catch((errors) => {
-                    translateErrors(errors)!
-                        .forEach((error) => alert({ text: error }))
-                })
+                .catch(showErrors)
         },
         queryKey: [`find-users-key-${queryKey}`]
     })

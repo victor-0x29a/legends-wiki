@@ -1,15 +1,22 @@
 import { useContext, useMemo } from "react"
-import { EntityView, IDashboardContainerProps } from "./dashboard.type"
+
+import { I18nContext } from "../../shared/contexts/i18n.context"
+
+import { Box, Container, useMediaQuery } from "@chakra-ui/react"
 import { DashboardHeader } from "./Header"
 import { DashboardSideBar } from "./Sidebar"
-import { PublicRoutes } from "../../data/routes.data"
+
 import { Entities } from "../../entity.constant"
-import { I18nContext } from "../../contexts/i18n.context"
-import { EntityList } from "../../i18n/entity.i18n"
-import { Box, Container, useMediaQuery } from "@chakra-ui/react"
 import { DASHBOARD_SIDE_MODAl_SIZE } from "./Dashboard.constant"
-import { CommonLabels } from "../../i18n/commonLabels.i18n"
+
+import { EntityList } from "../../shared/i18n/entity.i18n"
+import { CommonLabels } from "../../shared/i18n/commonLabels.i18n"
+
 import { LegendsSize } from "../../styles/constants.style"
+
+import { PublicRoutes } from "../../shared/data/routes.data"
+
+import type { EntityView, IDashboardContainerProps } from "./dashboard.type"
 
 export const DashboardContainer = ({
     headerTitle,

@@ -1,8 +1,12 @@
 import { useContext, useMemo } from "react";
+
+import { I18nContext } from "../../shared/contexts/i18n.context";
+
+import { Stats } from "../../shared/i18n/stats.i18n";
+
 import { StatsContainer, StatsItem } from "./StatsInfo.style";
-import { IStatsInfoProps } from "./StatsInfo.type";
-import { Stats } from "../../i18n/stats.i18n";
-import { I18nContext } from "../../contexts/i18n.context";
+
+import type { IStatsInfoProps } from "./StatsInfo.type";
 
 const StatsInfo = ({ stats, isCentralized }: IStatsInfoProps) => {
     const { translate } = useContext(I18nContext);

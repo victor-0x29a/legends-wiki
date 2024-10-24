@@ -1,12 +1,18 @@
-import { Box, FormLabel, Heading, Input, Switch } from "@chakra-ui/react"
-import { LegendsSize } from "../../../styles/constants.style"
 import { useCallback, useContext, useMemo, useState } from "react"
-import { I18nContext } from "../../../contexts/i18n.context"
-import { FormLabels } from "../../../i18n/forms.i18n"
-import { EntityFormImageListModal } from "./EntityFormImageListModal"
+
+import { I18nContext } from "../../../shared/contexts/i18n.context"
+
 import { IconWrapper } from "../../../components/IconWrapper/IconWrapper"
-import { InfoIcon } from "@chakra-ui/icons"
 import { IconWrapperCustomCss } from "./EntityFormImageStyles"
+
+import { EntityFormImageListModal } from "./EntityFormImageListModal"
+
+import { Box, FormLabel, Heading, Input, Switch } from "@chakra-ui/react"
+import { InfoIcon } from "@chakra-ui/icons"
+
+import { LegendsSize } from "../../../styles/constants.style"
+
+import { FormLabels } from "../../../shared/i18n/forms.i18n"
 
 interface EntityForImageProps {
     onChange: (value: object) => void,

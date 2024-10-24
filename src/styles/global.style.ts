@@ -1,5 +1,5 @@
 import { createGlobalStyle } from "styled-components";
-import { LegendsColor } from "./constants.style";
+import { LegendsColor, LegendsSize } from "./constants.style";
 
 
 export const GlobalStyle = createGlobalStyle`
@@ -25,5 +25,18 @@ body {
     height: 100vh;
     overflow: auto;
     background-color: ${LegendsColor.backgroundColors.primary};
+}
+
+.form-label {
+    margin-top: ${LegendsSize.margin.small};
+}
+
+.control-group {
+    position: relative;
+    padding-bottom: 1.5rem;
+}
+
+.clickable {
+    cursor: pointer;
 }
 `

@@ -1,17 +1,24 @@
-import { useNavigate, useParams } from "react-router-dom"
-import { Entities } from "../../entity.constant"
-import { useEntity } from "./hooks/useEntity"
-import { Box, Skeleton, SkeletonText } from "@chakra-ui/react"
-import BasicHeader from "../../components/BasicHeader"
-import { HEADER_HEIGHT, LegendsSize } from "../../styles/constants.style"
-import StatsInfo from "../../components/StatsInfo"
-import { IItemStats } from "../../types/item.type"
 import { useContext, useMemo } from "react"
-import MDEditor from "@uiw/react-md-editor"
+
+import { useNavigate, useParams } from "react-router-dom"
+
+import { I18nContext } from "../../shared/contexts/i18n.context"
+
+import { useEntity } from "./hooks/useEntity"
+
 import { DashboardHeader } from "../Dashboard/Header"
-import { I18nContext } from "../../contexts/i18n.context"
-import { CommonLabels } from "../../i18n/commonLabels.i18n"
+import BasicHeader from "../../components/BasicHeader"
+import StatsInfo from "../../components/StatsInfo"
 import { GenericError } from "../../generic-error"
+
+import { Box, Skeleton, SkeletonText } from "@chakra-ui/react"
+import MDEditor from "@uiw/react-md-editor"
+
+import { CommonLabels } from "../../shared/i18n/commonLabels.i18n"
+
+import { Entities } from "../../entity.constant"
+import { HEADER_HEIGHT, LegendsSize } from "../../styles/constants.style"
+import type { IItemStats } from "../../types/item.type"
 
 const DEFAULT_CONTAINER_PROPS = {
     paddingTop: LegendsSize.padding.normal,

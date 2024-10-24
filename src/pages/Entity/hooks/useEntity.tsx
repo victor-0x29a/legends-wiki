@@ -1,9 +1,12 @@
 import { useQuery } from "@tanstack/react-query"
+
 import { EntityModel } from "../../../api"
-import { FindOneEntity } from "../../../types/entity.type"
-import { useError } from "../../../hooks/useError"
-import { useAlert } from "../../../hooks/useAlert"
+
+import { useError } from "../../../shared/hooks/useError"
+
 import { Environment } from "../../../constants"
+
+import type { FindOneEntity } from "../../../types/entity.type"
 
 const STALE_TIME = Environment.isTest ? 500 : 1000 * 60 * 5
 
@@ -14,13 +17,8 @@ type IUseEntity = {
 
 export const useEntity = (entityId: number, canFetch: boolean = true): IUseEntity => {
     const {
-        translateErrors
+        showErrors
     } = useError()
-
-    const {
-        alert
-    } = useAlert()
-
 
     const {
         data,
@@ -35,9 +33,7 @@ export const useEntity = (entityId: number, canFetch: boolean = true): IUseEntit
             }
 
             const data = await EntityModel.findOne(entityId)
-                .catch((errors) => translateErrors(errors)!.forEach((error) => {
-                    alert({ text: error })
-                }))
+                .catch(showErrors)
 
             return data
         }

@@ -1,11 +1,17 @@
-import { Box, Button, Heading } from "@chakra-ui/react"
 import { useContext } from "react";
-import { TbLocationBroken } from "react-icons/tb";
-import { I18nContext } from "./contexts/i18n.context";
-import { ErrorList } from "./i18n/errors.i18n";
-import { LegendsSize } from "./styles/constants.style";
+
 import { useNavigate } from "react-router-dom";
-import { CommonLabels } from "./i18n/commonLabels.i18n";
+
+import { I18nContext } from "./shared/contexts/i18n.context";
+
+import { Box, Button, Heading } from "@chakra-ui/react"
+
+import { TbLocationBroken } from "react-icons/tb";
+
+import { CommonLabels } from "./shared/i18n/commonLabels.i18n";
+import { ErrorList } from "./shared/i18n/errors.i18n";
+
+import { LegendsSize } from "./styles/constants.style";
 
 interface IGenericErrorProps {
     errorDetails?: string

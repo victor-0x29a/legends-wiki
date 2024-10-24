@@ -1,7 +1,10 @@
-import { Image, ImageProps } from "@chakra-ui/react"
-import { IEntityImageProps } from "./EntityImage.type"
 import { useCallback, useEffect, useMemo, useState } from "react"
+
+import { Image, ImageProps } from "@chakra-ui/react"
+
 import { LegendsSize } from "../../styles/constants.style"
+
+import type { IEntityImageProps } from "./EntityImage.type"
 
 const MountedImage = ({
     src,

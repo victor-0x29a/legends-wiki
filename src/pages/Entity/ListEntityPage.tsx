@@ -1,14 +1,21 @@
-import { Box, Button, Container } from "@chakra-ui/react";
-import { useEntityList } from "./hooks/useEntityList";
 import { useCallback, useContext, useEffect } from "react";
+
 import { useNavigate, useSearchParams } from "react-router-dom";
-import { DashboardHeader } from "../Dashboard/Header";
+
+import { I18nContext } from "../../shared/contexts/i18n.context";
+
+import { useEntityList } from "./hooks/useEntityList";
+
 import { EntityTable } from "./EntityTable";
+import { DashboardHeader } from "../Dashboard/Header";
+
+import { Box, Button, Container } from "@chakra-ui/react";
 import { AddIcon } from "@chakra-ui/icons";
+
+import { FormLabels } from "../../shared/i18n/forms.i18n";
+import { CommonLabels } from "../../shared/i18n/commonLabels.i18n";
+
 import { LegendsSize } from "../../styles/constants.style";
-import { I18nContext } from "../../contexts/i18n.context";
-import { FormLabels } from "../../i18n/forms.i18n";
-import { CommonLabels } from "../../i18n/commonLabels.i18n";
 
 export const ListEntityPage = () => {
     const {
